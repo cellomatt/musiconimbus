@@ -3,6 +3,8 @@ const apiRouter = require('./api');
 
 const router = express.Router();
 
+router.use('/api', apiRouter);
+
 if (process.env.NODE_ENV !== 'production') {
   router.get('/api/csrf/restore', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
@@ -10,7 +12,6 @@ if (process.env.NODE_ENV !== 'production') {
   });
 }
 
-router.use('/api', apiRouter);
 
 if (process.env.NODE_ENV === 'production') {
   const path = require('path');
