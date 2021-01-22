@@ -8,11 +8,12 @@ export const addUser = (user) => {
   return { type: ADD_USER, user };
 };
 
-export const removeUser = (user) => {
-  return { type: REMOVE_USER, user };
+export const removeUser = () => {
+  return { type: REMOVE_USER };
 };
 
 export const loginUser = (credential, password) => async dispatch => {
+  console.log(password)
   const response = await fetch('/api/session', {
     method: 'POST',
     headers: {
@@ -20,7 +21,6 @@ export const loginUser = (credential, password) => async dispatch => {
     },
     body: JSON.stringify({credential, password}),
   });
-
   if (response.ok) {
     dispatch(addUser(response.data.user));
   }
