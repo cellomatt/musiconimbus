@@ -16,10 +16,10 @@ div,
 span,
 input,
 body,
+select,
 header,
 nav {
   color: #050505;
-  /* background-color: transparent; */
   margin: 0;
   padding: 0;
   outline: 0;
@@ -27,21 +27,8 @@ nav {
   font-family: 'Roboto', sans-serif;
 }
 
-input {
-  border-radius: 2px;
-  border: solid #888;
-  margin: .2em .5em;
-}
-
-input:focus {
-  border: solid #333;
-}
-
 .btn {
   text-decoration: none;
-  background-color: #25afff;
-  border: 1px solid #050505;
-  color: white;
   border-radius: .4em;
   display: inline-block;
   margin: 1em;
@@ -52,6 +39,16 @@ input:focus {
 }
 
 .btn:hover {
+
+}
+
+.btn--primary {
+  background-color: #25afff;
+  border: 1px solid #050505;
+  color: white;
+}
+
+.btn--primary:hover {
   background-color: #0082ce;
 }
 
@@ -60,8 +57,50 @@ form {
   align-items: flex-start;
   justify-content: center;
   justify-self: center;
+  align-self: center;
   flex-direction: column;
   box-sizing: border-box;
-  margin: 2em;
+  margin: 0 1em;
   padding: 1em;
+}
+
+form label + label {
+  margin-top: .4em;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+input,
+textarea {
+  box-sizing: border-box;
+  border-radius: 2px;
+  border: solid #888;
+  margin: .2em .5em;
+  padding: .13em .3em;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #333;
+}
+
+.main {
+  max-width: 70%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  align-self: center;
+  margin: 30px auto;
+  margin-top: 3em;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+textarea {
+  vertical-align: top;
+  height: 5em;
+  resize: vertical;
 }
