@@ -1,1 +1,67 @@
 /* TODO Add site wide styles */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+ol,
+li,
+ul,
+div,
+span,
+input,
+body,
+header,
+nav {
+  color: #050505;
+  /* background-color: transparent; */
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  text-decoration: none;
+  font-family: 'Roboto', sans-serif;
+}
+
+input {
+  border-radius: 2px;
+  border: solid #888;
+  margin: .2em .5em;
+}
+
+input:focus {
+  border: solid #333;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #25afff;
+  border: 1px solid #050505;
+  color: white;
+  border-radius: .4em;
+  display: inline-block;
+  margin: 1em;
+  font-size: 1em;
+  font-weight: 600;
+  padding: .4em .6em;
+  align-self: center;
+}
+
+.btn:hover {
+  background-color: #0082ce;
+}
+
+form {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  justify-self: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: 2em;
+  padding: 1em;
+}

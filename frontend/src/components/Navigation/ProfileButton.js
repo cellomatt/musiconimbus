@@ -6,12 +6,12 @@ import * as sessionActions from '../../store/session';
 export default function ProfileButton({user}) {
     const dispatch = useDispatch();
     const [showMenu, setShowMenu] = useState(false);
-    
+
     const openMenu = () => {
         if (showMenu) return;
         setShowMenu(true);
     };
-  
+
     useEffect(() => {
       if (!showMenu) return;
 
@@ -20,15 +20,15 @@ export default function ProfileButton({user}) {
       };
 
       document.addEventListener('click', closeMenu);
-  
+
       return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
 
     const logout = (e) => {
         e.preventDefault();
-        dispatch(sessionActions.logout());
+        dispatch(sessionActions.logoutUser());
     };
-    
+
     return (
       <>
         <button onClick={openMenu}>
