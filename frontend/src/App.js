@@ -16,7 +16,7 @@ function App() {
   return (
     <>
       <h1>Hello from App</h1>
-      <Navigation isLoaded={isLoaded}/>
+      {/* <Navigation isLoaded={isLoaded}/> */}
       <Switch>
         <Route exact path="/">
           Home
