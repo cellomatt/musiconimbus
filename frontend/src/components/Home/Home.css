@@ -1,10 +1,12 @@
-p {
+.disclaimer {
   display:flex;
   box-sizing: border-box;
   padding: 1em;
-  color: #777;
-  text-align: left;
+  color: #d1d1d1;
+  text-align: center;
   align-self: center;
+  font-size: .7em;
+  margin-top: 3em;
 }
 
 h1 {
@@ -14,6 +16,17 @@ h1 {
 
 .logo {
   display: flex;
-  max-width: 60%;
+  max-width: 40%;
   align-self: center;
+  padding: .7em;
+}
+
+.tagline {
+  display:flex;
+  box-sizing: border-box;
+  padding: 1em;
+  color: #777;
+  text-align: left;
+  align-self: center;
+  font-size: 1.1em;
 }
