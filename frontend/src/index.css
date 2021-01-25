@@ -28,6 +28,7 @@ nav {
 
 .btn {
   text-decoration: none;
+  white-space: nowrap;
   border-radius: .4em;
   display: inline-block;
   margin: 1em;
