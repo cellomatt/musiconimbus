@@ -9,10 +9,11 @@ p {
 
 h1 {
   margin-bottom: .2em;
+  text-align: center;
 }
 
 .logo {
   display: flex;
-  max-width: 70%;
+  max-width: 60%;
   align-self: center;
 }

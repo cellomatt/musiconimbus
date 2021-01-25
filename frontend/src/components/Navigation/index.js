@@ -15,8 +15,12 @@ export default function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/login">
+          <button className="btn btn--nav">Log In</button>
+        </NavLink>
+        <NavLink to="/signup">
+          <button className="btn btn--nav">Sign Up</button>
+        </NavLink>
       </>
     );
   }
@@ -26,10 +30,16 @@ export default function Navigation({ isLoaded }) {
       <ul>
         <li>
           <NavLink exact to="/">
-            <h1 className="nav-title">MusicoNimbus</h1>
-            <img className="nav-logo" src={logo} />
+            <div className="nav__logo">
+              <img className="nav__logo--img" src={logo} alt="logo" />
+              <h1 className="nav__logo--title">MusicoNimbus</h1>
+            </div>
           </NavLink>
-          {isLoaded && sessionLinks}
+        </li>
+        <li>
+          <div className="nav__links">
+            {isLoaded && sessionLinks}
+          </div>
         </li>
       </ul>
     </nav>

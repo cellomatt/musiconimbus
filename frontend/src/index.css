@@ -37,10 +37,6 @@ nav {
   align-self: center;
 }
 
-/* .btn:hover {
-
-} */
-
 .btn--primary {
   background-color: #25afff;
   border: 1px solid #050505;
@@ -104,7 +100,7 @@ label {
   align-self: center;
   margin: 0 auto;
   padding: 0 2.5em;
-  margin-top: 3em;
+  margin-top: 6rem;
   flex-direction: column;
   flex-wrap: wrap;
 }
@@ -119,7 +115,7 @@ textarea {
 @media screen and (max-width: 650px) {
   .main {
     margin: 1em auto;
-    margin-top: 2em;
+    margin-top: 5em;
   }
 
   form {
