@@ -18,7 +18,7 @@ function LoginFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    console.log(credential, password)
+  
     return dispatch(sessionActions.loginUser(credential, password))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
@@ -31,24 +31,26 @@ function LoginFormPage() {
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label>
+        <label for="credential">
           Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
         </label>
-        <label>
+        <input
+          id="credential"
+          type="text"
+          value={credential}
+          onChange={(e) => setCredential(e.target.value)}
+          required
+        />
+        <label for="password">
           Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
         </label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
         <button type="submit" className="btn btn--primary">Log In</button>
       </form>
     </div>

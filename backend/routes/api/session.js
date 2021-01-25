@@ -23,7 +23,6 @@ router.post(
   '/',
   validateLogin,
   asyncHandler(async (req, res, next) => {
-    console.log("hit login post route")
     const { credential, password } = req.body;
 
     const user = await User.login({ credential, password });
