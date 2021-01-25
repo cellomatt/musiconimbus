@@ -9,15 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       title: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       albumId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       composerId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       songUrl: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       description: {

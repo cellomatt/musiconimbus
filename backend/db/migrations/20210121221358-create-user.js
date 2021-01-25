@@ -24,11 +24,9 @@ module.exports = {
       },
       lastName: {
         type: Sequelize.STRING(50),
-        allowNull: true,
       },
       artistName: {
         type: Sequelize.STRING(100),
-        allowNull: true,
         unique: true,
       },
       hashedPassword: {
