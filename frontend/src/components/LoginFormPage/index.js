@@ -18,7 +18,7 @@ function LoginFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-  
+
     return dispatch(sessionActions.loginUser(credential, password))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
@@ -28,6 +28,7 @@ function LoginFormPage() {
   return (
     <div className="main">
       <form onSubmit={handleSubmit}>
+        <h2>Log In</h2>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
