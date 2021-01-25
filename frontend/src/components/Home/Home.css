@@ -30,3 +30,10 @@ h1 {
   align-self: center;
   font-size: 1.1em;
 }
+
+@media screen and (max-width: 650px) {
+  .tagline {
+    text-align: center;
+  }
+
+}
