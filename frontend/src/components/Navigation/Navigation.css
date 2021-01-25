@@ -12,3 +12,13 @@ nav {
 ul {
   list-style: none;
 }
+
+nav-title {
+  color: #25afff;
+  font-size: .1em;
+}
+
+nav-logo {
+  width: 100px;
+  padding: .2em;
+}

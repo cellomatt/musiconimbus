@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import logo from "../images/musiconimbus-logo.png";
 
 export default function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -24,7 +25,10 @@ export default function Navigation({ isLoaded }) {
     <nav>
       <ul>
         <li>
-          <NavLink exact to="/">Home</NavLink>
+          <NavLink exact to="/">
+            <h1 className="nav-title">MusicoNimbus</h1>
+            <img className="nav-logo" src={logo} />
+          </NavLink>
           {isLoaded && sessionLinks}
         </li>
       </ul>
