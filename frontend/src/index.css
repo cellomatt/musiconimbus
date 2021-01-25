@@ -57,7 +57,7 @@ form {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 1em;
-  /* max-width: 60%; */
+  /* width: 60%; */
   background-color: #f5f5f5;
   border-radius: 4px;
   flex-basis: 50%;
@@ -79,6 +79,7 @@ textarea {
   margin-bottom: .8em;
   padding: .13em .3em;
   max-width: 100%;
+  /* justify-self: center; */
 }
 
 input:focus,
