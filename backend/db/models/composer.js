@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Composer.associate = function(models) {
-    // associations can be defined here
+    Composer.belongsTo(models.Song, {foreignKey: 'composerId'});
   };
   return Composer;
 };

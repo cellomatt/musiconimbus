@@ -20,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {});
   Song.associate = function(models) {
-    // associations can be defined here
+    Song.belongsTo(models.Album, {foreignKey: 'albumId'});
+    Song.hasOne(models.Composer, {foreignKey: 'composerId'});
+    Song.belongsToMany(Playlist, { through: 'Playlist_Song' });
   };
   return Song;
 };

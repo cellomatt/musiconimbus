@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {});
   Album.associate = function(models) {
-    // associations can be defined here
+    Album.belongsTo(models.User, {foreignKey: 'artistId'});
+    Album.hasMany(models.Song, {foreignKey: 'albumId'});
   };
   return Album;
 };
