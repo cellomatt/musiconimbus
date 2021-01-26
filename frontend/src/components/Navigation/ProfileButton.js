@@ -1,11 +1,13 @@
 
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
 
 export default function ProfileButton({user}) {
     const dispatch = useDispatch();
+
     const [showMenu, setShowMenu] = useState(false);
 
     const openMenu = () => {
@@ -33,14 +35,18 @@ export default function ProfileButton({user}) {
     return (
       <>
         <button className="btn btn--hamburger" onClick={openMenu}>
-          <i class="fas fa-bars"></i>
+          <i className="fas fa-bars"></i>
         </button>
         {showMenu && (
         <ul className="dropdown">
           <li className="dropdown__li dropdown__header">Welcome, {user.firstName}!</li>
           <li className="dropdown__li dropdown__email">{user.email}</li>
           <li className="dropdown__li">
-            <button className="btn--dropdown" >Profile</button>
+            <Link to={`/user/${user.id}`}>
+              <button className="btn--dropdown" >
+                Profile
+              </button>
+            </Link>
           </li>
           <li className="dropdown__li">
             <button className="btn--dropdown" >Explore</button>
