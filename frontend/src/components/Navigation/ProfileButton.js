@@ -32,7 +32,7 @@ export default function ProfileButton({user}) {
 
     return (
       <>
-        <button onClick={openMenu}>
+        <button className="btn btn--hamburger" onClick={openMenu}>
           <i class="fas fa-bars"></i>
         </button>
         {showMenu && (

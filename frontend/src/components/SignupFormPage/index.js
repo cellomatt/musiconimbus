@@ -10,6 +10,9 @@ export default function SignupFormPage() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [artistName, setArtistName] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
@@ -19,7 +22,7 @@ export default function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, password }))
+      return dispatch(sessionActions.signup({ email, password, username, firstName, lastName, artistName }))
         .catch(res => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
@@ -30,12 +33,13 @@ export default function SignupFormPage() {
   return (
     <div className="main">
       <form onSubmit={handleSubmit}>
-        <h2>Sign Up</h2>
+        <h2 className="form__title">Sign Up</h2>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
+        <p className="form__requirement">* Indicates a required field.</p>
         <label for="email">
-          Email
+          Email *
         </label>
         <input
           id="email"
@@ -45,7 +49,7 @@ export default function SignupFormPage() {
           required
         />
         <label for="username">
-          Username
+          Username *
         </label>
         <input
           id="username"
@@ -54,8 +58,37 @@ export default function SignupFormPage() {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
+        <label for="firstName">
+          First name *
+        </label>
+        <input
+          id="firstName"
+          type="text"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+        <label for="lastName">
+          Last name
+        </label>
+        <input
+          id="lastName"
+          type="text"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <label for="artistName">
+          Artist name
+        </label>
+        <p className="form__label--subheader">For use on music that you upload.</p>
+        <input
+          id="artistName"
+          type="text"
+          value={artistName}
+          onChange={(e) => setArtistName(e.target.value)}
+        />
         <label for="password">
-          Password
+          Password *
         </label>
         <input
           id="password"
@@ -65,7 +98,7 @@ export default function SignupFormPage() {
           required
         />
         <label for="confirmPassword">
-          Confirm Password
+          Confirm Password *
         </label>
         <input
           id="confirmPassword"

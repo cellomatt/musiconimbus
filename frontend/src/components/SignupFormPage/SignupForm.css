@@ -1,6 +1,12 @@
-h2 {
-  align-self: center;
-  padding: .3em;
-  margin-bottom: .1em;
-  font-size: 2em;
+
+.form__label--subheader {
+  padding: .1em 0 .3em;
+  font-size: .7em;
+  color: #777;
+}
+
+.form__requirement {
+  padding: .5em 0 .7em;
+  font-size: .7em;
+  color: #777;
 }
