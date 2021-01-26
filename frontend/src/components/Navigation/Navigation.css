@@ -57,16 +57,17 @@
 
 .dropdown__email {
   box-sizing: border-box;
-  padding: .1em .5em 1em 2em;
+  padding: .1em 2em 1em 2em;
   font-size: .8em;
   color:#777;
-  text-align: right;
+  text-align: center;
 }
 
 .dropdown__header {
   box-sizing: border-box;
-  padding: .3em .5em .1em 2em;
+  padding: .3em 2em .1em 2em;
   font-size: .9em;
+  text-align: center;
 }
 
 .dropdown__li {
