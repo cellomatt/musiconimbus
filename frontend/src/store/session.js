@@ -42,11 +42,10 @@ export const logoutUser = () => async dispatch => {
 };
 
 export const signup = (user) => async dispatch => {
-  const { username, email, password, firstName, lastName, artistName } = user;
+  const { email, password, firstName, lastName, artistName } = user;
   const res = await fetch("/api/users", {
     method: "POST",
     body: JSON.stringify({
-      username,
       email,
       password,
       firstName,

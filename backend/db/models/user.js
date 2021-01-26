@@ -4,18 +4,6 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [3, 30],
-        isNotEmail(value) {
-          if (Validator.isEmail(value)) {
-            throw new Error('Cannot be an email.');
-          }
-        },
-      },
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -70,8 +58,8 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Album, {foreignKey: 'artistId'});
   };
   User.prototype.toSafeObject = function() {
-    const { id, username, email, firstName, lastName, artistName } = this;
-    return { id, username, email, firstName, lastName, artistName };
+    const { id, email, firstName, lastName, artistName } = this;
+    return { id, email, firstName, lastName, artistName };
   };
   User.prototype.validatePassword = function (password) {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
@@ -83,20 +71,16 @@ module.exports = (sequelize, DataTypes) => {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
       where: {
-        [Op.or]: {
-          username: credential,
-          email: credential,
+         email: credential,
         },
-      },
     });
     if (user && user.validatePassword(password)) {
       return await User.scope('currentUser').findByPk(user.id);
     }
   };
-  User.signup = async function ({ username, email, password, firstName, lastName, artistName }) {
+  User.signup = async function ({ email, password, firstName, lastName, artistName }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
-      username,
       email,
       firstName,
       lastName,
