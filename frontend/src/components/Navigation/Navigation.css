@@ -27,6 +27,7 @@ nav {
   padding: .5em .6em .4em;
   border-radius: 0;
   margin-right: .5em;
+  margin-left: .5em;
 }
 
 .btn--hamburger:hover {
@@ -69,8 +70,19 @@ ul {
 
 .profile-dropdown {
   z-index: 100;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  right: 3em;
+  margin: .5em;
+  padding: 1em;
   flex-direction: column;
+  align-items: center;
   border: 1px solid #d1d1d1;
+  justify-content: flex-start;
+  /* min-height: 100px; */
+  height: auto;
+  background-color: white;
 }
 
 @media screen and (max-width: 650px) {
