@@ -12,7 +12,7 @@ function LoginFormPage() {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return (
-    <Redirect to="/" />
+    <Redirect to={`/user/${sessionUser.id}`} />
   );
 
   const handleSubmit = (e) => {
@@ -25,6 +25,16 @@ function LoginFormPage() {
       });
   }
 
+  const demoSubmit = (e) => {
+    e.preventDefault();
+    setErrors([]);
+
+    return dispatch(sessionActions.loginDemo())
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
+  }
+
   return (
     <div className="main">
       <form onSubmit={handleSubmit}>
@@ -32,7 +42,7 @@ function LoginFormPage() {
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <label for="credential">
+        <label htmlFor="credential">
           Email
         </label>
         <input
@@ -42,7 +52,7 @@ function LoginFormPage() {
           onChange={(e) => setCredential(e.target.value)}
           required
         />
-        <label for="password">
+        <label htmlFor="password">
           Password
         </label>
         <input
@@ -52,7 +62,10 @@ function LoginFormPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="btn btn--primary">Log In</button>
+        <div className="button-container">
+          <button type="submit" className="btn btn--primary">Log In</button>
+          <button type="button" onClick={demoSubmit} className="btn btn--primary">Demo</button>
+        </div>
       </form>
     </div>
   );

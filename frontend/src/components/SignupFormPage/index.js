@@ -15,7 +15,9 @@ export default function SignupFormPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
+  if (sessionUser) return (
+    <Redirect to={`/user/${sessionUser.id}`} />
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ export default function SignupFormPage() {
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
         <p className="form__requirement">* Indicates a required field.</p>
-        <label for="email">
+        <label htmlFor="email">
           Email *
         </label>
         <input
@@ -47,7 +49,7 @@ export default function SignupFormPage() {
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label for="firstName">
+        <label htmlFor="firstName">
           First name *
         </label>
         <input
@@ -57,7 +59,7 @@ export default function SignupFormPage() {
           onChange={(e) => setFirstName(e.target.value)}
           required
         />
-        <label for="lastName">
+        <label htmlFor="lastName">
           Last name
         </label>
         <input
@@ -66,7 +68,7 @@ export default function SignupFormPage() {
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
-        <label for="artistName">
+        <label htmlFor="artistName">
           Artist name
         </label>
         <p className="form__label--subheader">For use on music that you upload.</p>
@@ -76,7 +78,7 @@ export default function SignupFormPage() {
           value={artistName}
           onChange={(e) => setArtistName(e.target.value)}
         />
-        <label for="password">
+        <label htmlFor="password">
           Password *
         </label>
         <input
@@ -86,7 +88,7 @@ export default function SignupFormPage() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <label for="confirmPassword">
+        <label htmlFor="confirmPassword">
           Confirm Password *
         </label>
         <input
