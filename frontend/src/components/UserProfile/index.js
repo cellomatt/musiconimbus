@@ -1,6 +1,11 @@
+import { Redirect } from "react-router-dom";
 import "./UserProfile.css"
 
 export default function UserProfile({ sessionUser }) {
+
+  if (!sessionUser) return (
+    <Redirect to="/" />
+  );
 
   return (
     <div className="main">

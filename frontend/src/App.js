@@ -41,7 +41,7 @@ function App() {
             <Explore />
           </Route>
           <Route path="/album/:albumId">
-            <Album />
+            <Album sessionUser={sessionUser}/>
           </Route>
         </Switch>
       )}
