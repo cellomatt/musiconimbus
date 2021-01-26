@@ -36,11 +36,17 @@ export default function ProfileButton({user}) {
           <i class="fas fa-bars"></i>
         </button>
         {showMenu && (
-        <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
+        <ul className="dropdown">
+          <li className="dropdown__li dropdown__header">Welcome, {user.firstName}!</li>
+          <li className="dropdown__li dropdown__email">{user.email}</li>
+          <li className="dropdown__li">
+            <button className="btn--dropdown" >Profile</button>
+          </li>
+          <li className="dropdown__li">
+            <button className="btn--dropdown" >Explore</button>
+          </li>
+          <li className="dropdown__li">
+            <button className="btn--dropdown" onClick={logout}>Log Out</button>
           </li>
         </ul>
         )}
