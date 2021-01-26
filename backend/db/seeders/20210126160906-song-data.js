@@ -66,6 +66,76 @@ module.exports = {
           songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/04+No.1+In+C+Minor+-+4+Allegro.m4a'
           description:
         },
+        {
+          title: 'Partita No. 3 in E Major - 1. Preludio'
+          albumId: 4,
+          composerId: 8,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/01+Bach+(JS)_+Partita+%233+In+E%2C+BWV+1.m4a'
+          description:
+        },
+        {
+          title: 'Partita No. 3 in E Major - 2. Loure'
+          albumId: 4,
+          composerId: 8,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/02+Bach+(JS)_+Partita+%233+In+E%2C+BWV+1.m4a'
+          description:
+        },
+        {
+          title: 'Partita No. 3 in E Major - 3. Gavotte en Rondeau'
+          albumId: 4,
+          composerId: 8,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/03+Bach+(JS)_+Partita+%233+In+E%2C+BWV+1.m4a'
+          description:
+        },
+        {
+          title: 'Partita No. 3 in E Major - 4. Menuets (I and II)'
+          albumId: 4,
+          composerId: 8,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/04+Bach+(JS)_+Partita+%233+In+E%2C+BWV+1.m4a'
+          description:
+        },
+        {
+          title: 'Partita No. 3 in E Major - 5. Bourrée'
+          albumId: 4,
+          composerId: 8,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/05+Bach+(JS)_+Partita+%233+In+E%2C+BWV+1.m4a'
+          description:
+        },
+        {
+          title: 'Partita No. 3 in E Major - 6. Gigue'
+          albumId: 4,
+          composerId: 8,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/06+Bach+(JS)_+Partita+%233+In+E%2C+BWV+1.m4a'
+          description:
+        },
+        {
+          title: 'String Quartet No. 10 - I. Andante'
+          albumId: 5,
+          composerId: 7,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/3-14+String+Quartet+No.+10+in+A-Flat.m4a'
+          description:
+        },
+        {
+          title: 'String Quartet No. 10 - II. Allegretto furioso'
+          albumId: 5,
+          composerId: 7,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/3-15+String+Quartet+No.+10+in+A-Flat.m4a'
+          description:
+        },
+        {
+          title: 'String Quartet No. 10 - III. Adagio (attacca)'
+          albumId: 5,
+          composerId: 7,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/3-16+String+Quartet+No.+10+in+A-Flat.m4a'
+          description:
+        },
+        {
+          title: 'String Quartet No. 10 - IV. Allegretto – Andante'
+          albumId: 5,
+          composerId: 7,
+          songUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/3-17+String+Quartet+No.+10+in+A-Flat.m4a'
+          description:
+        },
     ], {});
   },
 
