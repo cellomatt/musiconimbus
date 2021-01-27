@@ -7,6 +7,8 @@ const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+const router = express.Router();
+
 const validateAlbum = [
   check('title')
     .exists({ checkFalsy: true })

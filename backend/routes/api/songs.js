@@ -14,6 +14,8 @@ const validateSong = [
   handleValidationErrors,
 ];
 
+const router = express.Router();
+
 // create song
 router.post(
   '/new',
