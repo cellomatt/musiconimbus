@@ -1,16 +1,20 @@
 import { fetch } from "./csrf";
 
 export const SET_USER = "session/SET_USER"
-export const REMOVE_USER = "session/REMOVE_USER"
+// export const REMOVE_USER = "session/REMOVE_USER"
+export const USER_LOGOUT = "USER_LOGOUT"
 
+export const userLogout = () => {
+  return { type: USER_LOGOUT }
+}
 
 export const setUser = (user) => {
   return { type: SET_USER, user };
 };
 
-export const removeUser = () => {
-  return { type: REMOVE_USER };
-};
+// export const removeUser = () => {
+//   return { type: REMOVE_USER };
+// };
 
 export const loginUser = (credential, password) => async dispatch => {
   const res = await fetch('/api/session', {
@@ -49,7 +53,7 @@ export const logoutUser = () => async dispatch => {
     method: 'DELETE',
   });
   if (res.ok) {
-    dispatch(removeUser());
+    dispatch(userLogout());
     return res;
   }
 };
@@ -78,9 +82,6 @@ export default function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
       updateState.user = action.user
-      return updateState;
-    case REMOVE_USER:
-      updateState.user = null;
       return updateState;
     default:
       return state;

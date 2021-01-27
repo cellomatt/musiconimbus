@@ -3,10 +3,18 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import userAlbumsReducer from "./userAlbums"
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
   session: sessionReducer,
   userAlbums: userAlbumsReducer
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === 'USER_LOGOUT') {
+    state = undefined
+  }
+  return appReducer(state, action)
+}
+
 
 let enhancer;
 
