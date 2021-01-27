@@ -1,7 +1,6 @@
 import { fetch } from "./csrf";
 
 export const SET_USER = "session/SET_USER"
-// export const REMOVE_USER = "session/REMOVE_USER"
 export const USER_LOGOUT = "USER_LOGOUT"
 
 export const userLogout = () => {
@@ -11,10 +10,6 @@ export const userLogout = () => {
 export const setUser = (user) => {
   return { type: SET_USER, user };
 };
-
-// export const removeUser = () => {
-//   return { type: REMOVE_USER };
-// };
 
 export const loginUser = (credential, password) => async dispatch => {
   const res = await fetch('/api/session', {

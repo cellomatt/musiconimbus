@@ -1,0 +1,20 @@
+.album__title {
+  box-sizing: border-box;
+  padding-bottom: 1em;
+}
+
+.album__cover {
+  max-width: 200px;
+}
+
+.container {
+  background-color: #f5f5f5;
+  display: flex;
+  box-sizing: border-box;
+  margin: .5em;
+  padding: 1em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
