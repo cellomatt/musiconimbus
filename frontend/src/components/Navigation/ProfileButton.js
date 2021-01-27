@@ -44,9 +44,9 @@ export default function ProfileButton({user}) {
           <li className="dropdown__li dropdown__header dropdown__header--background">Welcome, {user.firstName}!</li>
           <li className="dropdown__li dropdown__header--email dropdown__header--background">{user.email}</li>
           <li className="dropdown__li">
-            <Link to="/profile">
+            <Link to="/dashboard">
               <button className="btn--dropdown" >
-                Profile
+                Dashboard
               </button>
             </Link>
           </li>

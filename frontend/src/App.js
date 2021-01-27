@@ -5,7 +5,7 @@ import Home from "./components/Home"
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
-import UserProfile from "./components/UserProfile";
+import Dashboard from "./components/Dashboard";
 import Explore from "./components/Explore";
 import Album from "./components/Album";
 import AudioPlayer from "./components/AudioPlayer";
@@ -34,8 +34,8 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/profile">
-            <UserProfile sessionUser={sessionUser}/>
+          <Route path="/dashboard">
+            <Dashboard sessionUser={sessionUser}/>
           </Route>
           <Route path="/explore">
             <Explore sessionUser={sessionUser}/>

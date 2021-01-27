@@ -29,7 +29,7 @@ export default function Navigation({ isLoaded }) {
     <nav>
       <ul>
         <li>
-          {sessionUser && <NavLink exact to="/profile">
+          {sessionUser && <NavLink exact to="/dashboard">
             <div className="nav__logo">
               <Logo className="nav__logo--img"/>
               <h1 className="nav__logo--title">MusicoNimbus</h1>

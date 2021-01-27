@@ -1,7 +1,7 @@
 import { Redirect } from "react-router-dom";
-import "./UserProfile.css"
+import "./Dashboard.css"
 
-export default function UserProfile({ sessionUser }) {
+export default function Dashboard({ sessionUser }) {
 
   if (!sessionUser) return (
     <Redirect to="/" />
