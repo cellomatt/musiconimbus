@@ -44,7 +44,11 @@ function App() {
             <Album sessionUser={sessionUser}/>
           </Route>
           <Route>
-            <h1 className="main">404'd!</h1> {/* update this with something clever later */}
+            <div className="main">
+              <h1>404'd!</h1>
+              <p>The resource you requested does not exist.</p>
+            </div>
+            {/* update this with something clever later */}
           </Route>
         </Switch>
       )}

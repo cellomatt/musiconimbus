@@ -5,7 +5,7 @@
   color: #d1d1d1;
   text-align: center;
   align-self: center;
-  font-size: .7em;
+  font-size: .8em;
   margin-top: 3em;
 }
 
@@ -34,6 +34,11 @@ h1 {
 @media screen and (max-width: 650px) {
   .tagline {
     text-align: center;
+    font-size: 1.3em;
+  }
+
+  .disclaimer {
+    font-size: 1em;
   }
 
 }

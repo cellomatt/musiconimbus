@@ -33,7 +33,7 @@ export default function SignupFormPage() {
 
   return (
     <div className="main">
-      <form onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit}>
         <h2 className="form__title">Sign Up</h2>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

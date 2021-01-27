@@ -1,8 +1,8 @@
 .player {
   width: 100%;
-  min-width: 450px;
+  min-width: 530px;
   position: fixed;
   bottom: 0;
   background-color: pink;
-  height: 3em;
+  height: 4em;
 }

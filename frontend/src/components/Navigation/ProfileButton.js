@@ -41,8 +41,8 @@ export default function ProfileButton({user}) {
         </button>
         {showMenu && (
         <ul className="dropdown">
-          <li className="dropdown__li dropdown__header">Welcome, {user.firstName}!</li>
-          <li className="dropdown__li dropdown__email">{user.email}</li>
+          <li className="dropdown__li dropdown__header dropdown__header--background">Welcome, {user.firstName}!</li>
+          <li className="dropdown__li dropdown__header--email dropdown__header--background">{user.email}</li>
           <li className="dropdown__li">
             <Link to={`/user/${user.id}`}>
               <button className="btn--dropdown" >
