@@ -1,7 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
-const { Album } = require('../../db/models');
+const { Album, Song, Composer } = require('../../db/models');
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 const { check } = require('express-validator');
@@ -65,7 +65,7 @@ router.get('/user/:id',
   requireAuth,
   asyncHandler(async function (req, res) {
     const albums = await Album.findAll({
-      where: { userId: req.params.id },
+      where: { artistId: req.params.id },
       include: {
         model: Song,
         include: Composer

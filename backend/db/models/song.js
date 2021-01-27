@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Song.associate = function(models) {
     Song.belongsTo(models.Album, {foreignKey: 'albumId'});
-    Song.hasOne(models.Composer, {foreignKey: 'composerId'});
+    Song.belongsTo(models.Composer, {foreignKey: 'composerId'});
     Song.belongsToMany(models.Playlist, { through: 'Playlist_Song' });
   };
   return Song;
