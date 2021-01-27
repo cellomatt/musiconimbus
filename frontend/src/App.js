@@ -43,6 +43,9 @@ function App() {
           <Route path="/album/:albumId">
             <Album sessionUser={sessionUser}/>
           </Route>
+          <Route>
+            <h1 className="main">404'd!</h1> {/* update this with something clever later */}
+          </Route>
         </Switch>
       )}
       {sessionUser && (
