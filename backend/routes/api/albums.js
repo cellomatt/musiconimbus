@@ -54,7 +54,7 @@ router.patch(
       req.body.imageUrl = imageUrl;
     }
     await album.update(req.body);
-    return res.json(album);
+    return res.json({album});
   })
 );
 
@@ -69,7 +69,7 @@ router.get('/user/:id',
         include: Composer
       }
     })
-    return res.json(albums)
+    return res.json({albums})
   })
 )
 

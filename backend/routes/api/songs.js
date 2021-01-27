@@ -10,12 +10,7 @@ const { handleValidationErrors } = require('../../utils/validation');
 const validateSong = [
   check('title')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide an album title.'),
-  check('releaseDate')
-    .exists({ checkFalsy: true })
-    .isLength({ min:4, max:4 })
-    .isInt({ min: 1890 })
-    .withMessage('Please enter a valid year.'),
+    .withMessage('Please provide a track title.'),
   handleValidationErrors,
 ];
 
@@ -28,12 +23,10 @@ router.post(
   asyncHandler(async (req, res) => {
     const { title, albumId, composerId, description } = req.body;
     const songUrl = await singlePublicFileUpload(req.file);
-
     const song = await Song.create({ title, albumId, composerId, songUrl, description });
 
-    return res.json({
-      song,
-    });
+    return res.json({song});
+
   }),
 );
 
@@ -42,7 +35,7 @@ router.get('/:id', asyncHandler(async function(req, res) {
   const song = await Song.findByPk(req.params.id, {
     include: [Album, Composer]
   });
-  return res.json(song);
+  return res.json({song});
 }));
 
 // update a single song
@@ -56,7 +49,7 @@ router.patch(
       req.body.songUrl = songUrl;
     }
     await song.update(req.body);
-    return res.json(song);
+    return res.json({song});
   })
 );
 
@@ -68,7 +61,7 @@ router.get('/user/:id',
       where: { userId: req.params.id },
       include: [Album, Composer]
     })
-    return res.json(songs)
+    return res.json({songs})
   })
 )
 
