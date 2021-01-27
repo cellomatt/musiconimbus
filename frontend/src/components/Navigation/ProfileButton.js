@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import './Navigation.css';
@@ -30,6 +30,9 @@ export default function ProfileButton({user}) {
     const logout = (e) => {
         e.preventDefault();
         dispatch(sessionActions.logoutUser());
+        // return (
+        //   <Redirect to="/" />
+        // )
     };
 
     return (
@@ -49,7 +52,11 @@ export default function ProfileButton({user}) {
             </Link>
           </li>
           <li className="dropdown__li">
-            <button className="btn--dropdown" >Explore</button>
+            <Link to="/explore">
+              <button className="btn--dropdown" >
+                Explore
+              </button>
+            </Link>
           </li>
           <li className="dropdown__li">
             <button className="btn--dropdown" onClick={logout}>Log Out</button>
