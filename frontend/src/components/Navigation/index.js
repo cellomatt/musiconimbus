@@ -29,12 +29,20 @@ export default function Navigation({ isLoaded }) {
     <nav>
       <ul>
         <li>
-          <NavLink exact to="/">
+          {sessionUser && <NavLink exact to="/profile">
             <div className="nav__logo">
               <Logo className="nav__logo--img"/>
               <h1 className="nav__logo--title">MusicoNimbus</h1>
             </div>
           </NavLink>
+          }
+          {!sessionUser && <NavLink exact to="/">
+            <div className="nav__logo">
+                <Logo className="nav__logo--img"/>
+                <h1 className="nav__logo--title">MusicoNimbus</h1>
+              </div>
+            </NavLink>
+          }
         </li>
         <li>
           <div className="nav__links">

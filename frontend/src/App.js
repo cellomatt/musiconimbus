@@ -34,7 +34,7 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/user/:userId">
+          <Route path="/profile">
             <UserProfile sessionUser={sessionUser}/>
           </Route>
           <Route path="/explore">
