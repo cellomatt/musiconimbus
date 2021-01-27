@@ -38,7 +38,7 @@ function App() {
             <UserProfile sessionUser={sessionUser}/>
           </Route>
           <Route path="/explore">
-            <Explore />
+            <Explore sessionUser={sessionUser}/>
           </Route>
           <Route path="/album/:albumId">
             <Album sessionUser={sessionUser}/>
