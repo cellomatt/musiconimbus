@@ -109,6 +109,8 @@ nav {
 
 .nav__logo--img {
   max-height: 3em;
+  padding: 0;
+  max-width: 5em;
 }
 
 .nav__links {
@@ -140,6 +142,7 @@ ul {
 
   .nav__logo--img {
     max-height: 2.2em;
+    max-width: 3.4em;
   }
 
   .btn--hamburger {

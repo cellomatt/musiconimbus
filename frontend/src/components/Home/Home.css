@@ -6,7 +6,7 @@
   text-align: center;
   align-self: center;
   font-size: .8em;
-  margin-top: 3em;
+  margin-top: 2.5em;
 }
 
 h1 {
@@ -16,9 +16,9 @@ h1 {
 
 .logo {
   display: flex;
-  max-width: 40%;
+  max-width: 50%;
   align-self: center;
-  padding: .7em;
+  padding: 1em .7em .6em;
 }
 
 .tagline {

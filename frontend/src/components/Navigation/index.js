@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
-import logo from "../images/musiconimbus-logo.png";
+import { ReactComponent as Logo } from "../images/musiconimbus.svg"
 
 export default function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
@@ -31,7 +31,7 @@ export default function Navigation({ isLoaded }) {
         <li>
           <NavLink exact to="/">
             <div className="nav__logo">
-              <img className="nav__logo--img" src={logo} alt="logo" />
+              <Logo className="nav__logo--img"/>
               <h1 className="nav__logo--title">MusicoNimbus</h1>
             </div>
           </NavLink>
