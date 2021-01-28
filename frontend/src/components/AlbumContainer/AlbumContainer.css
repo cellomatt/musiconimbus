@@ -1,17 +1,23 @@
 .album__title {
   box-sizing: border-box;
-  padding-bottom: .7em;
+  padding-bottom: .4em;
   color: #777;
 }
 
 .album__cover {
   box-sizing: border-box;
-  max-width: 200px;
+  width: 200px;
+  text-align: center;
   padding: .5em;
 }
 
+.album__cover--placeholder {
+  font-size: 5em;
+}
+
 .container {
-  background-color: #f5f5f5;
+  /* background-color: #f5f5f5; */
+  border: 1px solid black;
   display: flex;
   box-sizing: border-box;
   margin: .5em;
@@ -20,4 +26,13 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  border-radius: .2em;
+}
+
+.container:hover {
+  box-shadow: 0 0 5px rgba(157, 106, 253, .9);
+}
+
+.year {
+  font-family: 'Lora', serif;
 }

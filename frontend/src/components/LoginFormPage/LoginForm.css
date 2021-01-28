@@ -5,3 +5,9 @@
   align-self: center;
   justify-content: center;
 }
+
+.form__title {
+  font-family: 'Lora', serif;
+  font-size: 2.5em;
+  font-weight: 700;
+}

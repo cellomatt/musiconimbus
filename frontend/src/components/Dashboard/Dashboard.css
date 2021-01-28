@@ -1,8 +1,9 @@
 .albums--layout {
   display: flex;
   flex-direction: row;
-  max-width: 100%;
+  width: 100%;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .empty-dashboard {
@@ -10,4 +11,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.title {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 2em;
+  width: 100%;
+  /* background-color: #ffc684; */
+  text-decoration: underline;
+  padding: .3em .5em;
+
+  box-sizing: border-box;
+  text-underline-offset: 3px;
+}
+
+.title__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin-bottom: .4em;
 }
