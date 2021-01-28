@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
+import { ReactComponent as AngryCloud } from "./components/images/musiconimbus_404.svg"
 import Home from "./components/Home"
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
@@ -29,16 +30,16 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/dashboard">
+          <Route exact path="/dashboard">
             <Dashboard sessionUser={sessionUser}/>
           </Route>
-          <Route path="/explore">
+          <Route exact path="/explore">
             <Explore sessionUser={sessionUser}/>
           </Route>
           <Route path="/albums/new">
@@ -51,6 +52,7 @@ function App() {
             <div className="main">
               <h1>404'd!</h1>
               <p>The resource you requested does not exist.</p>
+              <AngryCloud className="logo"/>
             </div>
             {/* update this with something clever later */}
           </Route>
