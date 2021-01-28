@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as userAlbumsActions from "../../store/userAlbums";
 import "./AddAlbum.css";
 
 export default function AddAlbum() {
-
+  const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [title, setTitle] = useState('');
@@ -19,15 +19,19 @@ export default function AddAlbum() {
     <Redirect to="/" />
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
     setReleaseDate(Number(releaseDate));
-    
-    return dispatch(userAlbumsActions.createAlbum({title, artistId, releaseDate, description, photo}))
+
+    let createdAlbum = await dispatch(userAlbumsActions.createAlbum({title, artistId, releaseDate, description, photo}))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
+    console.log(createdAlbum)
+    if (createdAlbum) {
+      history.push(`/albums/${createdAlbum.data.album.id}`);
+    }
   }
 
   const updateFile = (e) => {
