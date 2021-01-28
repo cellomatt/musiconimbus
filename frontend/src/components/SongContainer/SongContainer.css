@@ -1,0 +1,4 @@
+.song-container {
+  display: flex;
+  flex-direction: row;
+}
