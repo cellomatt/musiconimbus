@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import userAlbumsReducer from "./userAlbums"
+import albumsReducer from "./albums"
 
 const appReducer = combineReducers({
   session: sessionReducer,
-  userAlbums: userAlbumsReducer
+  userAlbums: userAlbumsReducer,
+  albums: albumsReducer,
 });
 
 const rootReducer = (state, action) => {

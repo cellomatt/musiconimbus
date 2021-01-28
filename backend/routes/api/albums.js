@@ -45,7 +45,13 @@ router.post(
 
 // access a single album
 router.get('/:id', asyncHandler(async function(req, res) {
-  const album = await Album.findByPk(req.params.id);
+  const album = await Album.findByPk(req.params.id //{
+    // include: [ User, {
+    //   model: Song,
+    //   include: Composer
+    // }]
+  // }
+  );
   return res.json(album);
 }));
 

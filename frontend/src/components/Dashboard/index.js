@@ -70,7 +70,6 @@ export default function Dashboard({ sessionUser }) {
           </div>
         </div>
       }
-      {/* <button onClick={getAlbums}>Get Albums</button> */}
     </div>
   )
 }

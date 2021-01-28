@@ -1,17 +1,16 @@
 import { fetch } from "./csrf";
 
-const LOAD_ALBUMS = "userAlbums/LOAD_ALBUMS"
+const LOAD_USER_ALBUMS = "userAlbums/LOAD_USER_ALBUMS"
 const ADD_ALBUM = "userAlbums/ADD_ALBUM"
 
 
 export const loadAlbums = (albums) => {
-  return { type: LOAD_ALBUMS, albums };
+  return { type: LOAD_USER_ALBUMS, albums };
 };
 
 export const addAlbum = (album) => {
   return { type: ADD_ALBUM, album}
 }
-
 
 export const getUserAlbums = (userId) => async dispatch => {
   const res = await fetch(`/api/albums/user/${userId}`);
@@ -44,7 +43,7 @@ const initialState = {};
 export default function userAlbumsReducer(state = initialState, action) {
   const updateState = {...state}
   switch (action.type) {
-    case LOAD_ALBUMS: {
+    case LOAD_USER_ALBUMS: {
       action.albums.forEach(album => {
         updateState[album.id] = album;
       })

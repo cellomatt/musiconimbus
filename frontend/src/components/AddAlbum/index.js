@@ -28,7 +28,7 @@ export default function AddAlbum() {
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
-    console.log(createdAlbum)
+
     if (createdAlbum) {
       history.push(`/albums/${createdAlbum.data.album.id}`);
     }
