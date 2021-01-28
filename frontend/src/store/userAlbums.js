@@ -27,7 +27,10 @@ export const createAlbum = (album) => async dispatch => {
   formData.append("description", description);
   if (photo) formData.append("photo", photo);
 
-  console.log("------------------", formData)
+  for (var value of formData.values()) {
+    console.log("------------------", value);
+ }
+  // console.log("------------------", formData)
 
   const res = await fetch(`/api/albums/new`, {
     method: "POST",

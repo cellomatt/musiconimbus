@@ -5,11 +5,15 @@ export async function fetch(url, options = {}) {
   options.headers = options.headers || {};
 
   if (options.method.toUpperCase() !== "GET") {
-    console.log("---------------", options.headers)
+    // console.log("---------------", options.headers)
     if (options.headers["Content-Type"] === "multipart/form-data") {
       delete options.headers["Content-Type"];
-      console.log("---------------", options.headers)
-      console.log("---------------", options.body)
+      // console.log("---------------", options.headers)
+
+      for (var value of options.body.FormData.values()) {
+        console.log(value);
+     }
+      // console.log("---------------", options.body)
     } else {
       options.headers["Content-Type"] =
         options.headers["Content-Type"] || "application/json";
