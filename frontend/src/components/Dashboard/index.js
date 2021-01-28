@@ -24,7 +24,7 @@ export default function Dashboard({ sessionUser }) {
 
   return (
     <div className="main">
-      {/* <h1 >{sessionUser.firstName}'s Dashboard</h1> */}
+      <h1 >{sessionUser.firstName}'s Dashboard</h1>
       {!userAlbumsArray.length &&
         <div className="empty-dashboard">
           <h3>You haven't uploaded anything yet.</h3>
@@ -35,7 +35,7 @@ export default function Dashboard({ sessionUser }) {
         <div className="main__user-assets">
           <div className="title__container">
             <h2 className="title">Your Albums</h2>
-            <button className="btn ">+ Add Music  </button>
+            <button className="btn btn--add-music">+ Add Music  </button>
           </div>
           <div className="albums--layout">
             {userAlbumsArray.map(album => {

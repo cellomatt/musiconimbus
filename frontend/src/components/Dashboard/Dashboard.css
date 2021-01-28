@@ -6,6 +6,10 @@
   justify-content: center;
 }
 
+.btn--add-music {
+  
+}
+
 .empty-dashboard {
   box-sizing: border-box;
   display: flex;

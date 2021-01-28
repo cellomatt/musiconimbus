@@ -4,11 +4,14 @@ import "./SongContainer.css";
 export default function SongContainer( {song} ) {
 
   return (
-      <div className="song-container" >
-        <i className="fas fa-play"></i>
-        <h3 className="">{song.title}</h3>
-        <p>{song.Composer.firstName} {song.Composer.lastName}</p>
-        {/* <img src={album.imageUrl} className="album__cover"/> */}
+      <div className="song__container" >
+        <h3 className="song__title">
+          <button className="play__select">
+            <i className="fas fa-play"></i>
+          </button>
+          {song.title}
+        </h3>
+        <p className="composer">{song.Composer.firstName} {song.Composer.lastName}</p>
       </div>
   )
 }

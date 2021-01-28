@@ -1,4 +1,23 @@
-.song-container {
+.composer {
+  box-sizing: border-box;
+  text-align: right;
+  padding-left: 1em;
+  font-size: .8em;
+  color: #777;
+  /* align-self: flex-end; */
+}
+
+.song__container {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+  padding-bottom: .4em;
+}
+
+.song__title {
+  font-size: 1em;
 }
