@@ -11,3 +11,18 @@
   font-size: 2.5em;
   font-weight: 700;
 }
+
+.signup {
+  color: #777;
+  font-size: .8em;
+  align-self: center;
+}
+
+.signup__link {
+  color: #777;
+  text-decoration: underline;
+}
+
+.signup__link:hover {
+  color: black;
+}

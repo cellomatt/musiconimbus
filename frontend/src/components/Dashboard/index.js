@@ -30,9 +30,9 @@ export default function Dashboard({ sessionUser }) {
     <div className="main">
       {!userAlbumsArray.length &&
         <div className="empty-dashboard">
-          <h1>Welcome, {sessionUser.firstName}</h1>
+          <h1>Welcome, {sessionUser.firstName}!</h1>
           <h3>You haven't uploaded anything yet.</h3>
-          <button className="btn btn--primary">Get Started</button>
+          <button className="btn btn--primary" onClick={onClick}>Get Started</button>
         </div>
       }
       {!!userAlbumsArray.length &&

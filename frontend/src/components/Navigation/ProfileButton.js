@@ -51,6 +51,13 @@ export default function ProfileButton({user}) {
             </Link>
           </li>
           <li className="dropdown__li">
+            <Link to="/albums/new">
+              <button className="btn--dropdown" >
+                Upload Music
+              </button>
+            </Link>
+          </li>
+          <li className="dropdown__li">
             <Link to="/explore">
               <button className="btn--dropdown" >
                 Explore
