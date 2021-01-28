@@ -54,14 +54,17 @@ export default function Dashboard({ sessionUser }) {
           </div>
           <div className="songs--layout">
             {userAlbumsArray.map(album => {
-              const songsArray = Object.values(album.Songs);
-                return songsArray.map(song => {
-                  return (
-                    <div>
-                      <SongContainer key={song.id} song={song} />
-                    </div>
-                  )
-                })
+              if (album.Songs) {
+                const songsArray = Object.values(album.Songs);
+                  return songsArray.map(song => {
+                    return (
+                      <div key={song.id}>
+                        <SongContainer song={song} />
+                      </div>
+                    )
+                  })
+                }
+              return '';
               })
             }
           </div>

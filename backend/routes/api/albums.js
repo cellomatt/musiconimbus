@@ -25,16 +25,16 @@ const validateAlbum = [
 router.post(
   '/new',
   requireAuth,
-  // singleMulterUpload("image"),
-  // validateAlbum,
+  singleMulterUpload("photo"),
+  validateAlbum,
   asyncHandler(async (req, res) => {
-    console.log("------------", req.body)
+    let album;
     const { title, artistId, releaseDate, description } = req.body;
     if (req.file) {
-    const imageUrl = await singlePublicFileUpload(req.file);
-    const album = await Album.create({ title, artistId, releaseDate, imageUrl, description });
+      const imageUrl = await singlePublicFileUpload(req.file);
+      album = await Album.create({ title, artistId, releaseDate, imageUrl, description });
     } else {
-      const album = await Album.create({ title, artistId, releaseDate, description });
+      album = await Album.create({ title, artistId, releaseDate, description });
     }
 
     return res.json({
