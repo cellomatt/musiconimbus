@@ -8,7 +8,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import Dashboard from "./components/Dashboard";
 import Explore from "./components/Explore";
-import Album from "./components/Album";
+import AlbumView from "./components/AlbumView";
 import AudioPlayer from "./components/AudioPlayer";
 import AddAlbum from "./components/AddAlbum";
 import * as sessionActions from "./store/session";
@@ -46,7 +46,7 @@ function App() {
             <AddAlbum />
           </Route>
           <Route path="/albums/:albumId">
-            <Album sessionUser={sessionUser}/>
+            <AlbumView sessionUser={sessionUser}/>
           </Route>
           <Route>
             <div className="main">
@@ -54,7 +54,6 @@ function App() {
               <p>The resource you requested does not exist.</p>
               <AngryCloud className="logo"/>
             </div>
-            {/* update this with something clever later */}
           </Route>
         </Switch>
       )}

@@ -1,8 +1,10 @@
 import { useParams, Redirect } from "react-router-dom";
-import "./Album.css"
+import "./AlbumView.css"
 
 export default function Album({ sessionUser }) {
   const { albumId } = useParams();
+
+  
 
   if (!sessionUser) return (
     <Redirect to="/" />

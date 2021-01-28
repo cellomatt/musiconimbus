@@ -46,17 +46,13 @@ export const createAlbum = (album) => async dispatch => {
 const initialState = {};
 
 export default function userAlbumsReducer(state = initialState, action) {
-  // const updateState = {...state}
+  const updateState = {...state}
   switch (action.type) {
     case LOAD_ALBUMS: {
-      const newAlbums = {};
       action.albums.forEach(album => {
-        newAlbums[album.id] = album;
+        updateState[album.id] = album;
       })
-      return {
-        ...state,
-        ...newAlbums
-      }
+      return updateState;
     }
     // case REMOVE_ALBUM: {
     //   const albums = { ...state };
@@ -64,9 +60,8 @@ export default function userAlbumsReducer(state = initialState, action) {
     //   return albums;
     // }
     case ADD_ALBUM: {
-      const albums = {...state};
-      albums[action.album.id] = action.album;
-      return albums;
+      updateState[action.album.id] = action.album;
+      return updateState;
     }
     // case UPDATE_ALBUM: {
     //   return {
