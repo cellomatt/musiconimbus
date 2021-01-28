@@ -7,6 +7,12 @@
 }
 
 .btn--add-music {
+  padding: .5em .7em;
+  margin: 0 .2em;
+  box-sizing: border-box;
+}
+
+.btn--add-music:hover {
   
 }
 
