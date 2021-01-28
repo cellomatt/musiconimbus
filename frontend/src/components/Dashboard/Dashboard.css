@@ -13,7 +13,7 @@
 }
 
 .btn--add-music:hover {
-  
+  background-color: #9d6afd;
 }
 
 .empty-dashboard {
@@ -21,16 +21,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3em;
 }
 
 .title {
   font-family: 'Lora', serif;
   font-style: italic;
   font-size: 2em;
+  font-weight: 600;
   width: 100%;
   /* background-color: #ffc684; */
   text-decoration: underline;
-  padding: .3em .5em;
+  padding: .5em .4em;
 
   box-sizing: border-box;
   text-underline-offset: 3px;

@@ -9,6 +9,7 @@ import Dashboard from "./components/Dashboard";
 import Explore from "./components/Explore";
 import Album from "./components/Album";
 import AudioPlayer from "./components/AudioPlayer";
+import AddAlbum from "./components/AddAlbum";
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -40,7 +41,10 @@ function App() {
           <Route path="/explore">
             <Explore sessionUser={sessionUser}/>
           </Route>
-          <Route path="/album/:albumId">
+          <Route path="/albums/new">
+            <AddAlbum sessionUser={sessionUser}/>
+          </Route>
+          <Route path="/albums/:albumId">
             <Album sessionUser={sessionUser}/>
           </Route>
           <Route>

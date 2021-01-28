@@ -1,3 +1,29 @@
+.btn--play-select {
+  box-sizing: border-box;
+  border: none;
+  min-width: 530px;
+  width: 100%;
+  padding: .5em;
+  background-color: white;
+  border-radius: none;
+  margin: 0;
+  outline: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.btn--play-select:hover {
+  background-color: #9d6afd;
+}
+
+.btn--play-select:hover p {
+  color: black;
+  font-weight: bold;
+}
+
 .composer {
   box-sizing: border-box;
   text-align: right;
@@ -6,17 +32,23 @@
   color: #777;
 }
 
-.song__container {
+.song__title {
+  font-size: 1em;
+  margin-left: .5em;
+}
+
+.song__title--container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  align-content: center;
-  justify-content: space-between;
-  width: 100%;
-  box-sizing: border-box;
-  padding-bottom: .4em;
 }
 
-.song__title {
-  font-size: 1em;
+@media screen and (max-width: 650px) {
+  .composer {
+    display: none;
+  }
+
+  .song__title {
+    font-size: 1.5em;
+  }
 }

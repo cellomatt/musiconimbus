@@ -1,4 +1,4 @@
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import * as userAlbumsActions from "../../store/userAlbums";
@@ -9,6 +9,7 @@ import "./Dashboard.css"
 
 export default function Dashboard({ sessionUser }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const userAlbums = useSelector(state => state.userAlbums);
   const userAlbumsArray = Object.values(userAlbums);
 
@@ -21,12 +22,15 @@ export default function Dashboard({ sessionUser }) {
     <Redirect to="/" />
   );
 
+  const onClick = () => {
+    history.push("/albums/new")
+  }
 
   return (
     <div className="main">
-      <h1 >{sessionUser.firstName}'s Dashboard</h1>
       {!userAlbumsArray.length &&
         <div className="empty-dashboard">
+          <h1>Welcome, {sessionUser.firstName}</h1>
           <h3>You haven't uploaded anything yet.</h3>
           <button className="btn btn--primary">Get Started</button>
         </div>
@@ -35,7 +39,7 @@ export default function Dashboard({ sessionUser }) {
         <div className="main__user-assets">
           <div className="title__container">
             <h2 className="title">Your Albums</h2>
-            <button className="btn btn--add-music">+ Add Music  </button>
+            <button className="btn btn--add-music" onClick={onClick}>+ Add Music  </button>
           </div>
           <div className="albums--layout">
             {userAlbumsArray.map(album => {
