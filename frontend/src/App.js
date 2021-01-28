@@ -43,7 +43,7 @@ function App() {
             <Explore sessionUser={sessionUser}/>
           </Route>
           <Route path="/albums/new">
-            <AddAlbum sessionUser={sessionUser}/>
+            <AddAlbum />
           </Route>
           <Route path="/albums/:albumId">
             <Album sessionUser={sessionUser}/>

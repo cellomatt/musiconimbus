@@ -4,10 +4,17 @@ export async function fetch(url, options = {}) {
   options.method = options.method || 'GET';
   options.headers = options.headers || {};
 
-  if (options.method.toUpperCase() !== 'GET') {
-    options.headers['Content-Type'] =
-      options.headers['Content-Type'] || 'application/json';
-    options.headers['XSRF-Token'] = Cookies.get('XSRF-TOKEN');
+  if (options.method.toUpperCase() !== "GET") {
+    console.log("---------------", options.headers)
+    if (options.headers["Content-Type"] === "multipart/form-data") {
+      delete options.headers["Content-Type"];
+      console.log("---------------", options.headers)
+      console.log("---------------", options.body)
+    } else {
+      options.headers["Content-Type"] =
+        options.headers["Content-Type"] || "application/json";
+    }
+    options.headers["XSRF-Token"] = Cookies.get("XSRF-TOKEN");
   }
 
   const res = await window.fetch(url, options);

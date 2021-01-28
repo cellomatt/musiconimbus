@@ -16,7 +16,7 @@ const validateAlbum = [
   check('releaseDate')
     .exists({ checkFalsy: true })
     .isLength({ min:4, max:4 })
-    .isInt({ min: 1890 })
+    // .isInt({ min: 1890 })
     .withMessage('Please enter a valid year.'),
   handleValidationErrors,
 ];
@@ -25,13 +25,17 @@ const validateAlbum = [
 router.post(
   '/new',
   requireAuth,
-  singleMulterUpload("image"),
-  validateAlbum,
+  // singleMulterUpload("image"),
+  // validateAlbum,
   asyncHandler(async (req, res) => {
+    console.log("------------", req.body)
     const { title, artistId, releaseDate, description } = req.body;
+    if (req.file) {
     const imageUrl = await singlePublicFileUpload(req.file);
-
     const album = await Album.create({ title, artistId, releaseDate, imageUrl, description });
+    } else {
+      const album = await Album.create({ title, artistId, releaseDate, description });
+    }
 
     return res.json({
       album,
