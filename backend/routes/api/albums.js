@@ -16,7 +16,7 @@ const validateAlbum = [
   check('releaseDate')
     .exists({ checkFalsy: true })
     .isLength({ min:4, max:4 })
-    // .isInt({ min: 1890 })
+    .isInt({ min: 1890 })
     .withMessage('Please enter a valid year.'),
   handleValidationErrors,
 ];

@@ -30,14 +30,13 @@ export const createAlbum = (album) => async dispatch => {
   for (var value of formData.values()) {
     console.log("------------------", value);
  }
-  // console.log("------------------", formData)
 
   const res = await fetch(`/api/albums/new`, {
     method: "POST",
     headers: {
       "Content-Type": "multipart/form-data"
     },
-    body:formData,
+    body: formData,
   });
 
   dispatch(addAlbum(res.data.album))

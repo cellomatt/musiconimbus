@@ -58,7 +58,7 @@ export default function AddAlbum() {
           id="releaseDate"
           type="text"
           value={releaseDate}
-          onChange={(e) => setReleaseDate(e.target.value)}
+          onChange={(e) => setReleaseDate(Number(e.target.value))}
           required
         />
         <label htmlFor="description">
