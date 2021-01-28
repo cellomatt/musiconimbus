@@ -22,7 +22,8 @@ export default function AddAlbum() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-
+    setReleaseDate(Number(releaseDate));
+    
     return dispatch(userAlbumsActions.createAlbum({title, artistId, releaseDate, description, photo}))
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
@@ -58,7 +59,7 @@ export default function AddAlbum() {
           id="releaseDate"
           type="text"
           value={releaseDate}
-          onChange={(e) => setReleaseDate(Number(e.target.value))}
+          onChange={(e) => setReleaseDate(e.target.value)}
           required
         />
         <label htmlFor="description">
