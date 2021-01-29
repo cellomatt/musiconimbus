@@ -17,7 +17,11 @@ export default function AddSong({ album, sessionUser }) {
   const albumId = album.id;
 
   const composerList = useSelector(state => state.albums.composers)
-  const composerListArray = Object.values(composerList);
+  let composerListArray;
+
+  if (composerList) {
+    composerListArray = Object.values(composerList);
+  }
 
   useEffect(() => {
     dispatch(albumsActions.getComposers())
