@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as albumsActions from "../../store/albums";
 import SongContainer from "../SongContainer";
+import AddSong from "../AddSong";
 import "./AlbumView.css"
 
 export default function Album({ sessionUser }) {
@@ -33,12 +34,14 @@ export default function Album({ sessionUser }) {
 
   if (album) return (
     <div className="main">
-      <h1 >{album.title}</h1>
+      <h1 className="single-album__title">{album.title}</h1>
       {artist && <h3>{artist.artistName}</h3>}
       {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
       <p>{album.description}</p>
       {userAlbum && (
-        <h1>this is my album!!</h1>
+        <>
+          <AddSong album={album} sessionUser={sessionUser}/>
+        </>
       )}
       <div className="song--layout">
         {album && Object.values(album.Songs).map(song => {

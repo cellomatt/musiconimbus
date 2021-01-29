@@ -1,7 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
-const { Song } = require('../../db/models');
+const { Song, Album, User, Composer } = require('../../db/models');
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 const { check } = require('express-validator');
@@ -66,5 +66,7 @@ router.get('/user/:id',
     return res.json({songs})
   })
 )
+
+
 
 module.exports = router;

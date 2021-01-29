@@ -1,3 +1,7 @@
+.single-album__title {
+  font-weight: 300;
+}
+
 .single-album__cover {
   max-width: 350px;
 }

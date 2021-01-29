@@ -73,7 +73,6 @@ export default function AddAlbum() {
           id="description"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-          required
         />
         <label htmlFor="photo">
           Cover Photo
