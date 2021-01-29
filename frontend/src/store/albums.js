@@ -8,8 +8,8 @@ export const loadAlbums = (albums) => {
   return { type: LOAD_ALL_ALBUMS, albums };
 };
 
-export const loadOneAlbum = (album) => {
-  return { type: LOAD_ONE_ALBUM, album };
+export const loadOneAlbum = (data) => {
+  return { type: LOAD_ONE_ALBUM, data };
 }
 
 export const getAlbums = () => async dispatch => {
@@ -19,6 +19,7 @@ export const getAlbums = () => async dispatch => {
 
 export const getOneAlbum = (albumId) => async dispatch => {
   const res = await fetch(`/api/albums/${albumId}`);
+  console.log(res.data)
   dispatch(loadOneAlbum(res.data));
 }
 
@@ -34,7 +35,9 @@ export default function userAlbumsReducer(state = initialState, action) {
       return updateState;
     }
     case LOAD_ONE_ALBUM: {
-      updateState["current"] = action.album;
+
+      updateState.currentAlbum = action.data.album;
+      updateState.currentArtist = action.data.artist;
       return updateState;
     }
     default:

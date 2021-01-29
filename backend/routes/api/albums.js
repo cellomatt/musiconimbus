@@ -1,7 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 const { requireAuth } = require('../../utils/auth');
-const { Album, Song, Composer } = require('../../db/models');
+const { Album, Song, Composer, User } = require('../../db/models');
 const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 
 const { check } = require('express-validator');
@@ -45,14 +45,14 @@ router.post(
 
 // access a single album
 router.get('/:id', asyncHandler(async function(req, res) {
-  const album = await Album.findByPk(req.params.id //{
-    // include: [ User, {
-    //   model: Song,
-    //   include: Composer
-    // }]
-  // }
-  );
-  return res.json(album);
+  const album = await Album.findByPk(req.params.id, {
+    include: {
+      model: Song,
+      include: Composer
+    }
+  });
+  const artist = await User.findByPk(album.artistId)
+  return res.json({album, artist});
 }));
 
 // update a single album
