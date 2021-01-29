@@ -51,7 +51,7 @@ router.post(
 );
 
 // access a single song
-router.get('/:id', asyncHandler(async function(req, res) {
+router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
   const song = await Song.findByPk(req.params.id, {
     include: [Album, Composer]
   });
@@ -60,7 +60,7 @@ router.get('/:id', asyncHandler(async function(req, res) {
 
 // update a single song
 router.patch(
-  '/:id',
+  '/:id(\\d+)',
   validateSong,
   asyncHandler(async function (req, res) {
     const song = await Song.findByPk(req.params.id)
@@ -74,7 +74,7 @@ router.patch(
 );
 
 // access all of a user's songs
-router.get('/user/:id',
+router.get('/user/:id(\\d+)',
   requireAuth,
   asyncHandler(async function (req, res) {
     const songs = await Song.findAll({

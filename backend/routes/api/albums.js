@@ -44,7 +44,7 @@ router.post(
 );
 
 // access a single album
-router.get('/:id', asyncHandler(async function(req, res) {
+router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
   const album = await Album.findByPk(req.params.id, {
     include: {
       model: Song,
@@ -57,7 +57,7 @@ router.get('/:id', asyncHandler(async function(req, res) {
 
 // update a single album
 router.patch(
-  '/:id',
+  '/:id(\\d+)',
   validateAlbum,
   asyncHandler(async function (req, res) {
     const album = await Album.findByPk(req.params.id)
@@ -71,7 +71,7 @@ router.patch(
 );
 
 // access all of a user's albums
-router.get('/user/:id',
+router.get('/user/:id(\\d+)',
   requireAuth,
   asyncHandler(async function (req, res) {
     const albums = await Album.findAll({
