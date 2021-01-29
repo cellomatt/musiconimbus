@@ -7,14 +7,18 @@ const { singlePublicFileUpload, singleMulterUpload } = require('../../awsS3');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
+const router = express.Router();
+
 const validateSong = [
   check('title')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a track title.'),
+  // check('song')
+  // .exists({ checkFalsy: true })
+  // .withMessage('Please select a song to upload.'),
   handleValidationErrors,
 ];
 
-const router = express.Router();
 
 // create song
 router.post(
@@ -23,9 +27,23 @@ router.post(
   singleMulterUpload("song"),
   validateSong,
   asyncHandler(async (req, res) => {
-    const { title, albumId, composerId, description } = req.body;
+    const { title, albumId, composerId, firstName, lastName, description } = req.body;
     const songUrl = await singlePublicFileUpload(req.file);
-    const song = await Song.create({ title, albumId, composerId, songUrl, description });
+    console.log("-------------------", composerId)
+    const composerData = composerId ? {composerId} : {Composer: {firstName, lastName}};
+
+    const songData = {
+      title,
+      songUrl,
+      description,
+      albumId,
+      ...composerData,
+    }
+
+    const song = await Song.create(songData, {
+      include: [Composer]
+    });
+
 
     return res.json({song});
 

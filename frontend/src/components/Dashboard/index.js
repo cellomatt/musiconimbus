@@ -28,14 +28,14 @@ export default function Dashboard({ sessionUser }) {
 
   return (
     <div className="main">
-      {!userAlbumsArray.length &&
+      {!userAlbumsArray.length > 0 &&
         <div className="empty-dashboard">
           <h1>Welcome, {sessionUser.firstName}!</h1>
           <h3>You haven't uploaded anything yet.</h3>
           <button className="btn btn--primary" onClick={onClick}>Get Started</button>
         </div>
       }
-      {!!userAlbumsArray.length &&
+      {userAlbumsArray.length > 0 &&
         <div className="main__user-assets">
           <div className="title__container">
             <h2 className="title">Your Albums</h2>

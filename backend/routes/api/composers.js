@@ -34,7 +34,13 @@ router.get(
   '/',
   requireAuth,
   asyncHandler(async (req, res) => {
-    const composers = await Composer.findAll();
+    const composers = await Composer.findAll({
+      order: [
+        ['lastName', 'ASC'],
+        ['firstName', 'ASC']
+      ]
+    });
+    console.log("-----------", composers)
     return res.json({composers});
   }),
 )

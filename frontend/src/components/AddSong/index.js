@@ -16,12 +16,13 @@ export default function AddSong({ album, sessionUser }) {
   const [errors, setErrors] = useState([]);
   const albumId = album.id;
 
-  const composerList = useSelector(state => state.songs.composers)
+  // const composerList = useSelector(state => state.songs.composers)
+  const {composers, allComposers} = useSelector(state => state.songs)
   let composerListArray;
 
-  if (composerList) {
-    composerListArray = Object.values(composerList);
-  }
+  // if (composerList) {
+  //   composerListArray = Object.values(composerList);
+  // }
 
   useEffect(() => {
     dispatch(songsActions.getComposers())
@@ -38,14 +39,14 @@ export default function AddSong({ album, sessionUser }) {
     e.preventDefault();
     setErrors([]);
 
-    // let createdAlbum = await dispatch(userAlbumsActions.createAlbum({title, artistId, releaseDate, description, photo}))
-    //   .catch((res) => {
-    //     if (res.data && res.data.errors) setErrors(res.data.errors);
-    //   });
+    let newSong = await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, description, song}))
+      .catch((res) => {
+        if (res.data && res.data.errors) setErrors(res.data.errors);
+      });
 
-    // if (createdAlbum) {
-    //   history.push(`/albums/${createdAlbum.data.album.id}`);
-    // }
+    if (newSong) {
+      // history.push(`/albums/${createdAlbum.data.album.id}`);
+    }
   }
 
   const updateFile = (e) => {
@@ -53,7 +54,7 @@ export default function AddSong({ album, sessionUser }) {
     if (file) setSong(file);
   };
 
-  if (composerList) return (
+  if (allComposers) return (
     <>
       <p>Add a song to your album</p>
       <form onSubmit={handleSubmit}>
@@ -86,12 +87,13 @@ export default function AddSong({ album, sessionUser }) {
           value={composerId}
           onChange={(e) => setComposerId(e.target.value)}
         >
-          {composerListArray.map(composer =>
-            <option value={composer.id}>
-              {composer.lastName && `${composer.lastName}, `}{composer.firstName}
+          {allComposers.map(composerId =>
+            <option value={composerId} key={composerId}>
+              {composers[composerId].lastName && `${composers[composerId].lastName}, `}{composers[composerId].firstName}
             </option>
             )
           }
+          {/* <option>Add new </option>  */}
         </select>
         <p>If your composer isn't listed, please add them to our database:</p>
         <label htmlFor="firstName">
@@ -120,6 +122,7 @@ export default function AddSong({ album, sessionUser }) {
           type="file"
           className="input--song"
           onChange={updateFile}
+          required
         />
         <div className="button-container">
           <button type="submit" className="btn btn--primary">Upload</button>
