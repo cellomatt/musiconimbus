@@ -33,21 +33,23 @@ export default function Album({ sessionUser }) {
 
   if (album) return (
     <div className="main">
-      {userAlbum && (
-        <h1>this is my album!!</h1>
-      )}
       <h1 >{album.title}</h1>
       {artist && <h3>{artist.artistName}</h3>}
       {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
       <p>{album.description}</p>
-      {album && Object.values(album.Songs).map(song => {
-        return (
-          <div key={song.id}>
-            <SongContainer song={song} />
-          </div>
-          )
-        })
-      }
+      {userAlbum && (
+        <h1>this is my album!!</h1>
+      )}
+      <div className="song--layout">
+        {album && Object.values(album.Songs).map(song => {
+          return (
+            <div key={song.id}>
+              <SongContainer song={song} />
+            </div>
+            )
+          })
+        }
+      </div>
 
 
 
