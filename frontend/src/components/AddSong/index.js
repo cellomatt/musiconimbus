@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
-import * as albumsActions from "../../store/albums";
 import * as songsActions from "../../store/songs";
 import "./AddSong.css"
 
@@ -89,7 +88,7 @@ export default function AddSong({ album, sessionUser }) {
         >
           {composerListArray.map(composer =>
             <option value={composer.id}>
-              {composer.lastName}, {composer.firstName}
+              {composer.lastName && `${composer.lastName}, `}{composer.firstName}
             </option>
             )
           }

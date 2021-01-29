@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/cellomatt/w15-authenticate-me/issues"
   },
-  "homepage": "https://github.com/cellomatt/w15-authenticate-me#readme"
+  "homepage": "https://github.com/cellomatt/w15-authenticate-me#readme",
+  "dependencies": {
+    "react-player": "^2.8.2"
+  }
 }
