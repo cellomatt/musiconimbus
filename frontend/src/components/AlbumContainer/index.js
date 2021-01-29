@@ -8,7 +8,7 @@ export default function AlbumContainer({ album }) {
         <h2 className="album__title">{album.title}</h2>
         {album.imageUrl && <img src={album.imageUrl} alt="album cover" className="album__cover"/>}
         {!album.imageUrl && <i className="fas fa-compact-disc album__cover album__cover--placeholder"></i>}
-        <h3 className="year">{album.releaseDate}</h3>
+        {/* <h3 className="year">{album.releaseDate}</h3> */}
       </div>
     </Link>
   )
