@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as albumsActions from "../../store/albums";
+import * as songsActions from "../../store/songs";
 import "./AddSong.css"
 
 export default function AddSong({ album, sessionUser }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  const [composer, setComposer] = useState('');
+  const [composerId, setComposerId] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [description, setDescription] = useState('');
@@ -16,7 +17,7 @@ export default function AddSong({ album, sessionUser }) {
   const [errors, setErrors] = useState([]);
   const albumId = album.id;
 
-  const composerList = useSelector(state => state.albums.composers)
+  const composerList = useSelector(state => state.songs.composers)
   let composerListArray;
 
   if (composerList) {
@@ -24,7 +25,7 @@ export default function AddSong({ album, sessionUser }) {
   }
 
   useEffect(() => {
-    dispatch(albumsActions.getComposers())
+    dispatch(songsActions.getComposers())
   }, [dispatch]);
 
 
@@ -32,6 +33,21 @@ export default function AddSong({ album, sessionUser }) {
   if (!sessionUser) return (
     <Redirect to="/" />
   );
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors([]);
+
+    // let createdAlbum = await dispatch(userAlbumsActions.createAlbum({title, artistId, releaseDate, description, photo}))
+    //   .catch((res) => {
+    //     if (res.data && res.data.errors) setErrors(res.data.errors);
+    //   });
+
+    // if (createdAlbum) {
+    //   history.push(`/albums/${createdAlbum.data.album.id}`);
+    // }
+  }
 
   const updateFile = (e) => {
     const file = e.target.files[0];
@@ -41,7 +57,7 @@ export default function AddSong({ album, sessionUser }) {
   if (composerList) return (
     <>
       <p>Add a song to your album</p>
-      <form>
+      <form onSubmit={handleSubmit}>
       <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -63,13 +79,13 @@ export default function AddSong({ album, sessionUser }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label htmlFor="composer">
+        <label htmlFor="composerId">
           Composer
         </label>
         <select
-          id="composer"
-          value={composer}
-          onChange={(e) => setComposer(e.target.value)}
+          id="composerId"
+          value={composerId}
+          onChange={(e) => setComposerId(e.target.value)}
         >
           {composerListArray.map(composer =>
             <option value={composer.id}>

@@ -2,7 +2,6 @@ import { fetch } from "./csrf";
 
 const LOAD_ALL_ALBUMS = "albums/LOAD_ALL_ALBUMS"
 const LOAD_ONE_ALBUM = "albums/LOAD_ONE_ALBUM"
-const LOAD_ALL_COMPOSERS = "albums/LOAD_ALL_COMPOSERS"
 
 
 export const loadAlbums = (albums) => {
@@ -11,10 +10,6 @@ export const loadAlbums = (albums) => {
 
 export const loadOneAlbum = (data) => {
   return { type: LOAD_ONE_ALBUM, data };
-}
-
-export const loadComposers = (composers) => {
-  return { type: LOAD_ALL_COMPOSERS, composers };
 }
 
 
@@ -29,17 +24,10 @@ export const getOneAlbum = (albumId) => async dispatch => {
   dispatch(loadOneAlbum(res.data));
 }
 
-export const getComposers = () => async dispatch => {
-  const res = await fetch(`/api/composers/`);
-  dispatch(loadComposers(res.data.composers))
-}
-
-
-
 
 const initialState = {};
 
-export default function userAlbumsReducer(state = initialState, action) {
+export default function albumsReducer(state = initialState, action) {
   const updateState = {...state}
   switch (action.type) {
     case LOAD_ALL_ALBUMS: {
@@ -49,18 +37,11 @@ export default function userAlbumsReducer(state = initialState, action) {
       return updateState;
     }
     case LOAD_ONE_ALBUM: {
-
       updateState.currentAlbum = action.data.album;
       updateState.currentArtist = action.data.artist;
       return updateState;
     }
-    case LOAD_ALL_COMPOSERS: {
-      updateState.composers = {};
-      action.composers.forEach(composer => {
-        updateState.composers[composer.id] = composer;
-      })
-      return updateState;
-    }
+
     default:
       return state;
   }
