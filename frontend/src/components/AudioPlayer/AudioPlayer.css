@@ -1,12 +1,18 @@
 .player {
   box-sizing: border-box;
+  border-radius: 0;
+  outline: none;
+  max-width: 50%;
+  min-width: 530px;
+  border: 1px solid black;
+}
+
+.player__container {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  min-width: 530px;
   position: fixed;
   bottom: 0;
-  background-color: pink;
   height: 4em;
 }

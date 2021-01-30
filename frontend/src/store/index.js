@@ -4,12 +4,14 @@ import sessionReducer from "./session";
 import userAlbumsReducer from "./userAlbums"
 import albumsReducer from "./albums"
 import songsReducer from "./songs";
+import nowPlayingReducer from "./nowPlaying"
 
 const appReducer = combineReducers({
   session: sessionReducer,
   userAlbums: userAlbumsReducer,
   albums: albumsReducer,
   songs: songsReducer,
+  nowPlaying: nowPlayingReducer,
 });
 
 const rootReducer = (state, action) => {

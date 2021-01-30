@@ -17,6 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const sessionUser = useSelector(state => state.session.user);
+  const nowPlaying = useSelector(state => state.nowPlaying.song);
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -57,8 +58,8 @@ function App() {
           </Route>
         </Switch>
       )}
-      {sessionUser && (
-        <AudioPlayer />
+      {sessionUser && nowPlaying && (
+        <AudioPlayer nowPlaying={nowPlaying} />
       )}
     </>
   );
