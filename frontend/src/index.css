@@ -118,7 +118,7 @@ label {
   margin: 0 auto;
   padding: 0 2.5em;
   margin-top: 6em;
-  margin-bottom: 5.5em;
+  margin-bottom: 7em;
   flex-direction: column;
   flex-wrap: wrap;
 }
@@ -152,7 +152,7 @@ textarea {
   .main {
     margin: 1em auto;
     margin-top: 6em;
-    margin-bottom: 6em;
+    margin-bottom: 8em;
     padding: 1em;
   }
 
