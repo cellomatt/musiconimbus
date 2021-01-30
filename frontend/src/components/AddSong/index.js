@@ -23,11 +23,6 @@ export default function AddSong({ setAddSong, album, sessionUser }) {
     dispatch(songsActions.getComposers())
   }, [dispatch]);
 
-  if (!sessionUser) return (
-    <Redirect to="/" />
-  );
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);

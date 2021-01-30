@@ -61,9 +61,6 @@ export default function Album({ sessionUser }) {
           })
         }
       </div>
-
-
-
     </div>
   )
 
