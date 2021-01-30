@@ -29,8 +29,8 @@ export default function Album({ sessionUser }) {
 
   const buttonClick = () => {
     setAddSong(!addSong);
-    if (buttonText === "+ Add a Song") { setButtonText("-")};
-    if (buttonText === "-") { setButtonText("+ Add a Song")};
+    if (buttonText === "+ Add a Song") { setButtonText("- Add a Song")};
+    if (buttonText === "- Add a Song") { setButtonText("+ Add a Song")};
   }
 
   if (!sessionUser) return (
@@ -63,8 +63,6 @@ export default function Album({ sessionUser }) {
       </div>
     </div>
   )
-
-
 
   return (
     <h1>loading...</h1>
