@@ -1,12 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
 import * as songsActions from "../../store/songs";
-// import * as albumsActions from "../../store/albums";
 import "./AddSong.css"
 
-export default function AddSong({ func, setAddSong, album, buttonClick }) {
-  const history = useHistory();
+export default function AddSong({ change, setChange, setAddSong, album, buttonClick }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [composerId, setComposerId] = useState('Please select a composer');
@@ -36,7 +33,7 @@ export default function AddSong({ func, setAddSong, album, buttonClick }) {
         setDescription('');
         setSong(null);
         setAddSong(false);
-        func();
+        setChange(!change);
         buttonClick();
       })
       .catch((res) => {

@@ -27,14 +27,10 @@ export default function Album({ sessionUser }) {
     dispatch(albumsActions.getOneAlbum(albumId))
   }, [dispatch, albumId, change])
 
-  const func = () => {
-    setChange(!change);
-  }
-
   const buttonClick = () => {
     setAddSong(!addSong);
-    if (buttonText === "+ Add a Song") { setButtonText("- Add a Song")};
-    if (buttonText === "- Add a Song") { setButtonText("+ Add a Song")};
+    if (buttonText === "+ Add a Song") { setButtonText("-")};
+    if (buttonText === "-") { setButtonText("+ Add a Song")};
   }
 
   if (!sessionUser) return (
@@ -52,7 +48,7 @@ export default function Album({ sessionUser }) {
       }
       {addSong && (
         <>
-          <AddSong buttonClick={buttonClick} func={func} setAddSong={setAddSong} album={album} />
+          <AddSong buttonClick={buttonClick} change={change} setChange={setChange} setAddSong={setAddSong} album={album} />
         </>
       )}
       <div className="song--layout">
