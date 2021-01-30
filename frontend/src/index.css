@@ -52,6 +52,17 @@ nav {
   background-color: #0082ce;
 }
 
+.btn--secondary {
+  padding: .5em .7em;
+  margin: 0 .2em;
+  box-sizing: border-box;
+}
+
+.btn--secondary:hover {
+  background-color: #9d6afd;
+  box-shadow: 0 0 7px rgba(157, 106, 253, .9);
+}
+
 .form {
   display: flex;
   align-items: flex-start;
@@ -87,7 +98,7 @@ input,
 textarea {
   box-sizing: border-box;
   border-radius: 1px;
-  border: solid #888;
+  border: solid #222;
   margin-bottom: 1.1em;
   padding: .13em .3em;
   width: 100%;
@@ -97,7 +108,7 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border-color: #333;
+  /* border-color: #333; */
 box-shadow: 0 0 4px rgba(157, 106, 253, 1);
 }
 

@@ -6,17 +6,6 @@
   justify-content: center;
 }
 
-.btn--add-music {
-  padding: .5em .7em;
-  margin: 0 .2em;
-  box-sizing: border-box;
-}
-
-.btn--add-music:hover {
-  background-color: #9d6afd;
-  box-shadow: 0 0 7px rgba(157, 106, 253, .9);
-}
-
 .empty-dashboard {
   box-sizing: border-box;
   display: flex;

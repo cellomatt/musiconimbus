@@ -27,6 +27,7 @@
 
 .btn--nav:hover {
   background-color: #9d6afd;
+  box-shadow: 0 0 7px rgba(157, 106, 253, .9);
 }
 
 .btn--hamburger {

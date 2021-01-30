@@ -32,14 +32,14 @@ export default function Dashboard({ sessionUser }) {
         <div className="empty-dashboard">
           <h1>Welcome, {sessionUser.firstName}!</h1>
           <h3>You haven't uploaded anything yet.</h3>
-          <button className="btn btn--primary" onClick={onClick}>Get Started</button>
+          <button className="btn btn--secondary" onClick={onClick}>Get Started</button>
         </div>
       }
       {userAlbumsArray.length > 0 &&
         <div className="main__user-assets">
           <div className="title__container">
             <h2 className="title">Your Albums</h2>
-            <button className="btn btn--add-music" onClick={onClick}>+ Add Music  </button>
+            <button className="btn btn--secondary" onClick={onClick}>+ Add Music  </button>
           </div>
           <div className="albums--layout">
             {userAlbumsArray.map(album => {
