@@ -9,7 +9,7 @@ export default function Explore({ sessionUser }) {
 
   return (
     <div className="main">
-      <h1 >HELLO!</h1>
+      <h1 >Discover new music.</h1>
       <h3>This is where you'll be able to search for albums, songs, and artists.</h3>
     </div>
   )

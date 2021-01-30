@@ -52,7 +52,10 @@ router.post(
 // access a single song
 router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
   const song = await Song.findByPk(req.params.id, {
-    include: [Album, Composer]
+    include: [{
+      model: Album,
+      include: User
+    }, Composer]
   });
   return res.json({song});
 }));

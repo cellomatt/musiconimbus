@@ -11,6 +11,11 @@ export default function MyAudioPlayer({ nowPlaying }) {
 
   return (
     <div className="player__container">
+      {nowPlaying.Album &&
+        <div className="song-info__container">
+          <p className="song-info">{nowPlaying.title}</p>
+          <p className="song-info">{nowPlaying.Album.User.artistName} • <i>{nowPlaying.Album.title}</i></p>
+        </div>}
       <AudioPlayer className="player"
         src={nowPlaying.songUrl}
         defaultCurrentTime="0:00" defaultDuration="0:00"
