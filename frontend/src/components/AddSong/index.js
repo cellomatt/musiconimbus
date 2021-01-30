@@ -2,13 +2,14 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as songsActions from "../../store/songs";
+import * as albumsActions from "../../store/albums";
 import "./AddSong.css"
 
-export default function AddSong({ album, sessionUser }) {
+export default function AddSong({ setAddSong, album, sessionUser }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
-  const [composerId, setComposerId] = useState('');
+  const [composerId, setComposerId] = useState('Please select a composer');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [description, setDescription] = useState('');
@@ -16,19 +17,11 @@ export default function AddSong({ album, sessionUser }) {
   const [errors, setErrors] = useState([]);
   const albumId = album.id;
 
-  // const composerList = useSelector(state => state.songs.composers)
   const {composers, allComposers} = useSelector(state => state.songs)
-  let composerListArray;
-
-  // if (composerList) {
-  //   composerListArray = Object.values(composerList);
-  // }
 
   useEffect(() => {
     dispatch(songsActions.getComposers())
   }, [dispatch]);
-
-
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -40,12 +33,21 @@ export default function AddSong({ album, sessionUser }) {
     setErrors([]);
 
     let newSong = await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, description, song}))
+      .then(() => {
+        setTitle('');
+        setComposerId('Please select a composer');
+        setFirstName('');
+        setLastName('');
+        setDescription('');
+        setSong(null);
+        setAddSong(false);
+      })
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
 
     if (newSong) {
-      // history.push(`/albums/${createdAlbum.data.album.id}`);
+        dispatch(albumsActions.getOneAlbum(albumId))
     }
   }
 
@@ -82,38 +84,49 @@ export default function AddSong({ album, sessionUser }) {
         <label htmlFor="composerId">
           Composer
         </label>
+        <p>If your composer isn't listed, please add them to our database.</p>
         <select
           id="composerId"
           value={composerId}
-          onChange={(e) => setComposerId(e.target.value)}
+          onChange={(e) => {
+            setComposerId(e.target.value)
+            setFirstName('')
+            setLastName('')
+            }
+          }
         >
+          <option defaultValue>Please select a composer</option>
+          <option></option>
+          <option value=''>ADD NEW COMPOSER</option>
           {allComposers.map(composerId =>
             <option value={composerId} key={composerId}>
               {composers[composerId].lastName && `${composers[composerId].lastName}, `}{composers[composerId].firstName}
             </option>
             )
           }
-          {/* <option>Add new </option>  */}
         </select>
-        <p>If your composer isn't listed, please add them to our database:</p>
-        <label htmlFor="firstName">
-          First Name
-        </label>
-        <input
-          id="firstName"
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <label htmlFor="lastName">
-          Last Name
-        </label>
-        <input
-          id="lastName"
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
+        {composerId==="" &&
+          <>
+            <label htmlFor="firstName">
+              First Name
+            </label>
+            <input
+              id="firstName"
+              type="text"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+            <label htmlFor="lastName">
+              Last Name
+            </label>
+            <input
+              id="lastName"
+              type="text"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+          </>
+        }
         <label htmlFor="song">
           Upload Track
         </label>

@@ -29,7 +29,6 @@ router.post(
   asyncHandler(async (req, res) => {
     const { title, albumId, composerId, firstName, lastName, description } = req.body;
     const songUrl = await singlePublicFileUpload(req.file);
-    console.log("-------------------", composerId)
     const composerData = composerId ? {composerId} : {Composer: {firstName, lastName}};
 
     const songData = {

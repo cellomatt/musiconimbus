@@ -10,6 +10,9 @@ export default function Album({ sessionUser }) {
   const { albumId } = useParams();
   const dispatch = useDispatch();
   const [userAlbum, setUserAlbum] = useState(false);
+  const [addSong, setAddSong] = useState(false);
+  const [buttonText, setButtonText] = useState("+ Add a Song");
+
   const album = useSelector(state => state.albums.currentAlbum);
   const artist = useSelector(state => state.albums.currentArtist);
 
@@ -17,20 +20,21 @@ export default function Album({ sessionUser }) {
     if (artist) {
       if (artist.id === sessionUser.id) setUserAlbum(true)
     }
-
   }, [artist, sessionUser]);
 
   useEffect(() => {
     dispatch(albumsActions.getOneAlbum(albumId))
   }, [dispatch, albumId])
 
-
+  const buttonClick = () => {
+    setAddSong(!addSong);
+    if (buttonText === "+ Add a Song") { setButtonText("- Add a Song")};
+    if (buttonText === "- Add a Song") { setButtonText("+ Add a Song")};
+  }
 
   if (!sessionUser) return (
     <Redirect to="/" />
   );
-
-
 
   if (album) return (
     <div className="main">
@@ -38,9 +42,13 @@ export default function Album({ sessionUser }) {
       {artist && <h3>{artist.artistName}</h3>}
       {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
       <p>{album.description}</p>
-      {userAlbum && (
+      {userAlbum &&
+        <button id="plus-button" type="button" onClick={buttonClick}>{buttonText}</button>
+
+      }
+      {addSong && (
         <>
-          <AddSong album={album} sessionUser={sessionUser}/>
+          <AddSong setAddSong={setAddSong} album={album} sessionUser={sessionUser}/>
         </>
       )}
       <div className="song--layout">
