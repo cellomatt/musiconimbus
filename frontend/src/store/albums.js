@@ -20,7 +20,6 @@
 
   export const getOneAlbum = (albumId) => async dispatch => {
     const res = await fetch(`/api/albums/${albumId}`);
-    console.log(res.data)
     dispatch(loadOneAlbum(res.data));
   }
 

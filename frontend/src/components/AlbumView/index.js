@@ -12,6 +12,7 @@ export default function Album({ sessionUser }) {
   const [userAlbum, setUserAlbum] = useState(false);
   const [addSong, setAddSong] = useState(false);
   const [buttonText, setButtonText] = useState("+ Add a Song");
+  const [change, setChange] = useState(false);
 
   const album = useSelector(state => state.albums.currentAlbum);
   const artist = useSelector(state => state.albums.currentArtist);
@@ -24,7 +25,11 @@ export default function Album({ sessionUser }) {
 
   useEffect(() => {
     dispatch(albumsActions.getOneAlbum(albumId))
-  }, [dispatch, albumId])
+  }, [dispatch, albumId, change])
+
+  const func = () => {
+    setChange(!change);
+  }
 
   const buttonClick = () => {
     setAddSong(!addSong);
@@ -44,11 +49,10 @@ export default function Album({ sessionUser }) {
       <p>{album.description}</p>
       {userAlbum &&
         <button id="plus-button" type="button" onClick={buttonClick}>{buttonText}</button>
-
       }
       {addSong && (
         <>
-          <AddSong setAddSong={setAddSong} album={album} sessionUser={sessionUser}/>
+          <AddSong buttonClick={buttonClick} func={func} setAddSong={setAddSong} album={album} />
         </>
       )}
       <div className="song--layout">

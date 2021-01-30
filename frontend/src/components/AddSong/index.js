@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import * as songsActions from "../../store/songs";
-import * as albumsActions from "../../store/albums";
+// import * as albumsActions from "../../store/albums";
 import "./AddSong.css"
 
-export default function AddSong({ setAddSong, album, sessionUser }) {
+export default function AddSong({ func, setAddSong, album, buttonClick }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
@@ -27,7 +27,7 @@ export default function AddSong({ setAddSong, album, sessionUser }) {
     e.preventDefault();
     setErrors([]);
 
-    let newSong = await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, description, song}))
+    await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, description, song}))
       .then(() => {
         setTitle('');
         setComposerId('Please select a composer');
@@ -36,14 +36,12 @@ export default function AddSong({ setAddSong, album, sessionUser }) {
         setDescription('');
         setSong(null);
         setAddSong(false);
+        func();
+        buttonClick();
       })
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
-
-    if (newSong) {
-        dispatch(albumsActions.getOneAlbum(albumId))
-    }
   }
 
   const updateFile = (e) => {
