@@ -149,6 +149,16 @@ select:focus {
 box-shadow: 0 0 4px rgba(157, 106, 253, 1);
 }
 
+.tagline {
+  display:flex;
+  box-sizing: border-box;
+  padding: 1em;
+  color: #777;
+  text-align: left;
+  align-self: center;
+  font-size: 1.1em;
+}
+
 textarea {
   vertical-align: top;
   height: 5em;

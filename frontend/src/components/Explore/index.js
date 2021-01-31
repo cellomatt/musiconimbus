@@ -22,7 +22,7 @@ export default function Explore({ sessionUser }) {
   return (
     <div className="main">
       <h1 >Discover new music.</h1>
-      <h3>Explore albums from other MusicoNimbus artists.</h3>
+      <p className="tagline tagline-explore" >Explore albums from other MusicoNimbus artists.</p>
       {albumsArray.length > 0 &&
           <div className="albums--layout">
             {albumsArray.map(album => {

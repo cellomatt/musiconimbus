@@ -18,6 +18,7 @@ export default function Album({ sessionUser }) {
   const artist = useSelector(state => state.albums.currentArtist);
 
   useEffect(() => {
+    setUserAlbum(false);
     if (artist) {
       if (artist.id === sessionUser.id) setUserAlbum(true)
     }
