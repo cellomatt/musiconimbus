@@ -8,7 +8,7 @@ export const setSong = (song) => {
 
 export const play = (song) => async dispatch => {
   const res = await fetch(`/api/songs/${song.id}`);
-  console.log(res)
+
   dispatch(setSong(res.data));
   return res;
 };
