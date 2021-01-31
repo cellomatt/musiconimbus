@@ -5,8 +5,8 @@ import "./AddSong.css"
 
 export default function AddSong({ setChange, setAddSong, album, buttonClick, editSong, setEditSong, songToEdit }) {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState('');
-  const [composerId, setComposerId] = useState('Please select a composer');
+  const [title, setTitle] = useState(songToEdit ? songToEdit.song.title : '');
+  const [composerId, setComposerId] = useState(songToEdit ? songToEdit.song.composerId : 'Please select a composer');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [song, setSong] = useState(null);
@@ -17,28 +17,29 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
 
   useEffect(() => {
     dispatch(songsActions.getComposers())
-  }, [dispatch]);
+  }, [dispatch, songToEdit]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
 
     if (!editSong) {
-    await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, song}))
-      .then(() => {
-        setTitle('');
-        setComposerId('Please select a composer');
-        setFirstName('');
-        setLastName('');
-        setSong(null);
-        setAddSong(false);
-        setChange((change) => !change);
-        buttonClick();
-      })
-      .catch((res) => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-      });
-    } else {
+      await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, song}))
+        .then(() => {
+          setTitle('');
+          setComposerId('Please select a composer');
+          setFirstName('');
+          setLastName('');
+          setSong(null);
+          setAddSong(false);
+          setChange((change) => !change);
+          buttonClick();
+        })
+        .catch((res) => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
+      } else {
 
     }
   }
