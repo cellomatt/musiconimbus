@@ -19,7 +19,7 @@ export default function SongContainer({ album, song, sessionUser, change, setCha
 
   const deleteSong = async () => {
     await dispatch(deleteOneSong(song.id))
-      .then((_res) =>  setChange((change) => !change))
+      .then(() =>  setChange((change) => !change))
      ;
   }
 

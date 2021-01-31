@@ -12,7 +12,7 @@ export default function Album({ sessionUser }) {
   const [userAlbum, setUserAlbum] = useState(false);
   const [addSong, setAddSong] = useState(false);
   const [buttonText, setButtonText] = useState("+ Add a Song");
-  const [change, setChange] = useState(0);
+  const [change, setChange] = useState(false);
 
   const album = useSelector(state => state.albums.currentAlbum);
   const artist = useSelector(state => state.albums.currentArtist);

@@ -5,3 +5,8 @@
 .single-album__cover {
   max-width: 350px;
 }
+
+.songs--layout {
+  margin-bottom: 3em;
+  width: 100%;
+}
