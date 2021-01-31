@@ -38,22 +38,22 @@
   margin-bottom: 2em;
 }
 
-.single-album__title {
+/* .single-album__title {
 
-}
+} */
 
 .single-album__cover {
   max-width: 300px;
   max-height: 300px;
   align-self: center;
   margin-bottom: 1.5em;
+  margin-top: .4em;
 }
 
 .songs--layout {
   margin-bottom: 3em;
   width: 100%;
 }
-
 
 @media screen and (max-width: 650px) {
   .album__content {
