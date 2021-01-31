@@ -46,14 +46,13 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
 
   if (allComposers) return (
     <>
-      <h3>Add a song to your album</h3>
-      <form onSubmit={handleSubmit}>
+      <h3 className="add-song__title">Add a song to your album</h3>
+      <form className="form__song" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
-        <p className="form__requirement">* Indicates a required field.</p>
         <label htmlFor="title">
-          Song Title *
+          Song Title
         </label>
         <input
           id="title"
@@ -63,7 +62,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           required
         />
         <label htmlFor="composerId">
-          Composer *
+          Composer
         </label>
         <p className="form__label--subheader">If your composer isn't listed, please add them to our database.</p>
         <select
@@ -89,7 +88,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
         {composerId==="" &&
           <>
             <label htmlFor="firstName">
-              First Name *
+              First Name
             </label>
             <input
               id="firstName"
@@ -98,7 +97,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
               onChange={(e) => setFirstName(e.target.value)}
             />
             <label htmlFor="lastName">
-              Last Name
+              Last Name (optional)
             </label>
             <input
               id="lastName"
@@ -109,7 +108,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           </>
         }
         <label htmlFor="song">
-          Upload Track *
+          Upload Track
         </label>
         <input
           id="song"

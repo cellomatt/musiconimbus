@@ -52,6 +52,8 @@ export default function Album({ sessionUser }) {
         <div className="album__content--right">
           <h3 className="album__content--title">Album Description</h3>
           <p className="album__description">{album.description}</p>
+          <h3 className="album__content--title">Release Date</h3>
+          <p className="album__description">{album.releaseDate}</p>
           <div className="song--layout">
             <h3 className="album__content--title">Songs</h3>
             {album && Object.values(album.Songs).map(song => {

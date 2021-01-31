@@ -1,12 +1,5 @@
 .form__album-create {
-  /* display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  border-radius: .2em;
-  border: 1px solid black;
-  padding: 1em;
-  margin-top: 1.5em;
-  max-width: 50%; */
   padding-top: 1.8em;
-  margin-top: 1.5em;
+  margin-top: 1em;
+  margin-bottom: 3em;
 }

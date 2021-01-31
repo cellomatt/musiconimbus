@@ -11,11 +11,12 @@
 .album__content--left {
   display: flex;
   flex-direction: column;
+  padding: 0 .5em 1.5em;
 }
 
 .album__content--right {
   box-sizing: border-box;
-  padding: 0 2em;
+  padding: 0 2em 1em;
   max-width: 60%;
 }
 
@@ -38,7 +39,7 @@
 }
 
 .single-album__title {
-  /* font-weight: 300; */
+
 }
 
 .single-album__cover {

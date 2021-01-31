@@ -1,0 +1,16 @@
+.add-song__title {
+  margin-bottom: .5em;
+}
+
+.form__song {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  max-width: 100%;
+}
+
+select {
+  max-width: 14em;
+}

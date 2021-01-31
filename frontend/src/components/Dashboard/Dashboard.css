@@ -11,7 +11,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3em;
+}
+
+.get-started {
+  margin-top: 1.5em;
 }
 
 .title {
