@@ -40,14 +40,13 @@ export const getOneSong = (songId) => async dispatch => {
 }
 
 export const createSong = (newSong) => async dispatch => {
-  const { title, albumId, composerId, firstName, lastName, description, song } = newSong;
+  const { title, albumId, composerId, firstName, lastName, song } = newSong;
   const formData = new FormData();
   formData.append("title", title);
   formData.append("albumId", albumId);
   if (composerId.length) formData.append("composerId", composerId);
   if (firstName.length) formData.append("firstName", firstName);
   if (lastName.length) formData.append("lastName", lastName);
-  formData.append("description", description);
   formData.append("song", song);
 
   const res = await fetch(`/api/songs/new`, {

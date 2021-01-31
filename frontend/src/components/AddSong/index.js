@@ -9,7 +9,6 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
   const [composerId, setComposerId] = useState('Please select a composer');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [description, setDescription] = useState('');
   const [song, setSong] = useState(null);
   const [errors, setErrors] = useState([]);
   const albumId = album.id;
@@ -24,13 +23,12 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
     e.preventDefault();
     setErrors([]);
 
-    await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, description, song}))
+    await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, song}))
       .then(() => {
         setTitle('');
         setComposerId('Please select a composer');
         setFirstName('');
         setLastName('');
-        setDescription('');
         setSong(null);
         setAddSong(false);
         setChange((change) => !change);
@@ -62,14 +60,6 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
-        />
-        <label htmlFor="description">
-          Description
-        </label>
-        <textarea
-          id="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
         />
         <label htmlFor="composerId">
           Composer

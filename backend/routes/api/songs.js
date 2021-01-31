@@ -27,14 +27,13 @@ router.post(
   singleMulterUpload("song"),
   validateSong,
   asyncHandler(async (req, res) => {
-    const { title, albumId, composerId, firstName, lastName, description } = req.body;
+    const { title, albumId, composerId, firstName, lastName } = req.body;
     const songUrl = await singlePublicFileUpload(req.file);
     const composerData = composerId ? {composerId} : {Composer: {firstName, lastName}};
 
     const songData = {
       title,
       songUrl,
-      description,
       albumId,
       ...composerData,
     }
@@ -66,10 +65,6 @@ router.patch(
   validateSong,
   asyncHandler(async function (req, res) {
     const song = await Song.findByPk(req.params.id)
-    if (req.file) {
-      const songUrl = await singlePublicFileUpload(req.file);
-      req.body.songUrl = songUrl;
-    }
     await song.update(req.body);
     return res.json({song});
   })

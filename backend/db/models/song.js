@@ -17,7 +17,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: DataTypes.STRING
   }, {});
   Song.associate = function(models) {
     Song.belongsTo(models.Album, {foreignKey: 'albumId'});
