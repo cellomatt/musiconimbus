@@ -19,11 +19,10 @@ export default function Explore({ sessionUser }) {
     <Redirect to="/" />
   );
 
-  return (
+  if (albumsArray.length > 0) return (
     <div className="main">
       <h1 >Discover new music.</h1>
       <p className="tagline tagline-explore" >Explore albums from other MusicoNimbus artists.</p>
-      {albumsArray.length > 0 &&
           <div className="albums--layout">
             {albumsArray.map(album => {
                 return (
@@ -32,7 +31,10 @@ export default function Explore({ sessionUser }) {
               })
             }
           </div>
-      }
     </div>
+  )
+
+  return (
+    <h2>loading...</h2>
   )
 }
