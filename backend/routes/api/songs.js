@@ -13,9 +13,9 @@ const validateSong = [
   check('title')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a track title.'),
-  // check('song')
-  // .exists({ checkFalsy: true })
-  // .withMessage('Please select a song to upload.'),
+  check('song')
+    .exists({ checkFalsy: true })
+    .withMessage('Please select a song to upload.'),
   handleValidationErrors,
 ];
 
@@ -86,6 +86,13 @@ router.get('/user/:id(\\d+)',
     return res.json({songs})
   })
 )
+
+//delete a song
+router.delete('/:id(\\d+)', asyncHandler(async function(req, res) {
+  const song = await Song.findByPk(req.params.id);
+  song.destroy();
+  return res.json({ message: 'success' });
+}));
 
 
 

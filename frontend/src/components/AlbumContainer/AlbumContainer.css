@@ -19,8 +19,8 @@
 
 .container {
   border: 1px solid black;
-  width: 250px;
-  height: 300px;
+  width: 275px;
+  height: 325px;
   display: flex;
   box-sizing: border-box;
   margin: 1.2em .5em;

@@ -134,6 +134,21 @@ label {
   flex-wrap: wrap;
 }
 
+select {
+  box-sizing: border-box;
+  border-radius: 1px;
+  border: solid #222;
+  margin-top: .3em;
+  margin-bottom: 1.1em;
+  padding: .13em .3em;
+  font-size: .9em;
+  background-color: white;
+}
+
+select:focus {
+box-shadow: 0 0 4px rgba(157, 106, 253, 1);
+}
+
 textarea {
   vertical-align: top;
   height: 5em;
