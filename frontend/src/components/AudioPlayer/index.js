@@ -4,9 +4,9 @@ import "./AudioPlayer.css"
 
 export default function MyAudioPlayer({ nowPlaying }) {
 
-  const playNext = (nowPlaying) => {
+  // const playNext = (nowPlaying) => {
 
-  }
+  // }
 
 
   return (

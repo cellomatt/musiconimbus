@@ -12,7 +12,6 @@
     return { type: LOAD_ONE_ALBUM, data };
   }
 
-
   export const getAlbums = () => async dispatch => {
     const res = await fetch(`/api/albums/`);
     dispatch(loadAlbums(res.data.albums));
@@ -24,14 +23,14 @@
   }
 
 
-  const initialState = {};
+  const initialState = { all: {} };
 
   export default function albumsReducer(state = initialState, action) {
     const updateState = {...state}
     switch (action.type) {
       case LOAD_ALL_ALBUMS: {
         action.albums.forEach(album => {
-          updateState[album.id] = album;
+          updateState.all[album.id] = album;
         })
         return updateState;
       }

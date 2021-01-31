@@ -85,4 +85,15 @@ router.get('/user/:id(\\d+)',
   })
 )
 
+// access all albums
+router.get('/',
+  requireAuth,
+  asyncHandler(async function (req, res) {
+    const albums = await Album.findAll({
+      include: User,
+    })
+    return res.json({albums})
+  })
+)
+
 module.exports = router;
