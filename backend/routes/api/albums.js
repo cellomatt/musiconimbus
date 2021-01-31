@@ -12,7 +12,8 @@ const router = express.Router();
 const validateAlbum = [
   check('title')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide an album title.'),
+    .isLength({ max: 40 })
+    .withMessage('Please provide an album title that is less than 40 characters long.'),
   check('releaseDate')
     .exists({ checkFalsy: true })
     .isLength({ min:4, max:4 })
@@ -56,19 +57,19 @@ router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
 }));
 
 // update a single album
-router.patch(
-  '/:id(\\d+)',
-  validateAlbum,
-  asyncHandler(async function (req, res) {
-    const album = await Album.findByPk(req.params.id)
-    if (req.file) {
-      const imageUrl = await singlePublicFileUpload(req.file);
-      req.body.imageUrl = imageUrl;
-    }
-    await album.update(req.body);
-    return res.json({album});
-  })
-);
+// router.patch(
+//   '/:id(\\d+)',
+//   validateAlbum,
+//   asyncHandler(async function (req, res) {
+//     const album = await Album.findByPk(req.params.id)
+//     if (req.file) {
+//       const imageUrl = await singlePublicFileUpload(req.file);
+//       req.body.imageUrl = imageUrl;
+//     }
+//     await album.update(req.body);
+//     return res.json({album});
+//   })
+// );
 
 // access all of a user's albums
 router.get('/user/:id(\\d+)',

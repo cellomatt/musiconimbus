@@ -40,7 +40,7 @@ function LoginFormPage() {
       <form className="form vertical-center" onSubmit={handleSubmit}>
         <h2 className="form__title">Log In</h2>
         {errors.length > 0 && <ul className="errors">
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => <li className="errors--li" key={idx}>{error}</li>)}
         </ul>}
         <label htmlFor="credential">
           Email

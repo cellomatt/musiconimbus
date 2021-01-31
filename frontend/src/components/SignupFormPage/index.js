@@ -36,7 +36,7 @@ export default function SignupFormPage() {
       <form className="form" onSubmit={handleSubmit}>
         <h2 className="form__title">Sign Up</h2>
         {errors.length > 0 && <ul className="errors">
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          {errors.map((error, idx) => <li className="errors--li" key={idx}>{error}</li>)}
         </ul>}
         <p className="form__requirement">* Indicates a required field.</p>
         <label htmlFor="email">

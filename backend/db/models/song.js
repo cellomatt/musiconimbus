@@ -4,6 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: [1, 70],
+      },
     },
     albumId: {
       type: DataTypes.INTEGER,
