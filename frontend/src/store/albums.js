@@ -23,12 +23,13 @@
   }
 
 
-  const initialState = { all: {} };
+  const initialState = {};
 
   export default function albumsReducer(state = initialState, action) {
-    const updateState = {...state}
+    const updateState = {...state};
     switch (action.type) {
       case LOAD_ALL_ALBUMS: {
+        updateState.all = {};
         action.albums.forEach(album => {
           updateState.all[album.id] = album;
         })

@@ -8,20 +8,27 @@ import "./Explore.css"
 
 export default function Explore({ sessionUser }) {
   const dispatch = useDispatch();
-  const albums = useSelector(state => state.albums.all);
-  const albumsArray = Object.values(albums);
+
+
 
   useEffect(() => {
     dispatch(albumsActions.getAlbums())
   }, [dispatch]);
 
+  const albums = useSelector(state => state.albums.all);
+  let albumsArray = [];
+
+  if (albums) {
+    albumsArray = Object.values(albums);
+  }
+
   if (!sessionUser) return (
-    <Redirect to="/" />
-  );
+  <Redirect to="/" />
+    );
 
   if (albumsArray.length > 0) return (
     <div className="main">
-      <h1 >Discover new music.</h1>
+      <h1>Discover new music.</h1>
       <p className="tagline tagline-explore" >Explore albums from other MusicoNimbus artists.</p>
           <div className="albums--layout">
             {albumsArray.map(album => {
