@@ -62,10 +62,18 @@ router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
 // update a single song
 router.patch(
   '/:id(\\d+)',
-  validateSong,
+  // validateSong,
   asyncHandler(async function (req, res) {
+    const { title, composerId, firstName, lastName } = req.body;
     const song = await Song.findByPk(req.params.id)
-    await song.update(req.body);
+
+    if (firstName) {
+      const newComposer = await Composer.create({firstName, lastName});
+      await song.update({title, composerId: newComposer.id });
+    } else {
+      await song.update({title, composerId });
+    }
+
     return res.json({song});
   })
 );

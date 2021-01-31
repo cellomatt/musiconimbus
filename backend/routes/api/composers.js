@@ -23,9 +23,7 @@ router.post(
   asyncHandler(async (req, res) => {
     const { firstName, lastName } = req.body;
     const composer = await Composer.create({ firstName, lastName});
-
     return res.json({composer});
-
   }),
 );
 
@@ -40,7 +38,6 @@ router.get(
         ['firstName', 'ASC']
       ]
     });
-    console.log("-----------", composers)
     return res.json({composers});
   }),
 )

@@ -27,7 +27,6 @@ export const loadComposers = (composers) => {
   return { type: LOAD_ALL_COMPOSERS, composers };
 }
 
-
 export const getSongs = () => async dispatch => {
   const res = await fetch(`/api/songs/`);
   dispatch(loadSongs(res.data.songs));
@@ -59,7 +58,24 @@ export const createSong = (newSong) => async dispatch => {
   });
 
   dispatch(addSong(res.data.song))
-  return res;
+  return res.data;
+}
+
+export const editSong = (song) => async dispatch => {
+  const { title, composerId, firstName, lastName, songToEdit } = song;
+
+  const res = await fetch(`/api/songs/${songToEdit.song.id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      title,
+      composerId,
+      firstName,
+      lastName,
+    }),
+  });
+
+  dispatch(addSong(res.data.song))
+  return res.data;
 }
 
 export const deleteOneSong = (songId) => async dispatch => {

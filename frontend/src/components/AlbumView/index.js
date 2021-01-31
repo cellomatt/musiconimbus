@@ -45,6 +45,7 @@ export default function Album({ sessionUser }) {
       .then((res) => {
         setSongToEdit(res);
         if (buttonText === "+ Add a Song") { setButtonText("- Add a Song")};
+        setAddSong(false);
         setAddSong(true);
         setEditSong(true);
     })

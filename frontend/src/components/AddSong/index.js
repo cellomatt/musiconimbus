@@ -17,8 +17,7 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
 
   useEffect(() => {
     dispatch(songsActions.getComposers())
-  }, [dispatch, songToEdit]);
-
+  }, [dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +39,21 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
           if (res.data && res.data.errors) setErrors(res.data.errors);
         });
       } else {
-
+        await dispatch(songsActions.editSong({title, composerId, firstName, lastName, songToEdit}))
+        .then(() => {
+          setTitle('');
+          setComposerId('Please select a composer');
+          setFirstName('');
+          setLastName('');
+          setSong(null);
+          setAddSong(false);
+          setEditSong(false);
+          setChange((change) => !change);
+          buttonClick();
+        })
+        .catch((res) => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
     }
   }
 
@@ -113,16 +126,20 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
             />
           </>
         }
-        <label htmlFor="song">
-          Upload Track
-        </label>
-        <input
-          id="song"
-          type="file"
-          className="input--song"
-          onChange={updateFile}
-          required
-        />
+        {!editSong &&
+          <>
+            <label htmlFor="song">
+              Upload Track
+            </label>
+            <input
+              id="song"
+              type="file"
+              className="input--song"
+              onChange={updateFile}
+              required
+            />
+          </>
+        }
         <div className="button-container">
           {!editSong ? <button type="submit" className="btn btn--secondary">Upload</button>
           : <button type="submit" className="btn btn--secondary">Update</button>}
