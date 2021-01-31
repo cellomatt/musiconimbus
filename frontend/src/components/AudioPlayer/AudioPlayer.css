@@ -79,41 +79,15 @@
   color: #9d6afd;
 }
 
-.rhap_volume-bar {
-  box-sizing: border-box;
-  position: relative;
-  width: 100%;
-  height: 4px;
-  background: #dddddd;
-  border-radius: 2px;
-}
-
 .rhap_volume-indicator {
-  box-sizing: border-box;
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  margin-left: -6px;
-  left: 0;
-  top: -4px;
   background: #25afff;
-  opacity: 0.9;
-  border-radius: 50px;
   box-shadow: rgba(134, 134, 134, 0.5) 0 0 3px;
-  cursor: pointer;
 }
 
 .rhap_volume-indicator:hover {
   background: #0082ce;
 }
 
-.rhap_volume-filled {
-  height: 100%;
-  position: absolute;
-  z-index: 2;
-  background-color: #868686;
-  border-radius: 2px;
-}
 
 .song-info__container {
   display: flex;
@@ -141,5 +115,8 @@
     height: 7em;
   }
 
+  .song-info__container {
+    display: none;  
+  }
 
 }

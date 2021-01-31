@@ -36,7 +36,7 @@ nav {
   display: inline-block;
   border: 1px solid #5f5f5f;
   margin: 1em;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-weight: 600;
   padding: .3em .5em;
   align-self: center;
@@ -53,7 +53,7 @@ nav {
 }
 
 .btn--secondary {
-  padding: .5em .7em;
+  /* padding: .5em .7em; */
   margin: 0 .2em;
 }
 
@@ -63,13 +63,15 @@ nav {
 }
 
 .btn--tertiary {
-  padding: .5em .7em;
+  padding: .3em .5em;
   margin: 0 .2em;
+  font-size: 1em;
+  font-weight: 300;
+  background-color: white;
 }
 
 .btn--tertiary:hover {
-  background-color: rgb(255, 75, 240);
-  box-shadow: 0 0 7px rgba(255, 75, 240, .9);
+  box-shadow: 0 0 7px rgba(157, 106, 253, .9);
 }
 
 .form {

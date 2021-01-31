@@ -33,7 +33,7 @@ export default function Explore({ sessionUser }) {
           <div className="albums--layout">
             {albumsArray.map(album => {
                 return (
-                  <AlbumContainer key={album.id} album={album} />
+                  <AlbumContainer key={album.id} album={album} artist={album.User} />
                 )
               })
             }

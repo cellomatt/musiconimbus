@@ -41,26 +41,36 @@ export default function Album({ sessionUser }) {
   if (album) return (
     <div className="main">
       <h1 className="single-album__title">{album.title}</h1>
-      {artist && <h3>{artist.artistName}</h3>}
-      {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
-      <p>{album.description}</p>
-      {userAlbum &&
-        <button id="plus-button" type="button" onClick={buttonClick}>{buttonText}</button>
-      }
-      {addSong && (
-        <>
-          <AddSong buttonClick={buttonClick} change={change} setChange={setChange} setAddSong={setAddSong} album={album} />
-        </>
-      )}
-      <div className="song--layout">
-        {album && Object.values(album.Songs).map(song => {
-          return (
-            <div key={song.id}>
-              <SongContainer album={album} sessionUser={sessionUser} song={song} change={change} setChange={setChange} />
-            </div>
-            )
-          })
-        }
+      {artist && <h2 className="album__artist">{artist.artistName}</h2>}
+      <div className="album__layout">
+        <div className="album__content--left">
+          {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
+          {userAlbum &&
+            <button id="plus-button" className="btn btn--tertiary" type="button" onClick={buttonClick}>{buttonText}</button>
+          }
+        </div>
+        <div className="album__content--right">
+          <h3 className="album__content--title">Album Description</h3>
+          <p className="album__description">{album.description}</p>
+          <div className="song--layout">
+            <h3 className="album__content--title">Songs</h3>
+            {album && Object.values(album.Songs).map(song => {
+              return (
+                <div key={song.id}>
+                  <SongContainer album={album} sessionUser={sessionUser} song={song} change={change} setChange={setChange} />
+                </div>
+                )
+              })
+            }
+          </div>
+          <div className="add-song">
+            {addSong && (
+              <>
+                <AddSong buttonClick={buttonClick} change={change} setChange={setChange} setAddSong={setAddSong} album={album} />
+              </>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   )

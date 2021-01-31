@@ -42,7 +42,7 @@ export default function AddAlbum() {
   return (
     <div className="main">
       <h1>Add an Album</h1>
-      <form className="form__album-create" onSubmit={handleSubmit}>
+      <form className="form form__album-create" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
@@ -84,7 +84,7 @@ export default function AddAlbum() {
           onChange={updateFile}
         />
         <div className="button-container">
-          <button type="submit" className="btn btn--secondary">Create</button>
+          <button type="submit" className="btn btn--primary">Create</button>
         </div>
       </form>
     </div>

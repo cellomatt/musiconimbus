@@ -119,7 +119,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           required
         />
         <div className="button-container">
-          <button type="submit" className="btn btn--secondary btn--tertiary">Upload</button>
+          <button type="submit" className="btn btn--secondary">Upload</button>
         </div>
       </form>
     </>

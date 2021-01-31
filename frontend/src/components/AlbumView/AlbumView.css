@@ -1,12 +1,60 @@
+.add-song {
+  margin-top: 1em;
+}
+
+.album__artist {
+  font-size: 2em;
+  padding-bottom: 1em;
+}
+
+.album__content--left {
+  display: flex;
+  flex-direction: column;
+}
+
+.album__content--right {
+  box-sizing: border-box;
+  padding: 0 2em;
+  max-width: 60%;
+}
+
+.album__content--title {
+
+}
+
+.album__description {
+  flex-wrap: no-wrap;
+}
+
+.album__layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-sizing: border-box;
+  margin-bottom: 2em;
+}
+
 .single-album__title {
   font-weight: 300;
 }
 
 .single-album__cover {
   max-width: 350px;
+  max-height: 350px;
+  align-self: center;
+  margin-bottom: 1.5em;
 }
 
 .songs--layout {
   margin-bottom: 3em;
   width: 100%;
+}
+
+
+@media screen and (max-width: 650px) {
+  .album__content {
+    margin-top: 1.5em;
+  }
+
 }
