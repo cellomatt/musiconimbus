@@ -37,6 +37,7 @@ export const getOneSong = (songId) => async dispatch => {
   const res = await fetch(`/api/songs/${songId}`);
 
   dispatch(loadOneSong(res.data));
+  return res;
 }
 
 export const createSong = (newSong) => async dispatch => {

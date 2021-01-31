@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as songsActions from "../../store/songs";
 import "./AddSong.css"
 
-export default function AddSong({ change, setChange, setAddSong, album, buttonClick }) {
+export default function AddSong({ setChange, setAddSong, album, buttonClick, editSong, setEditSong, songToEdit }) {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [composerId, setComposerId] = useState('Please select a composer');
@@ -23,6 +23,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
     e.preventDefault();
     setErrors([]);
 
+    if (!editSong) {
     await dispatch(songsActions.createSong({title, albumId, composerId, firstName, lastName, song}))
       .then(() => {
         setTitle('');
@@ -37,6 +38,9 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
       .catch((res) => {
         if (res.data && res.data.errors) setErrors(res.data.errors);
       });
+    } else {
+
+    }
   }
 
   const updateFile = (e) => {
@@ -46,7 +50,8 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
 
   if (allComposers) return (
     <>
-      <h3 className="add-song__title">Add a song to your album</h3>
+      {!editSong ? <h3 className="add-song__title">Add a song to your album</h3> :
+      <h3 className="add-song__title">Edit song</h3>}
       <form className="form__song" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
@@ -118,7 +123,8 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           required
         />
         <div className="button-container">
-          <button type="submit" className="btn btn--secondary">Upload</button>
+          {!editSong ? <button type="submit" className="btn btn--secondary">Upload</button>
+          : <button type="submit" className="btn btn--secondary">Update</button>}
         </div>
       </form>
     </>

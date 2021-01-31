@@ -17,7 +17,6 @@
 .album__content--right {
   box-sizing: border-box;
   padding: 0 2em 1em;
-  max-width: 60%;
 }
 
 .album__content--title {
@@ -38,6 +37,22 @@
   margin-bottom: 2em;
 }
 
+.edit-button {
+  box-sizing: border-box;
+  padding: 0 .2em 0 0;
+  width: 10%;
+  outline: 0;
+  border: none;
+  background-color: white;
+  font-size: 1.2em;
+  align-self: center;
+}
+
+.edit-button:hover {
+  text-shadow: 0 0 7px rgba(157, 106, 253, .9);
+  font-size: 1.5em;
+}
+
 /* .single-album__title {
 
 } */
@@ -48,6 +63,12 @@
   align-self: center;
   margin-bottom: 1.5em;
   margin-top: .4em;
+}
+
+.song-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .songs--layout {

@@ -2,6 +2,7 @@ import { useParams, Redirect } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as albumsActions from "../../store/albums";
+import * as songsActions from "../../store/songs";
 import SongContainer from "../SongContainer";
 import AddSong from "../AddSong";
 import "./AlbumView.css"
@@ -11,11 +12,13 @@ export default function Album({ sessionUser }) {
   const dispatch = useDispatch();
   const [userAlbum, setUserAlbum] = useState(false);
   const [addSong, setAddSong] = useState(false);
+  const [editSong, setEditSong] = useState(false);
   const [buttonText, setButtonText] = useState("+ Add a Song");
   const [change, setChange] = useState(false);
 
   const album = useSelector(state => state.albums.currentAlbum);
   const artist = useSelector(state => state.albums.currentArtist);
+  let song = {};
 
   useEffect(() => {
     setUserAlbum(false);
@@ -30,8 +33,20 @@ export default function Album({ sessionUser }) {
 
   const buttonClick = () => {
     setAddSong(!addSong);
+    setEditSong(false);
     if (buttonText === "+ Add a Song") { setButtonText("- Add a Song")};
     if (buttonText === "- Add a Song") { setButtonText("+ Add a Song")};
+  }
+
+  const edit = async (e) => {
+
+    await dispatch(songsActions.getOneSong(e.currentTarget.id))
+      .then((res) => {
+        song = res;
+        if (buttonText === "+ Add a Song") { setButtonText("- Add a Song")};
+        setAddSong(true);
+        setEditSong(true);
+    })
   }
 
   if (!sessionUser) return (
@@ -50,16 +65,21 @@ export default function Album({ sessionUser }) {
           }
         </div>
         <div className="album__content--right">
-          <h3 className="album__content--title">Album Description</h3>
-          <p className="album__description">{album.description}</p>
+          {album.description &&
+            <>
+              <h3 className="album__content--title">Album Description</h3>
+              <p className="album__description">{album.description}</p>
+            </>
+          }
           <h3 className="album__content--title">Release Date</h3>
           <p className="album__description">{album.releaseDate}</p>
           <div className="song--layout">
             <h3 className="album__content--title">Songs</h3>
             {album && Object.values(album.Songs).map(song => {
               return (
-                <div key={song.id}>
+                <div className="song-container" key={song.id}>
                   <SongContainer album={album} sessionUser={sessionUser} song={song} change={change} setChange={setChange} />
+                  {userAlbum && <button className="edit-button" onClick={edit} id={song.id} ><i className="fas fa-edit"></i></button>}
                 </div>
                 )
               })
@@ -68,7 +88,16 @@ export default function Album({ sessionUser }) {
           <div className="add-song">
             {addSong && (
               <>
-                <AddSong buttonClick={buttonClick} change={change} setChange={setChange} setAddSong={setAddSong} album={album} />
+                <AddSong
+                  buttonClick={buttonClick}
+                  change={change}
+                  setChange={setChange}
+                  setAddSong={setAddSong}
+                  album={album}
+                  editSong={editSong}
+                  setEditSong={setEditSong}
+                  songToEdit={song}
+                />
               </>
             )}
           </div>
