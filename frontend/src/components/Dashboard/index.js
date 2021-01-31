@@ -59,7 +59,7 @@ export default function Dashboard({ sessionUser }) {
                   return songsArray.map(song => {
                     return (
                       <div key={song.id}>
-                        <SongContainer song={song} />
+                        <SongContainer album={album} song={song} sessionUser={sessionUser}/>
                       </div>
                     )
                   })

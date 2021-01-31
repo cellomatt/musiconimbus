@@ -1,8 +1,7 @@
 .btn--play-select {
   box-sizing: border-box;
   border: none;
-  min-width: 530px;
-  width: 100%;
+  width: 85%;
   padding: .5em;
   background-color: white;
   border-radius: none;
@@ -12,6 +11,7 @@
   flex-direction: row;
   align-items: center;
   align-content: center;
+  align-self: flex-start;
   justify-content: space-between;
 }
 
@@ -32,6 +32,15 @@
   color: #777;
 }
 
+.song__container {
+  width: 100%;
+  min-width: 530px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .song__title {
   font-size: 1em;
   margin-left: .5em;
@@ -41,6 +50,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.trash-can {
+  width: 10%;
+  justify-self: flex-end;
+  outline: 0;
+  outline: none;
+
 }
 
 @media screen and (max-width: 650px) {

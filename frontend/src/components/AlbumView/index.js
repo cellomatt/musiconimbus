@@ -55,7 +55,7 @@ export default function Album({ sessionUser }) {
         {album && Object.values(album.Songs).map(song => {
           return (
             <div key={song.id}>
-              <SongContainer song={song} />
+              <SongContainer album={album} sessionUser={sessionUser} song={song} />
             </div>
             )
           })

@@ -72,12 +72,10 @@ export const deleteOneSong = (songId) => async dispatch => {
   }
 }
 
-
 export const getComposers = () => async dispatch => {
   const res = await fetch(`/api/composers/`);
   dispatch(loadComposers(res.data.composers))
 }
-
 
 
 
