@@ -39,9 +39,9 @@ function LoginFormPage() {
     <div className="main">
       <form className="form vertical-center" onSubmit={handleSubmit}>
         <h2 className="form__title">Log In</h2>
-        <ul>
+        {errors.length > 0 && <ul className="errors">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
+        </ul>}
         <label htmlFor="credential">
           Email
         </label>

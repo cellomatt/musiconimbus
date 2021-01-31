@@ -76,6 +76,22 @@ nav {
   box-shadow: 0 0 4px rgba(157, 106, 253, 1);
 }
 
+.errors {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: .5em 0 1em 0;
+  padding: .6em 1em;
+  background-color: lightcoral;
+  width: 100%;
+  max-width: 300px;
+  border-radius: 3px;
+  align-self: center;
+  text-align: left;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
 .form {
   display: flex;
   align-items: flex-start;

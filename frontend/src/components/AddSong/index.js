@@ -82,9 +82,9 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
         <button type="button" className="x" onClick={closeDiv}><i className="fas fa-times"></i></button>
       </div>
       <form className="form__song" onSubmit={handleSubmit}>
-        <ul>
+        {errors.length > 0 && <ul className="errors">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
+        </ul>}
         <label htmlFor="title">
           Song Title
         </label>

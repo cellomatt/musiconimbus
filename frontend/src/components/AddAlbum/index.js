@@ -43,9 +43,9 @@ export default function AddAlbum() {
     <div className="main">
       <h1>Add an Album</h1>
       <form className="form form__album-create" onSubmit={handleSubmit}>
-        <ul>
+        {errors.length > 0 && <ul className="errors">
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
+        </ul>}
         <label htmlFor="title">
           Album Title
         </label>
