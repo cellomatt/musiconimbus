@@ -46,7 +46,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
 
   if (allComposers) return (
     <>
-      <p>Add a song to your album</p>
+      <h3>Add a song to your album</h3>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

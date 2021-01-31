@@ -5,6 +5,7 @@
 .album__artist {
   font-size: 2em;
   padding-bottom: 1em;
+  font-weight: 300;
 }
 
 .album__content--left {
@@ -19,11 +20,12 @@
 }
 
 .album__content--title {
-
+  margin-bottom: .5em;
 }
 
 .album__description {
   flex-wrap: no-wrap;
+  margin-bottom: 1.4em;
 }
 
 .album__layout {
@@ -36,12 +38,12 @@
 }
 
 .single-album__title {
-  font-weight: 300;
+  /* font-weight: 300; */
 }
 
 .single-album__cover {
-  max-width: 350px;
-  max-height: 350px;
+  max-width: 300px;
+  max-height: 300px;
   align-self: center;
   margin-bottom: 1.5em;
 }

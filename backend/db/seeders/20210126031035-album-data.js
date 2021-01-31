@@ -42,7 +42,7 @@ module.exports = {
           title: 'Haydn String Quartets, Op. 76 1-3',
           artistId: 8,
           releaseDate: 1988,
-          imageUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/Takacs-Haydn.jpg',
+          imageUrl: 'https://musiconimbus.s3.us-east-2.amazonaws.com/takacs-haydn.jpg',
           description: null
         },
         {
