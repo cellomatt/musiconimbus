@@ -57,6 +57,18 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
     }
   }
 
+  const closeDiv = () => {
+    setTitle('');
+    setComposerId('Please select a composer');
+    setFirstName('');
+    setLastName('');
+    setSong(null);
+    setAddSong(false);
+    setEditSong(false);
+    setChange((change) => !change);
+    buttonClick();
+  }
+
   const updateFile = (e) => {
     const file = e.target.files[0];
     if (file) setSong(file);
@@ -64,8 +76,11 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
 
   if (allComposers) return (
     <>
-      {!editSong ? <h3 className="add-song__title">Add a song to your album</h3> :
-      <h3 className="add-song__title">Edit song</h3>}
+      <div className="add-song__title-container">
+        {!editSong ? <h3 className="add-song__title">Add a song to your album:</h3> :
+        <h3 className="add-song__title">Edit song:</h3>}
+        <button type="button" className="x" onClick={closeDiv}><i className="fas fa-times"></i></button>
+      </div>
       <form className="form__song" onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

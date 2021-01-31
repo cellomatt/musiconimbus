@@ -40,32 +40,13 @@ export default function Dashboard({ sessionUser }) {
         <div className="main__user-assets">
           <div className="title__container">
             <h2 className="title">Your Albums</h2>
-            <button className="btn btn--secondary" onClick={onClick}>+ Add Music  </button>
+            <button className="btn btn--secondary" onClick={onClick}>+ Add Album</button>
           </div>
           <div className="albums--layout">
             {userAlbumsArray.map(album => {
                 return (
                   <AlbumContainer key={album.id} album={album} />
                 )
-              })
-            }
-          </div>
-          <div className="title__container">
-            <h2 className="title">Your Songs</h2>
-          </div>
-          <div className="songs--layout">
-            {userAlbumsArray.map(album => {
-              if (album.Songs) {
-                const songsArray = Object.values(album.Songs);
-                  return songsArray.map(song => {
-                    return (
-                      <div key={song.id}>
-                        <SongContainer album={album} song={song} sessionUser={sessionUser} change={change} setChange={setChange} />
-                      </div>
-                    )
-                  })
-                }
-              return '';
               })
             }
           </div>

@@ -63,15 +63,17 @@ nav {
 }
 
 .btn--tertiary {
-  padding: .3em .5em;
-  margin: 0 .2em;
-  font-size: 1em;
-  font-weight: 300;
+  padding: none;
+  margin: 0 0 .6em 0;
+  font-size: .9em;
+  font-weight: 500;
   background-color: white;
+  /* border: none; */
+  text-align: left;
 }
 
 .btn--tertiary:hover {
-  box-shadow: 0 0 7px rgba(157, 106, 253, .9);
+  box-shadow: 0 0 4px rgba(157, 106, 253, 1);
 }
 
 .form {
@@ -131,7 +133,6 @@ textarea {
 
 input:focus,
 textarea:focus {
-  /* border-color: #333; */
 box-shadow: 0 0 4px rgba(157, 106, 253, 1);
 }
 

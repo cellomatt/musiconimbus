@@ -62,9 +62,7 @@ export default function Album({ sessionUser }) {
       <div className="album__layout">
         <div className="album__content--left">
           {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
-          {userAlbum &&
-            <button id="plus-button" className="btn btn--tertiary" type="button" onClick={buttonClick}>{buttonText}</button>
-          }
+
         </div>
         <div className="album__content--right">
           {album.description &&
@@ -76,6 +74,9 @@ export default function Album({ sessionUser }) {
           <h3 className="album__content--title">Release Date</h3>
           <p className="album__description">{album.releaseDate}</p>
           <div className="song--layout">
+            {userAlbum &&
+              <button id="plus-button" className="btn btn--tertiary" type="button" onClick={buttonClick}>{buttonText}</button>
+            }
             <h3 className="album__content--title">Songs</h3>
             {album && Object.values(album.Songs).map(song => {
               return (
