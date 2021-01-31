@@ -1,6 +1,6 @@
 import { Redirect, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as userAlbumsActions from "../../store/userAlbums";
 import AlbumContainer from "../AlbumContainer";
 import SongContainer from "../SongContainer";
@@ -10,12 +10,13 @@ import "./Dashboard.css"
 export default function Dashboard({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [change, setChange] = useState(false);
   const userAlbums = useSelector(state => state.userAlbums);
   const userAlbumsArray = Object.values(userAlbums);
 
   useEffect(() => {
     dispatch(userAlbumsActions.getUserAlbums(sessionUser.id))
-  }, [dispatch, sessionUser.id]);
+  }, [dispatch, sessionUser.id, change]);
 
 
   if (!sessionUser) return (
@@ -59,7 +60,7 @@ export default function Dashboard({ sessionUser }) {
                   return songsArray.map(song => {
                     return (
                       <div key={song.id}>
-                        <SongContainer album={album} song={song} sessionUser={sessionUser}/>
+                        <SongContainer album={album} song={song} sessionUser={sessionUser} change={change} setChange={setChange} />
                       </div>
                     )
                   })

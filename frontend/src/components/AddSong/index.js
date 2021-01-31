@@ -33,7 +33,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
         setDescription('');
         setSong(null);
         setAddSong(false);
-        setChange(!change);
+        setChange((change) => !change);
         buttonClick();
       })
       .catch((res) => {

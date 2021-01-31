@@ -1,24 +1,26 @@
-// import { Link } from "react-router-dom";
+
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { play } from "../../store/nowPlaying"
 import { deleteOneSong } from "../../store/songs";
 import "./SongContainer.css";
 
-export default function SongContainer({ album, song, sessionUser }) {
+export default function SongContainer({ album, song, sessionUser, change, setChange }) {
   const dispatch = useDispatch();
   const [userSong, setUserSong] = useState(false);
 
   useEffect(() => {
     if (sessionUser.id === album.artistId) setUserSong(true);
-  }, [sessionUser, song])
+  }, [sessionUser, album])
 
-  const onClick = (e) => {
+  const onClick = () => {
     dispatch(play(song));
   }
 
-  const deleteSong = (e) => {
-    dispatch(deleteOneSong(song.id))
+  const deleteSong = async () => {
+    await dispatch(deleteOneSong(song.id))
+      .then((_res) =>  setChange((change) => !change))
+     ;
   }
 
   return (

@@ -12,7 +12,7 @@ export default function Album({ sessionUser }) {
   const [userAlbum, setUserAlbum] = useState(false);
   const [addSong, setAddSong] = useState(false);
   const [buttonText, setButtonText] = useState("+ Add a Song");
-  const [change, setChange] = useState(false);
+  const [change, setChange] = useState(0);
 
   const album = useSelector(state => state.albums.currentAlbum);
   const artist = useSelector(state => state.albums.currentArtist);
@@ -55,7 +55,7 @@ export default function Album({ sessionUser }) {
         {album && Object.values(album.Songs).map(song => {
           return (
             <div key={song.id}>
-              <SongContainer album={album} sessionUser={sessionUser} song={song} />
+              <SongContainer album={album} sessionUser={sessionUser} song={song} change={change} setChange={setChange} />
             </div>
             )
           })

@@ -13,9 +13,9 @@ const validateSong = [
   check('title')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a track title.'),
-  check('song')
-    .exists({ checkFalsy: true })
-    .withMessage('Please select a song to upload.'),
+  // check('file')
+  //   .exists({ checkFalsy: true })
+  //   .withMessage('Please select a song to upload.'),
   handleValidationErrors,
 ];
 
