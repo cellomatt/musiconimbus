@@ -48,11 +48,12 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
     <>
       <p>Add a song to your album</p>
       <form onSubmit={handleSubmit}>
-      <ul>
+        <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
         </ul>
+        <p className="form__requirement">* Indicates a required field.</p>
         <label htmlFor="title">
-          Song Title
+          Song Title *
         </label>
         <input
           id="title"
@@ -62,9 +63,9 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           required
         />
         <label htmlFor="composerId">
-          Composer
+          Composer *
         </label>
-        <p>If your composer isn't listed, please add them to our database.</p>
+        <p className="form__label--subheader">If your composer isn't listed, please add them to our database.</p>
         <select
           id="composerId"
           value={composerId}
@@ -88,7 +89,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
         {composerId==="" &&
           <>
             <label htmlFor="firstName">
-              First Name
+              First Name *
             </label>
             <input
               id="firstName"
@@ -108,7 +109,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           </>
         }
         <label htmlFor="song">
-          Upload Track
+          Upload Track *
         </label>
         <input
           id="song"
@@ -118,7 +119,7 @@ export default function AddSong({ change, setChange, setAddSong, album, buttonCl
           required
         />
         <div className="button-container">
-          <button type="submit" className="btn btn--primary">Upload</button>
+          <button type="submit" className="btn btn--secondary btn--tertiary">Upload</button>
         </div>
       </form>
     </>

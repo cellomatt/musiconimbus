@@ -1,16 +1,3 @@
-
-.form__label--subheader {
-  padding: .1em 0 .3em;
-  font-size: .7em;
-  color: #777;
-}
-
-.form__requirement {
-  padding: .5em 0 .7em;
-  font-size: .7em;
-  color: #777;
-}
-
 .form__title {
   font-family: 'Lora', serif;
   font-size: 2.5em;

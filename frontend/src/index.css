@@ -55,12 +55,21 @@ nav {
 .btn--secondary {
   padding: .5em .7em;
   margin: 0 .2em;
-  box-sizing: border-box;
 }
 
 .btn--secondary:hover {
   background-color: #9d6afd;
   box-shadow: 0 0 7px rgba(157, 106, 253, .9);
+}
+
+.btn--tertiary {
+  padding: .5em .7em;
+  margin: 0 .2em;
+}
+
+.btn--tertiary:hover {
+  background-color: rgb(255, 75, 240);
+  box-shadow: 0 0 7px rgba(255, 75, 240, .9);
 }
 
 .form {
@@ -84,6 +93,18 @@ nav {
   padding: .3em 0 .5em;
   margin-bottom: .1em;
   font-size: 2em;
+}
+
+.form__label--subheader {
+  padding: .1em 0 .3em;
+  font-size: .7em;
+  color: #777;
+}
+
+.form__requirement {
+  padding: .5em 0 .7em;
+  font-size: .7em;
+  color: #777;
 }
 
 h1 {
