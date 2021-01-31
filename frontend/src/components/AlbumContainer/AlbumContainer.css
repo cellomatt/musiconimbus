@@ -1,12 +1,12 @@
 .album__title {
   box-sizing: border-box;
   padding-bottom: .4em;
+  text-align: center;
 }
 
 .album__cover {
   box-sizing: border-box;
   max-width: 200px;
-  /* min-height: 150px; */
   text-align: center;
   padding: .5em;
 }
