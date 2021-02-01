@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import * as userAlbumsActions from "../../store/userAlbums";
 import AlbumContainer from "../AlbumContainer";
-import SongContainer from "../SongContainer";
 
 import "./Dashboard.css"
 
@@ -16,7 +15,7 @@ export default function Dashboard({ sessionUser }) {
 
   useEffect(() => {
     dispatch(userAlbumsActions.getUserAlbums(sessionUser.id))
-  }, [dispatch, sessionUser.id, change]);
+  }, [dispatch, sessionUser.id, change, setChange]);
 
 
   if (!sessionUser) return (
