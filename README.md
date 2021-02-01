@@ -2,10 +2,11 @@
 
 
 **MusicoNimbus** is based on **[SoundCloud](https://soundcloud.com/)**, but with a classical music twist.
-Logged in users can create albums, add, edit, or delete songs in those albums (specifying a composer for each piece of music from the available list or adding to it), and explore albums from other artists on the site.
+Logged in users can create and delete albums, add, edit, or delete songs in those albums (specifying a composer for each piece of music from the available list or adding to the list), and explore albums from other artists on the site.
 They can also listen to songs with an audio player that persists across all pages on the site when logged in.
 
 ### Try the live site <a href=http://musiconimbus.herokuapp.com/>here</a>. <b>|</b> View the database schema and feature list in the <a href="https://github.com/cellomatt/musiconimbus/wiki">Wiki</a>.
+
 
 
 # Tech Stack
@@ -18,6 +19,7 @@ MusicoNimbus uses the following tools, frameworks, and key packages:
 ### [Node.js](http://nodejs.org/)
 ### [react-h5-audio-player](https://www.npmjs.com/package/react-h5-audio-player)
 ### Hosted on [Heroku](www.heroku.com)
+
 
 
 # Run MusicoNimbus Locally
