@@ -23,6 +23,6 @@ Follow these instructions to run MusicoNimbus on your local machine. Note: image
 - Open the root folder in your terminal and use ```npm install``` (requires Node.js) to install all dependencies (frontend and backend)
 - Make a local ```.env``` file in the ```/backend``` folder using the ```.env.save``` file. Edit to match local configurations. <b>Note that file upload is not supported without valid AWS secret and key. DO NOT expose your AWS credentials on github.</b>
 - Create the user and database from your ```.env``` in psql
-  * Run all migrations with ```npx dotenv sequelize db:migrate```
-  * Seed all data with ```npx dotenv sequelize db:seed:all```
+- Run all migrations with ```npx dotenv sequelize db:migrate```
+- Seed all data with ```npx dotenv sequelize db:seed:all```
 - In two seperate terminals, ```cd``` into your ```/backend``` folder and your ```/frontend``` folder. Use the script ```npm start``` in each to start the servers. React will launch the site in your browser.
