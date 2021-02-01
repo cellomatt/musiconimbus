@@ -65,7 +65,7 @@ export default function userAlbumsReducer(state = initialState, action) {
       return updateState;
     }
     case DELETE_ALBUM: {
-      delete updateState[action.songId];
+      delete updateState[action.albumId];
       return updateState;
     }
     case ADD_ALBUM: {

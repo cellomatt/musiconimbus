@@ -10,13 +10,13 @@ export default function Dashboard({ sessionUser }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [change, setChange] = useState(false);
+
   const userAlbums = useSelector(state => state.userAlbums);
   const userAlbumsArray = Object.values(userAlbums);
 
   useEffect(() => {
     dispatch(userAlbumsActions.getUserAlbums(sessionUser.id))
   }, [dispatch, sessionUser.id, change]);
-
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -30,12 +30,12 @@ export default function Dashboard({ sessionUser }) {
     await dispatch(userAlbumsActions.deleteOneAlbum(e.target.id))
       .then(() => {
         setChange((change) => !change);
-        history.push("/dashboard");
       })
     };
 
-  return (
+ return (
     <div className="main">
+      {console.log(userAlbums)}
       {!userAlbumsArray.length > 0 &&
         <div className="empty-dashboard vertical-center">
           <h1>Welcome, {sessionUser.firstName}!</h1>
