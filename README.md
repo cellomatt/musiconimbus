@@ -3,9 +3,9 @@
 Logged in users can create albums, add, edit, or delete songs in those albums (specifying a composer for each piece of music from the available list or adding to it), and explore albums from other artists on the site.
 They can also listen to songs with an audio player that persists across all pages on the site when logged in.
 
-<h2>Try the live site <a href=http://musiconimbus.herokuapp.com/>here</a>. <b>|</b> View the database schema and feature list in the <a href="https://github.com/cellomatt/musiconimbus/wiki">Wiki</a>.</h2>
+### Try the live site <a href=http://musiconimbus.herokuapp.com/>here</a>. <b>|</b> View the database schema and feature list in the <a href="https://github.com/cellomatt/musiconimbus/wiki">Wiki</a>.
 
-# Tech Stack
+## Tech Stack
 MusicoNimbus uses the following tools, frameworks, and key packages:
 
 ### Sequelize (with PostgreSQL)
@@ -15,7 +15,7 @@ MusicoNimbus uses the following tools, frameworks, and key packages:
 ### Node.js
 ### react-h5-audio-player
 
-# Run MusicoNimbus Locally
+## Run MusicoNimbus Locally
 Follow these instructions to run MusicoNimbus on your local machine. Note: image and song uploads will not work without a valid AWS key and secret.
 
 - Clone the repository at https://github.com/cellomatt/musiconimbus.git
