@@ -8,6 +8,7 @@ They can also listen to songs with an audio player that persists across all page
 ### Try the live site <a href=http://musiconimbus.herokuapp.com/>here</a>. <b>|</b> View the database schema and feature list in the <a href="https://github.com/cellomatt/musiconimbus/wiki">Wiki</a>.
 
 
+
 # Tech Stack
 MusicoNimbus uses the following tools, frameworks, and key packages:
 
@@ -18,6 +19,7 @@ MusicoNimbus uses the following tools, frameworks, and key packages:
 ### [Node.js](http://nodejs.org/)
 ### [react-h5-audio-player](https://www.npmjs.com/package/react-h5-audio-player)
 ### Hosted on [Heroku](www.heroku.com)
+
 
 
 # Run MusicoNimbus Locally
