@@ -13,8 +13,8 @@ const validateSong = [
   check('title')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a track title.')
-    .isLength({ max: 70 })
-    .withMessage('Track title must be 70 characters or less.'),
+    .isLength({ max: 75 })
+    .withMessage('Track title must be 75 characters or less.'),
   handleValidationErrors,
 ];
 
@@ -40,7 +40,7 @@ router.post(
     const song = await Song.create(songData, {
       include: [Composer]
     })
-    
+
 
 
     return res.json({song});
