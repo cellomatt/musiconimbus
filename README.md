@@ -8,12 +8,13 @@ They can also listen to songs with an audio player that persists across all page
 ## Tech Stack
 MusicoNimbus uses the following tools, frameworks, and key packages:
 
-### Sequelize (with PostgreSQL)
-### Express.js
-### React
-### Redux
-### Node.js
-### react-h5-audio-player
+### [Sequelize](https://sequelize.org/) (with [PostgreSQL](https://www.postgresql.org/))
+### [Express.js](https://expressjs.com/)
+### [React](https://reactjs.org/)
+### [Redux](https://react-redux.js.org/)
+### [Node.js](http://nodejs.org/)
+### [react-h5-audio-player](https://www.npmjs.com/package/react-h5-audio-player)
+### Hosted on [Heroku](www.heroku.com)
 
 ## Run MusicoNimbus Locally
 Follow these instructions to run MusicoNimbus on your local machine. Note: image and song uploads will not work without a valid AWS key and secret.
