@@ -1,6 +1,6 @@
 ![musiconimbus_header](https://user-images.githubusercontent.com/70362985/106419949-42a7f780-641f-11eb-8607-26359f76fb68.png)
 
-# MusicoNimbus
+
 **MusicoNimbus** is based on **[SoundCloud](https://soundcloud.com/)**, but with a classical music twist.
 Logged in users can create albums, add, edit, or delete songs in those albums (specifying a composer for each piece of music from the available list or adding to it), and explore albums from other artists on the site.
 They can also listen to songs with an audio player that persists across all pages on the site when logged in.
@@ -8,7 +8,7 @@ They can also listen to songs with an audio player that persists across all page
 ### Try the live site <a href=http://musiconimbus.herokuapp.com/>here</a>. <b>|</b> View the database schema and feature list in the <a href="https://github.com/cellomatt/musiconimbus/wiki">Wiki</a>.
 
 
-## Tech Stack
+# Tech Stack
 MusicoNimbus uses the following tools, frameworks, and key packages:
 
 ### [Sequelize](https://sequelize.org/) (with [PostgreSQL](https://www.postgresql.org/))
@@ -20,7 +20,7 @@ MusicoNimbus uses the following tools, frameworks, and key packages:
 ### Hosted on [Heroku](www.heroku.com)
 
 
-## Run MusicoNimbus Locally
+# Run MusicoNimbus Locally
 Follow these instructions to run MusicoNimbus on your local machine. Note: image and song uploads will not work without a valid AWS key and secret.
 
 - Clone the repository at https://github.com/cellomatt/musiconimbus.git
