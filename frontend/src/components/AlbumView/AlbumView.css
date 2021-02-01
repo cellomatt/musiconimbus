@@ -53,19 +53,6 @@
   font-size: 1.5em;
 }
 
-/* .single-album__title {
-  align-self: center;
-  flex-shrink: 0;
-}
-
-.single-album__title--container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-} */
-
 .single-album__cover {
   max-width: 300px;
   max-height: 300px;

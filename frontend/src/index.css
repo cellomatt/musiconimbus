@@ -53,7 +53,6 @@ nav {
 }
 
 .btn--secondary {
-  /* padding: .5em .7em; */
   margin: 0 .2em;
 }
 
@@ -68,7 +67,6 @@ nav {
   font-size: .9em;
   font-weight: 500;
   background-color: white;
-  /* border: none; */
   text-align: left;
 }
 
@@ -90,7 +88,6 @@ nav {
   align-content: flex-start;
   justify-content: flex-start;
   flex-wrap: wrap;
-  /* list-style-type: disc; */
 }
 
 .errors--li {
