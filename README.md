@@ -1,3 +1,5 @@
+![musiconimbus_header](https://user-images.githubusercontent.com/70362985/106419949-42a7f780-641f-11eb-8607-26359f76fb68.png)
+
 # MusicoNimbus
 **MusicoNimbus** is based on **[SoundCloud](https://soundcloud.com/)**, but with a classical music twist.
 Logged in users can create albums, add, edit, or delete songs in those albums (specifying a composer for each piece of music from the available list or adding to it), and explore albums from other artists on the site.
