@@ -5,7 +5,7 @@ import "./AudioPlayer.css"
 export default function MyAudioPlayer({ nowPlaying }) {
 
   // const playNext = (nowPlaying) => {
-
+    // FOR FUTURE AUTO-PLAY FEATURE
   // }
 
 
