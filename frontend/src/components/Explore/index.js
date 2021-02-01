@@ -30,7 +30,7 @@ export default function Explore({ sessionUser }) {
     <div className="main">
       <h1>Discover new music.</h1>
       <p className="tagline tagline-explore" >Explore albums from other MusicoNimbus artists.</p>
-          <div className="albums--layout">
+          <div className="albums__layout">
             {albumsArray.map(album => {
                 return (
                   <AlbumContainer key={album.id} album={album} artist={album.User} />
