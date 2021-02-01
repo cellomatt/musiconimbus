@@ -35,7 +35,6 @@ export default function Dashboard({ sessionUser }) {
 
  return (
     <div className="main">
-      {console.log(userAlbums)}
       {!userAlbumsArray.length > 0 &&
         <div className="empty-dashboard vertical-center">
           <h1>Welcome, {sessionUser.firstName}!</h1>
