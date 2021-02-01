@@ -10,7 +10,7 @@ module.exports = {
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING(70)
+        type: Sequelize.STRING(75)
       },
       albumId: {
         allowNull: false,
