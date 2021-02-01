@@ -9,7 +9,12 @@ const { handleValidationErrors } = require('../../utils/validation');
 const validateComposer = [
   check('firstName')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a name.'),
+    .withMessage('Please provide a name.')
+    .isLength({ max: 20 })
+    .withMessage('First name must be 20 characters or less.'),
+  check('lastName')
+    .isLength({ max: 50 })
+    .withMessage('Last name must be 50 characters or less.'),
   handleValidationErrors,
 ];
 

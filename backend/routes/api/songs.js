@@ -12,10 +12,9 @@ const router = express.Router();
 const validateSong = [
   check('title')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a track title.'),
-  // check('file')
-  //   .exists({ checkFalsy: true })
-  //   .withMessage('Please select a song to upload.'),
+    .withMessage('Please provide a track title.')
+    .isLength({ max: 70 })
+    .withMessage('Track title must be 70 characters or less.'),
   handleValidationErrors,
 ];
 

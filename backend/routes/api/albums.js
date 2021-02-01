@@ -12,12 +12,13 @@ const router = express.Router();
 const validateAlbum = [
   check('title')
     .exists({ checkFalsy: true })
+    .withMessage('Please provide an album title.')
     .isLength({ max: 40 })
-    .withMessage('Please provide an album title that is less than 40 characters long.'),
+    .withMessage('Album title must be 40 characters or less.'),
   check('releaseDate')
     .exists({ checkFalsy: true })
     .isLength({ min:4, max:4 })
-    .isInt({ min: 1890 })
+    .isInt({ min: 1880 })
     .withMessage('Please enter a valid year.'),
   handleValidationErrors,
 ];
