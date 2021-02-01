@@ -15,7 +15,7 @@ export default function Dashboard({ sessionUser }) {
 
   useEffect(() => {
     dispatch(userAlbumsActions.getUserAlbums(sessionUser.id))
-  }, [dispatch, sessionUser.id, change, setChange]);
+  }, [dispatch, sessionUser.id, change]);
 
 
   if (!sessionUser) return (
@@ -25,6 +25,14 @@ export default function Dashboard({ sessionUser }) {
   const onClick = () => {
     history.push("/albums/new")
   }
+
+  const deleteAlbum = async (e) => {
+    await dispatch(userAlbumsActions.deleteOneAlbum(e.target.id))
+      .then(() => {
+        setChange((change) => !change);
+        history.push("/dashboard");
+      })
+    };
 
   return (
     <div className="main">
@@ -44,9 +52,9 @@ export default function Dashboard({ sessionUser }) {
           <div className="albums__layout">
             {userAlbumsArray.map(album => {
                 return (
-                  <div className="album__container">
-                    <AlbumContainer key={album.id} album={album} />
-                    <button className="trash-can album__trash">Delete Album <i className="fas fa-trash"></i></button>
+                  <div key={album.id} className="album__container">
+                    <AlbumContainer album={album} />
+                    <button id={album.id} onClick={deleteAlbum} className="trash-can album__trash">Delete Album <i className="fas fa-trash"></i></button>
                   </div>
                 )
               })

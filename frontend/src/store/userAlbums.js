@@ -2,6 +2,7 @@ import { fetch } from "./csrf";
 
 const LOAD_USER_ALBUMS = "userAlbums/LOAD_USER_ALBUMS"
 const ADD_ALBUM = "userAlbums/ADD_ALBUM"
+const DELETE_ALBUM = "userAlbums/DELETE_ALBUM"
 
 
 export const loadAlbums = (albums) => {
@@ -10,6 +11,10 @@ export const loadAlbums = (albums) => {
 
 export const addAlbum = (album) => {
   return { type: ADD_ALBUM, album}
+}
+
+export const deleteAlbum = (albumId) => {
+  return { type: DELETE_ALBUM, albumId };
 }
 
 export const getUserAlbums = (userId) => async dispatch => {
@@ -38,6 +43,16 @@ export const createAlbum = (album) => async dispatch => {
   return res;
 }
 
+export const deleteOneAlbum = (albumId) => async dispatch => {
+  const res = await fetch(`/api/albums/${albumId}`, {
+    method: 'DELETE',
+  });
+  if (res.ok) {
+    dispatch(deleteAlbum(albumId));
+    return res;
+  }
+}
+
 const initialState = {};
 
 export default function userAlbumsReducer(state = initialState, action) {
@@ -49,11 +64,10 @@ export default function userAlbumsReducer(state = initialState, action) {
       })
       return updateState;
     }
-    // case REMOVE_ALBUM: {
-    //   const albums = { ...state };
-    //   delete albums[action.itemId];
-    //   return albums;
-    // }
+    case DELETE_ALBUM: {
+      delete updateState[action.songId];
+      return updateState;
+    }
     case ADD_ALBUM: {
       updateState[action.album.id] = action.album;
       return updateState;

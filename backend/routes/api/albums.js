@@ -57,6 +57,13 @@ router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
   return res.json({album, artist});
 }));
 
+//delete a single album
+router.delete('/:id(\\d+)', asyncHandler(async function(req, res) {
+  const album = await Album.findByPk(req.params.id);
+  album.destroy();
+  return res.json({ message: 'success' });
+}));
+
 // update a single album
 // router.patch(
 //   '/:id(\\d+)',
