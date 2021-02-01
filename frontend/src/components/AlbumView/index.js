@@ -57,7 +57,9 @@ export default function Album({ sessionUser }) {
 
   if (album) return (
     <div className="main">
-      <h1 className="single-album__title">{album.title}</h1>
+      <div className="single-album__title--container">
+        <h1 className="single-album__title">{album.title}</h1>
+      </div>
       {artist && <h2 className="album__artist">{artist.artistName}</h2>}
       <div className="album__layout">
         <div className="album__content--left">

@@ -1,5 +1,5 @@
 import "./Home.css";
-import { ReactComponent as Logo } from "../images/musiconimbus.svg"
+import { ReactComponent as Logo } from "../images/musiconimbus2.svg"
 
 
 export default function Home() {

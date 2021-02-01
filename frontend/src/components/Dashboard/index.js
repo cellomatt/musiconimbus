@@ -41,10 +41,13 @@ export default function Dashboard({ sessionUser }) {
             <h2 className="title">Your Albums</h2>
             <button className="btn btn--secondary" onClick={onClick}>+ Add Album</button>
           </div>
-          <div className="albums--layout">
+          <div className="albums__layout">
             {userAlbumsArray.map(album => {
                 return (
-                  <AlbumContainer key={album.id} album={album} />
+                  <div className="album__container">
+                    <AlbumContainer key={album.id} album={album} />
+                    <button className="trash-can album__trash">Delete Album <i className="fas fa-trash"></i></button>
+                  </div>
                 )
               })
             }

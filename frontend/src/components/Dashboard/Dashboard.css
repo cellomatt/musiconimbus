@@ -1,9 +1,25 @@
-.albums--layout {
+.album__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1em;
+}
+
+.albums__layout {
   display: flex;
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.album__trash {
+  font-size: 1em;
+  width: 100%;
+}
+
+.album__trash:hover {
+  font-size: 1.6em;
 }
 
 .empty-dashboard {
