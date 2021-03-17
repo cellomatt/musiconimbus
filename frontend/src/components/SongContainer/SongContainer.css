@@ -21,7 +21,6 @@
 
 .btn--play-select:hover p {
   color: black;
-  font-weight: bold;
 }
 
 .composer {
@@ -56,10 +55,18 @@
 
 @media screen and (max-width: 650px) {
   .composer {
-    display: none;
+    padding: .2em 0;
+    width: 100%;
+    text-align: center;
+    font-size: 1em;
   }
 
   .song__title {
-    font-size: 1.5em;
+    font-size: 1.3em;
+  }
+
+  .btn--play-select {
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 }

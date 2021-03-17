@@ -14,6 +14,7 @@ export default function MyAudioPlayer({ nowPlaying }) {
       {nowPlaying.Album &&
         <div className="song-info__container">
           <p className="song-info">{nowPlaying.title}</p>
+          <p className="song-info">{nowPlaying.Composer.firstName} {nowPlaying.Composer.lastName}</p>
           <p className="song-info">{nowPlaying.Album.User.artistName} • <i>{nowPlaying.Album.title}</i></p>
         </div>}
       <AudioPlayer className="player"
