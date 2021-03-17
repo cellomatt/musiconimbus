@@ -117,7 +117,8 @@
   }
 
   .song-info__container {
-    display: none;
+    /* display: none; */
+    font-size: .6em;
   }
 
 }
