@@ -135,6 +135,12 @@ h1 {
   font-size: 4em;
 }
 
+html {
+  margin-left: calc(100vw - 100%);
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+
 input {
   height: 2.2em;
 }
