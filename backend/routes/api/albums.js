@@ -65,19 +65,21 @@ router.delete('/:id(\\d+)', asyncHandler(async function(req, res) {
 }));
 
 // update a single album
-// router.patch(
-//   '/:id(\\d+)',
-//   validateAlbum,
-//   asyncHandler(async function (req, res) {
-//     const album = await Album.findByPk(req.params.id)
-//     if (req.file) {
-//       const imageUrl = await singlePublicFileUpload(req.file);
-//       req.body.imageUrl = imageUrl;
-//     }
-//     await album.update(req.body);
-//     return res.json({album});
-//   })
-// );
+router.patch(
+  '/:id(\\d+)',
+  requireAuth,
+  singleMulterUpload("photo"),
+  validateAlbum,
+  asyncHandler(async function (req, res) {
+    const album = await Album.findByPk(req.params.id)
+    if (req.file) {
+      const imageUrl = await singlePublicFileUpload(req.file);
+      req.body.imageUrl = imageUrl;
+    }
+    await album.update(req.body);
+    return res.json({album});
+  })
+);
 
 // access all of a user's albums
 router.get('/user/:id(\\d+)',

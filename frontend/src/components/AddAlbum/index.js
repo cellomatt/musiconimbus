@@ -1,37 +1,74 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, useHistory } from "react-router-dom";
+import { Redirect, useHistory, useParams } from "react-router-dom";
 import * as userAlbumsActions from "../../store/userAlbums";
 import "./AddAlbum.css";
 
 export default function AddAlbum() {
+  const { albumId }= useParams()
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
+  const album = useSelector(state => state.userAlbums[albumId]);
+  const userAlbums = useSelector(state => state.userAlbums);
   const [title, setTitle] = useState('');
   const [releaseDate, setReleaseDate] = useState('');
   const [description, setDescription] = useState('');
   const [photo, setPhoto] = useState(null);
   const [errors, setErrors] = useState([]);
+  const [editAlbum, setEditAlbum] = useState(false);
   const artistId = sessionUser.id;
+
+  useEffect(() => {
+    if (albumId && album) {
+      setEditAlbum(true);
+      setTitle(album.title);
+      setReleaseDate(album.releaseDate);
+      setDescription(album.description);
+    }
+  }, [albumId, album])
+
+  useEffect(() => {
+    dispatch(userAlbumsActions.getUserAlbums(sessionUser.id))
+  }, [dispatch, sessionUser.id]);
+
+  useEffect(() => {
+    if (albumId && (Object.values(userAlbums).length > 0)) {
+      if (!(albumId in userAlbums)) {
+        history.push("/albums/new")
+      }
+    }
+  }, [albumId, album, userAlbums])
 
   if (!sessionUser) return (
     <Redirect to="/" />
   );
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
     setReleaseDate(Number(releaseDate));
 
-    let createdAlbum = await dispatch(userAlbumsActions.createAlbum({title, artistId, releaseDate, description, photo}))
-      .catch((res) => {
-        if (res.data && res.data.errors) setErrors(res.data.errors);
-      });
+    if (!editAlbum) {
+      let createdAlbum = await dispatch(userAlbumsActions.createAlbum({title, artistId, releaseDate, description, photo}))
+        .catch((res) => {
+          if (res.data && res.data.errors) setErrors(res.data.errors);
+        });
 
-    if (createdAlbum) {
-      history.push(`/albums/${createdAlbum.data.album.id}`);
-    }
+        if (createdAlbum) {
+          history.push(`/albums/${createdAlbum.data.album.id}`);
+        }
+      } else {
+        let updatedAlbum = await dispatch(userAlbumsActions.updateAlbum({title, artistId, releaseDate, description, photo, albumId}))
+          .catch((res) => {
+            if (res.data && res.data.errors) setErrors(res.data.errors);
+          });
+
+          if (updatedAlbum) {
+            history.push(`/albums/${updatedAlbum.data.album.id}`);
+          }
+      }
   }
 
   const updateFile = (e) => {
@@ -41,7 +78,7 @@ export default function AddAlbum() {
 
   return (
     <div className="main">
-      <h1>Add an Album</h1>
+      {!editAlbum ? <h1>Add an Album</h1> : <h1>Edit Album</h1>}
       <form className="form form__album-create" onSubmit={handleSubmit}>
         {errors.length > 0 && <ul className="errors">
           {errors.map((error, idx) => <li className="errors--li" key={idx}>{error}</li>)}
@@ -84,7 +121,8 @@ export default function AddAlbum() {
           onChange={updateFile}
         />
         <div className="button-container">
-          <button type="submit" className="btn btn--primary">Create</button>
+        {!editAlbum ? <button type="submit" className="btn btn--primary">Create</button> :
+        <button type="submit" className="btn btn--primary">Update</button>}
         </div>
       </form>
     </div>

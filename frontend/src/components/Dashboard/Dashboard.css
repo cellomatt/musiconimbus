@@ -5,6 +5,13 @@
   padding-bottom: 1.5em;
 }
 
+.album__container--buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
 .albums__layout {
   display: flex;
   flex-direction: row;
@@ -14,12 +21,13 @@
 }
 
 .album__trash {
-  font-size: 1em;
+  font-size: 1.3em;
   width: 100%;
+  padding: .5em;
 }
 
 .album__trash:hover {
-  font-size: 1.1em;
+  font-size: 1.3em;
 }
 
 .empty-dashboard {

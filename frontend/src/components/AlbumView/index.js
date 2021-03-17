@@ -1,4 +1,4 @@
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as albumsActions from "../../store/albums";
@@ -8,6 +8,7 @@ import AddSong from "../AddSong";
 import "./AlbumView.css"
 
 export default function Album({ sessionUser }) {
+  const history = useHistory();
   const { albumId } = useParams();
   const dispatch = useDispatch();
   const [userAlbum, setUserAlbum] = useState(false);
@@ -39,7 +40,7 @@ export default function Album({ sessionUser }) {
     if (buttonText === "- Add a Song") { setButtonText("+ Add a Song")};
   }
 
-  const edit = async (e) => {
+  const editSongInfo = async (e) => {
 
     await dispatch(songsActions.getOneSong(e.currentTarget.id))
       .then((res) => {
@@ -50,6 +51,11 @@ export default function Album({ sessionUser }) {
         setEditSong(true);
     })
   }
+
+  const editAlbum = (e) => {
+    history.push(`/albums/${e.target.id}/edit`)
+  }
+
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -64,7 +70,13 @@ export default function Album({ sessionUser }) {
       <div className="album__layout">
         <div className="album__content--left">
           {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
-
+          {!album.imageUrl &&
+            <div className="single-album__cover--placeholder-container">
+              <i className="fas fa-compact-disc single-album__cover--placeholder album__cover "></i>
+            </div>}
+          {userAlbum &&
+            <button id={album.id} className="btn btn--tertiary album-edit" type="button" onClick={editAlbum}>Edit Album</button>
+          }
         </div>
         <div className="album__content--right">
           {album.description &&
@@ -84,7 +96,7 @@ export default function Album({ sessionUser }) {
               return (
                 <div className="song-container" key={song.id}>
                   <SongContainer album={album} sessionUser={sessionUser} song={song} change={change} setChange={setChange} />
-                  {userAlbum && <button className="edit-button" onClick={edit} id={song.id} ><i className="fas fa-edit"></i></button>}
+                  {userAlbum && <button className="edit-button" onClick={editSongInfo} id={song.id} ><i className="fas fa-edit"></i></button>}
                 </div>
                 )
               })
