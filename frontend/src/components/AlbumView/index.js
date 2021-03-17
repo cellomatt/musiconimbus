@@ -39,7 +39,7 @@ export default function Album({ sessionUser }) {
     if (buttonText === "- Add a Song") { setButtonText("+ Add a Song")};
   }
 
-  const edit = async (e) => {
+  const editSongInfo = async (e) => {
 
     await dispatch(songsActions.getOneSong(e.currentTarget.id))
       .then((res) => {
@@ -50,6 +50,8 @@ export default function Album({ sessionUser }) {
         setEditSong(true);
     })
   }
+
+ 
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -64,7 +66,6 @@ export default function Album({ sessionUser }) {
       <div className="album__layout">
         <div className="album__content--left">
           {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
-
         </div>
         <div className="album__content--right">
           {album.description &&
@@ -84,7 +85,7 @@ export default function Album({ sessionUser }) {
               return (
                 <div className="song-container" key={song.id}>
                   <SongContainer album={album} sessionUser={sessionUser} song={song} change={change} setChange={setChange} />
-                  {userAlbum && <button className="edit-button" onClick={edit} id={song.id} ><i className="fas fa-edit"></i></button>}
+                  {userAlbum && <button className="edit-button" onClick={editSongInfo} id={song.id} ><i className="fas fa-edit"></i></button>}
                 </div>
                 )
               })

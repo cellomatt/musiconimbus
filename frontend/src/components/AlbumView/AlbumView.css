@@ -62,6 +62,32 @@
   margin-top: .4em;
 }
 
+.single-album__title {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.single-album__title--container {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: none;
+  width: 100%;
+}
+
+.single-album__title .edit-button{
+  font-size: .6em;
+  padding: 0;
+  margin: 0;
+  height: 2em;
+}
+
 .song-container {
   display: flex;
   flex-direction: row;

@@ -43,11 +43,14 @@ function App() {
           <Route exact path="/explore">
             <Explore sessionUser={sessionUser}/>
           </Route>
-          <Route path="/albums/new">
+          <Route exact path="/albums/new">
             <AddAlbum />
           </Route>
-          <Route path="/albums/:albumId">
+          <Route exact path="/albums/:albumId">
             <AlbumView sessionUser={sessionUser}/>
+          </Route>
+          <Route exact path="/albums/:albumId/edit">
+            <AddAlbum sessionUser={sessionUser}/>
           </Route>
           <Route>
             <div className="main">
