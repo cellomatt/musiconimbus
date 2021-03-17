@@ -1,4 +1,4 @@
-import { useParams, Redirect } from "react-router-dom";
+import { useParams, Redirect, useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as albumsActions from "../../store/albums";
@@ -8,6 +8,7 @@ import AddSong from "../AddSong";
 import "./AlbumView.css"
 
 export default function Album({ sessionUser }) {
+  const history = useHistory();
   const { albumId } = useParams();
   const dispatch = useDispatch();
   const [userAlbum, setUserAlbum] = useState(false);
@@ -51,7 +52,10 @@ export default function Album({ sessionUser }) {
     })
   }
 
- 
+  const editAlbum = (e) => {
+    history.push(`/albums/${e.target.id}/edit`)
+  }
+
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -66,6 +70,13 @@ export default function Album({ sessionUser }) {
       <div className="album__layout">
         <div className="album__content--left">
           {album.imageUrl && <img className="single-album__cover" alt="album cover art" src={album.imageUrl} />}
+          {!album.imageUrl &&
+            <div className="single-album__cover--placeholder-container">
+              <i className="fas fa-compact-disc single-album__cover--placeholder album__cover "></i>
+            </div>}
+          {userAlbum &&
+            <button id={album.id} className="btn btn--tertiary album-edit" type="button" onClick={editAlbum}>Edit Album</button>
+          }
         </div>
         <div className="album__content--right">
           {album.description &&

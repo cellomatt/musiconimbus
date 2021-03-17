@@ -27,11 +27,11 @@ export default function Dashboard({ sessionUser }) {
   }
 
   const editAlbum = (e) => {
-    history.push(`/albums/${e.target.id}/edit`)
+    history.push(`/albums/${e.currentTarget.id}/edit`)
   }
 
   const deleteAlbum = async (e) => {
-    await dispatch(userAlbumsActions.deleteOneAlbum(e.target.id))
+    await dispatch(userAlbumsActions.deleteOneAlbum(e.currentTarget.id))
       .then(() => {
         setChange((change) => !change);
       })
@@ -57,8 +57,10 @@ export default function Dashboard({ sessionUser }) {
                 return (
                   <div key={album.id} className="album__container">
                     <AlbumContainer album={album} />
-                    <button id={album.id} onClick={deleteAlbum} className="trash-can album__trash">Delete Album <i className="fas fa-trash"></i></button>
-                    <button id={album.id} onClick={editAlbum} className="trash-can album__trash">Edit Album <i className="fas fa-trash"></i></button>
+                    <div className="album__container--buttons">
+                    <button id={album.id} onClick={deleteAlbum} className="trash-can album__trash"><i className="fas fa-trash"></i></button>
+                    <button id={album.id} onClick={editAlbum} className="trash-can album__trash"><i className="fas fa-edit"></i></button>
+                    </div>
                   </div>
                 )
               })
