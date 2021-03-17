@@ -43,6 +43,28 @@ export const createAlbum = (album) => async dispatch => {
   return res;
 }
 
+export const updateAlbum = (album) => async dispatch => {
+  const { title, artistId, releaseDate, description, photo, albumId } = album;
+  console.log(title, artistId, releaseDate, description)
+  const formData = new FormData();
+  formData.append("title", title);
+  formData.append("artistId", artistId);
+  formData.append("releaseDate", releaseDate);
+  formData.append("description", description);
+  if (photo) formData.append("photo", photo);
+
+  const res = await fetch(`/api/albums/${albumId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "multipart/form-data"
+    },
+    body: formData,
+  });
+
+  dispatch(addAlbum(res.data.album))
+  return res;
+}
+
 export const deleteOneAlbum = (albumId) => async dispatch => {
   const res = await fetch(`/api/albums/${albumId}`, {
     method: 'DELETE',

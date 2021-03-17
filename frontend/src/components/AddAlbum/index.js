@@ -9,7 +9,8 @@ export default function AddAlbum() {
   const history = useHistory();
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const album = useSelector(state => state.userAlbums[albumId])
+  const album = useSelector(state => state.userAlbums[albumId]);
+  const userAlbums = useSelector(state => state.userAlbums);
   const [title, setTitle] = useState('');
   const [releaseDate, setReleaseDate] = useState('');
   const [description, setDescription] = useState('');
@@ -19,14 +20,25 @@ export default function AddAlbum() {
   const artistId = sessionUser.id;
 
   useEffect(() => {
-    if (albumId) {
+    if (albumId && album) {
       setEditAlbum(true);
-      console.log(album)
       setTitle(album.title);
       setReleaseDate(album.releaseDate);
       setDescription(album.description);
     }
   }, [albumId, album])
+
+  useEffect(() => {
+    dispatch(userAlbumsActions.getUserAlbums(sessionUser.id))
+  }, [dispatch, sessionUser.id]);
+
+  useEffect(() => {
+    if (albumId && (Object.values(userAlbums).length > 0)) {
+      if (!(albumId in userAlbums)) {
+        history.push("/albums/new")
+      }
+    }
+  }, [albumId, album, userAlbums])
 
   if (!sessionUser) return (
     <Redirect to="/" />
@@ -48,7 +60,7 @@ export default function AddAlbum() {
           history.push(`/albums/${createdAlbum.data.album.id}`);
         }
       } else {
-        let updatedAlbum = await dispatch(userAlbumsActions.updateAlbum({title, artistId, releaseDate, description, photo}))
+        let updatedAlbum = await dispatch(userAlbumsActions.updateAlbum({title, artistId, releaseDate, description, photo, albumId}))
           .catch((res) => {
             if (res.data && res.data.errors) setErrors(res.data.errors);
           });
