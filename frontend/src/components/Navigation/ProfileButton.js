@@ -39,7 +39,7 @@ export default function ProfileButton({user}) {
         <button className="btn btn--hamburger" onClick={openMenu}>
           <i className="fas fa-bars"></i>
         </button>
-        {showMenu && (
+        {showMenu && user && (
         <ul className="dropdown">
           <li className="dropdown__li dropdown__header dropdown__header--background">{user.firstName} {user.lastName}</li>
           <li className="dropdown__li dropdown__header--email dropdown__header--background">{user.email}</li>

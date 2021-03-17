@@ -121,7 +121,7 @@
   width: 100%;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 500px) {
   .album__content {
     margin-top: 1.5em;
   }
