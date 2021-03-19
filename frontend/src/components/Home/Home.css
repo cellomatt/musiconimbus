@@ -31,6 +31,7 @@
   height: 8em;
   padding: 1em 3em;
   box-sizing: border-box;
+  min-width: 430px;
   }
 
 .footer a {

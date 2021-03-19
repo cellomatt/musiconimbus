@@ -21,6 +21,7 @@
 .album__content--right {
   box-sizing: border-box;
   padding: 0 2em 1em;
+  min-width: 372px;
 }
 
 .album__content--title {

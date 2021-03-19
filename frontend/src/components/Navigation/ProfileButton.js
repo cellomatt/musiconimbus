@@ -69,6 +69,24 @@ export default function ProfileButton({user}) {
           </li>
         </ul>
         )}
+        {showMenu && !user && (
+        <ul className="dropdown">
+          <li className="dropdown__li">
+            <Link to="/login">
+              <button className="btn--dropdown" >
+                Log In
+              </button>
+            </Link>
+          </li>
+          <li className="dropdown__li">
+            <Link to="/signup">
+              <button className="btn--dropdown" >
+                Sign Up
+              </button>
+            </Link>
+          </li>
+        </ul>
+        )}
       </>
     )
 }

@@ -15,12 +15,17 @@ export default function Navigation({ isLoaded }) {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">
-          <button className="btn btn--nav">Log In</button>
-        </NavLink>
-        <NavLink to="/signup">
-          <button className="btn btn--nav">Sign Up</button>
-        </NavLink>
+        <div className="sessionLinks">
+          <NavLink to="/login">
+            <button className="btn btn--nav">Log In</button>
+          </NavLink>
+          <NavLink to="/signup">
+            <button className="btn btn--nav">Sign Up</button>
+          </NavLink>
+        </div>
+        <div className="mobile">
+        <ProfileButton />
+        </div>
       </>
     );
   }
