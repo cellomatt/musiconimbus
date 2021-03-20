@@ -128,4 +128,12 @@
     width: 100%;
   }
 
+  .rhap_time {
+    font-size: .8em;
+  }
+
+  .rhap_volume-container {
+    flex: 0 1 75px;
+  }
+
 }

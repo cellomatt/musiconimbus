@@ -10,6 +10,7 @@
   font-size: 2em;
   padding-bottom: 1em;
   font-weight: 300;
+  text-align: center;
 }
 
 .album__content--left {
@@ -132,5 +133,16 @@
   .album__content--right {
     min-width: 100%;
     justify-content: flex-start;
+  }
+
+  .single-album__cover--placeholder-container {
+    width: 250px;
+    height: 250px;
+    font-size: 2.2em;
+  }
+
+  .single-album__cover {
+    max-width: 250px;
+    max-height: 250px;
   }
 }
