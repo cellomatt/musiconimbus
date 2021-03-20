@@ -98,7 +98,6 @@ nav {
   border-bottom: 1px solid #d1d1d1;
   z-index: 99;
   padding: 0 1em;
-  min-width: 430px;
 }
 
 .nav__logo {
@@ -155,6 +154,7 @@ ul {
 
   .btn--hamburger {
     margin-right: 0;
+    margin-left: .2em;
     font-size: 2em;
   }
 
@@ -188,4 +188,20 @@ ul {
   .sessionLinks {
     display: none;
   }
+}
+
+@media screen and (max-width: 430px) {
+  .nav__logo--title {
+    font-size: 1.7em;
+  }
+
+  .nav__logo--img {
+    max-height: 2.7em;
+    max-width: 3.5em;
+  }
+
+  .footer {
+    padding: 0;
+  }
+
 }

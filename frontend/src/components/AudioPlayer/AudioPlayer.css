@@ -106,19 +106,26 @@
   padding: .1em 2em .1em .1em;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 600px) {
 
   .player {
     min-width: 100%;
+    padding-bottom: 1em;
   }
 
   .player__container {
-    height: 7em;
+    height: 8.5em;
+  }
+
+  .song-info {
+    text-align: center;
+    padding: .1em .5em;
   }
 
   .song-info__container {
-    /* display: none; */
-    font-size: .6em;
+    font-size: 1em;
+    padding-top: 1em;
+    width: 100%;
   }
 
 }
