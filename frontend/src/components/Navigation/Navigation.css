@@ -56,6 +56,7 @@
   justify-content: flex-start;
   height: auto;
   background-color: white;
+  min-width: 200px;
 }
 
 .dropdown__header {
@@ -83,9 +84,12 @@
   box-sizing: border-box;
 }
 
+.mobile {
+  display: none;
+}
+
 nav {
   width: 100%;
-  min-width: 530px;
   position: fixed;
   background-color: #ffffff;
   top: 0;
@@ -94,6 +98,7 @@ nav {
   border-bottom: 1px solid #d1d1d1;
   z-index: 99;
   padding: 0 1em;
+  min-width: 430px;
 }
 
 .nav__logo {
@@ -140,16 +145,17 @@ ul {
   }
 
   .nav__logo--title {
-    font-size: 2em;
+    font-size: 2.2em;
   }
 
   .nav__logo--img {
-    max-height: 2.2em;
-    max-width: 3.4em;
+    max-height: 3.2em;
+    max-width: 4.2em;
   }
 
   .btn--hamburger {
     margin-right: 0;
+    font-size: 2em;
   }
 
   .btn--dropdown {
@@ -175,4 +181,11 @@ ul {
     font-size: 1.3em;
   }
 
+  .mobile {
+    display: flex;
+  }
+
+  .sessionLinks {
+    display: none;
+  }
 }

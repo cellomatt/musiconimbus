@@ -33,7 +33,6 @@
 
 .song__container {
   width: 100%;
-  min-width: 530px;
   display: flex;
   flex-direction: row;
   align-items: center;

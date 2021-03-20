@@ -45,7 +45,6 @@ export const createAlbum = (album) => async dispatch => {
 
 export const updateAlbum = (album) => async dispatch => {
   const { title, artistId, releaseDate, description, photo, albumId } = album;
-  console.log(title, artistId, releaseDate, description)
   const formData = new FormData();
   formData.append("title", title);
   formData.append("artistId", artistId);

@@ -38,7 +38,7 @@ export default function AddAlbum() {
         history.push("/albums/new")
       }
     }
-  }, [albumId, album, userAlbums])
+  }, [albumId, album, userAlbums, history])
 
   if (!sessionUser) return (
     <Redirect to="/" />

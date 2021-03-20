@@ -41,14 +41,16 @@
   margin-top: 1.5em;
 }
 
+.main__user-assets {
+  width: 60%
+}
+
 .title {
   font-size: 3em;
   font-weight: 300;
-  width: 100%;
   text-decoration: underline;
   text-decoration-thickness: 2px;
-  padding: .5em .4em;
-
+  padding: .5em .4em .5em .1em;
   box-sizing: border-box;
   text-underline-offset: 3px;
 }
@@ -60,4 +62,13 @@
   align-items: center;
   box-sizing: border-box;
   margin-bottom: .4em;
+  flex-wrap: wrap;
+  padding: 1em .5em .7em;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .main__user-assets {
+    width: 90%
+  }
 }
