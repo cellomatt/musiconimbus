@@ -181,7 +181,6 @@ label {
   margin-bottom: 7em;
   flex-direction: column;
   flex-wrap: wrap;
-  /* min-width: 430px; */
 }
 
 select {
@@ -246,7 +245,7 @@ textarea {
 
   .form {
     width: 90%;
-    min-width: 350px;
+    flex-shrink: 1;
   }
 
   h1 {
@@ -260,10 +259,10 @@ textarea {
   }
 
   .main {
-    margin: 1em auto;
     margin-top: 6em;
     margin-bottom: 8em;
     padding: 1em;
+    width: 100%;
   }
 
 }

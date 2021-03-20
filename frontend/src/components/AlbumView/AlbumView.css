@@ -72,7 +72,6 @@
   font-size: 3em;
 }
 
-
 .single-album__cover--placeholder-container {
   width: 300px;
   height: 300px;
@@ -92,6 +91,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  text-align: center;
 }
 
 .single-album__title--container {
@@ -126,5 +126,11 @@
   .album__content {
     margin-top: 1.5em;
   }
+}
 
+@media screen and (max-width: 400px) {
+  .album__content--right {
+    min-width: 100%;
+    justify-content: flex-start;
+  }
 }
