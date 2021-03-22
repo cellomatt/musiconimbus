@@ -17,6 +17,7 @@ MusicoNimbus uses the following tools, frameworks, and key packages:
 ### [React](https://reactjs.org/)
 ### [Redux](https://react-redux.js.org/)
 ### [Node.js](http://nodejs.org/)
+### [AWS S3](https://aws.amazon.com/s3/)
 ### [react-h5-audio-player](https://www.npmjs.com/package/react-h5-audio-player)
 ### Hosted on [Heroku](https://www.heroku.com)
 
