@@ -76,3 +76,13 @@ h1 {
   }
 
 }
+
+@media screen and (max-width: 450px) {
+  .footer {
+    flex-direction: column;
+    height: 20em;
+    padding: 1em;
+    justify-content: flex-end;
+    align-items: flex-start;
+  }
+}

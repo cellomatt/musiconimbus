@@ -1,9 +1,14 @@
 
 .button-container {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  display: flex;
   flex-direction: row;
   align-items: center;
   align-self: center;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .form__title {
