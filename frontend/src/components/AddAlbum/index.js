@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import * as userAlbumsActions from "../../store/userAlbums";
+import { play } from "../../store/nowPlaying"
 import "./AddAlbum.css";
 
 export default function AddAlbum() {
@@ -10,6 +11,7 @@ export default function AddAlbum() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const album = useSelector(state => state.userAlbums[albumId]);
+  const nowPlaying = useSelector(state => state.nowPlaying.song)
   const userAlbums = useSelector(state => state.userAlbums);
   const [title, setTitle] = useState('');
   const [releaseDate, setReleaseDate] = useState('');
@@ -66,6 +68,9 @@ export default function AddAlbum() {
           });
 
           if (updatedAlbum) {
+            if (nowPlaying.albumId == albumId) {
+              dispatch(play(nowPlaying))
+            }
             history.push(`/albums/${updatedAlbum.data.album.id}`);
           }
       }
