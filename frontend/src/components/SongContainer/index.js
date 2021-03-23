@@ -30,7 +30,7 @@ export default function SongContainer({ album, song, sessionUser, change, setCha
           <i className="fas fa-play"></i>
           <h3 className="song__title">{song.title}</h3>
         </div>
-        <p className="composer">{song.Composer.firstName} {song.Composer.lastName}</p>
+        <p className="composer">{`${song.Composer.firstName} ${song.Composer.lastName}`}</p>
       </button>
       {userSong && <button type="button" onClick={deleteSong} className="trash-can"><i className="fas fa-trash"></i></button>}
     </div>

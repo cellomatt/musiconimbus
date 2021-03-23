@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { play } from "../../store/nowPlaying"
 import * as songsActions from "../../store/songs";
 import "./AddSong.css"
 
@@ -14,6 +15,7 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
   const albumId = album.id;
 
   const {composers, allComposers} = useSelector(state => state.songs)
+  const nowPlaying = useSelector(state => state.nowPlaying.song)
 
   useEffect(() => {
     dispatch(songsActions.getComposers())
@@ -50,6 +52,9 @@ export default function AddSong({ setChange, setAddSong, album, buttonClick, edi
           setEditSong(false);
           setChange((change) => !change);
           buttonClick();
+          if (songToEdit.song.id === nowPlaying.id) {
+            dispatch(play(songToEdit.song));
+          }
         })
         .catch((res) => {
           if (res.data && res.data.errors) setErrors(res.data.errors);
