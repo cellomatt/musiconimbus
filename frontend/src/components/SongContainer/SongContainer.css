@@ -31,9 +31,16 @@
   color: #777;
 }
 
+.form__song select {
+  width: 100%;
+  max-width: 100%;
+  height: 2.2em;
+}
+
 .song__container {
   width: 100%;
   max-width: 400px;
+  min-width: 300px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -71,4 +78,13 @@
     justify-content: space-between;
     align-items: center;
   }
+
+  .song__container {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+
 }
