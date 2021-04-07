@@ -68,7 +68,7 @@ export default function AddAlbum() {
           });
 
           if (updatedAlbum) {
-            if (nowPlaying.albumId == albumId) {
+            if (+nowPlaying.albumId === +albumId) {
               dispatch(play(nowPlaying))
             }
             history.push(`/albums/${updatedAlbum.data.album.id}`);
