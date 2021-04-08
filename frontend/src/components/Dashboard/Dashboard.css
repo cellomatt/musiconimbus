@@ -24,6 +24,7 @@
   font-size: 1.3em;
   width: 100%;
   padding: .5em;
+  background-color: transparent;
 }
 
 .album__trash:hover {
