@@ -32,6 +32,7 @@
 .album__description {
   flex-wrap: no-wrap;
   margin-bottom: 1.4em;
+  max-width: 400px;
 }
 
 .album__layout {
