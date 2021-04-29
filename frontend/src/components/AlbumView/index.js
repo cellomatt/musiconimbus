@@ -29,7 +29,8 @@ export default function Album({ sessionUser }) {
   }, [artist, sessionUser]);
 
   useEffect(() => {
-    dispatch(albumsActions.getOneAlbum(albumId))
+    dispatch(albumsActions.getOneAlbum(albumId));
+    return dispatch(albumsActions.)
   }, [dispatch, albumId, change])
 
   const buttonClick = () => {

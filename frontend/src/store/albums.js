@@ -2,7 +2,7 @@
 
   const LOAD_ALL_ALBUMS = "albums/LOAD_ALL_ALBUMS"
   const LOAD_ONE_ALBUM = "albums/LOAD_ONE_ALBUM"
-
+  const CLEANUP_ALBUM = "albums/CLEANUP_ALBUM"
 
   export const loadAlbums = (albums) => {
     return { type: LOAD_ALL_ALBUMS, albums };
@@ -10,6 +10,10 @@
 
   export const loadOneAlbum = (data) => {
     return { type: LOAD_ONE_ALBUM, data };
+  }
+
+  export const cleanupAlbum = () => {
+    return { type: CLEANUP_ALBUM}
   }
 
   export const getAlbums = () => async dispatch => {
@@ -21,7 +25,6 @@
     const res = await fetch(`/api/albums/${albumId}`);
     dispatch(loadOneAlbum(res.data));
   }
-
 
   const initialState = {};
 
@@ -39,6 +42,9 @@
         updateState.currentAlbum = action.data.album;
         updateState.currentArtist = action.data.artist;
         return updateState;
+      }
+      case CLEANUP_ALBUM: {
+        return initialState;
       }
 
       default:
