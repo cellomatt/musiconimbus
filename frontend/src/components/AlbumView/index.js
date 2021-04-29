@@ -30,7 +30,9 @@ export default function Album({ sessionUser }) {
 
   useEffect(() => {
     dispatch(albumsActions.getOneAlbum(albumId));
-    return dispatch(albumsActions.)
+    return () => {
+      dispatch(albumsActions.cleanupAlbum())
+    }
   }, [dispatch, albumId, change])
 
   const buttonClick = () => {
