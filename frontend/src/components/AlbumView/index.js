@@ -29,11 +29,20 @@ export default function Album({ sessionUser }) {
   }, [artist, sessionUser]);
 
   useEffect(() => {
-    dispatch(albumsActions.getOneAlbum(albumId));
+    const getAlbumInfo = async () => {
+      try {
+        await dispatch(albumsActions.getOneAlbum(albumId));
+      }
+      catch {
+        history.push("/explore")
+      }
+    };
+    getAlbumInfo();
     return () => {
       dispatch(albumsActions.cleanupAlbum())
     }
-  }, [dispatch, albumId, change])
+  }, [dispatch, albumId, change, history])
+
 
   const buttonClick = () => {
     setAddSong(!addSong);
