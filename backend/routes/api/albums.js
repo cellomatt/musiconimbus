@@ -53,8 +53,12 @@ router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
       include: Composer
     }
   });
-  const artist = await User.findByPk(album.artistId)
-  return res.json({album, artist});
+  if (album) {
+    const artist = await User.findByPk(album.artistId)
+    return res.json({album, artist});
+  } else {
+    return res.status(404).json({errors: "this album does not exist."})
+  }
 }));
 
 //delete a single album
