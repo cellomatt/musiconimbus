@@ -33,13 +33,17 @@ export default function Explore({ sessionUser }) {
       {/* <p className="tagline tagline-explore" >Explore music from other MusicoNimbus artists.</p> */}
       <SearchBar search={search} setSearch={setSearch}></SearchBar>
           <div className="albums__layout">
-            {/* {console.log(search)} */}
-            {console.log(albumsArray.filter(album =>
-              ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
-              (album.title.toLowerCase().includes(search.toLowerCase())) ||
-              (album.User.artistName.toLowerCase().includes(search.toLowerCase())))
-              ))}
-            {albumsArray.map(album => {
+            {
+              albumsArray
+              .filter(album =>
+                ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
+                (album.title.toLowerCase().includes(search.toLowerCase())) //||
+                // (album.Songs.forEach(song => song.Composer.firstName.toLowerCase().includes(search.toLowerCase())))
+                )
+              )
+              .map(album => {
+                
+            // {console.log(album.Songs.forEach(song => {console.log(song.Composer.firstName.toLowerCase().includes(search.toLowerCase()))}))}
                 return (
                   <AlbumContainer key={album.id} album={album} artist={album.User} />
                 )

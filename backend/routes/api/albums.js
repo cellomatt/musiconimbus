@@ -105,7 +105,12 @@ router.get('/',
   requireAuth,
   asyncHandler(async function (req, res) {
     const albums = await Album.findAll({
-      include: User,
+      include: [User,
+      // include:
+      {
+        model: Song,
+        include: Composer
+      }]
     })
     return res.json({albums})
   })
