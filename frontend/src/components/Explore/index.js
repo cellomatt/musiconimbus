@@ -30,9 +30,15 @@ export default function Explore({ sessionUser }) {
   if (albumsArray.length > 0) return (
     <div className="main">
       <h1>Discover new music.</h1>
-      <p className="tagline tagline-explore" >Explore music from other MusicoNimbus artists.</p>
+      {/* <p className="tagline tagline-explore" >Explore music from other MusicoNimbus artists.</p> */}
       <SearchBar search={search} setSearch={setSearch}></SearchBar>
           <div className="albums__layout">
+            {/* {console.log(search)} */}
+            {console.log(albumsArray.filter(album =>
+              ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
+              (album.title.toLowerCase().includes(search.toLowerCase())) ||
+              (album.User.artistName.toLowerCase().includes(search.toLowerCase())))
+              ))}
             {albumsArray.map(album => {
                 return (
                   <AlbumContainer key={album.id} album={album} artist={album.User} />
