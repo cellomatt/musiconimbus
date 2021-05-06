@@ -1,14 +1,15 @@
 import { Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as albumsActions from "../../store/albums";
 import AlbumContainer from "../AlbumContainer";
+import SearchBar from "../SearchBar"
 import "./Explore.css"
 
 
 export default function Explore({ sessionUser }) {
   const dispatch = useDispatch();
-
+  const [search, setSearch] = useState("");
 
 
   useEffect(() => {
@@ -29,13 +30,34 @@ export default function Explore({ sessionUser }) {
   if (albumsArray.length > 0) return (
     <div className="main">
       <h1>Discover new music.</h1>
-      <p className="tagline tagline-explore" >Explore albums from other MusicoNimbus artists.</p>
+      <SearchBar search={search} setSearch={setSearch}></SearchBar>
           <div className="albums__layout">
-            {albumsArray.map(album => {
-                return (
-                  <AlbumContainer key={album.id} album={album} artist={album.User} />
+            {
+              albumsArray
+                .filter(album => {
+                  const composers = album.Songs.map(song => song.Composer)
+                  const filteredComposers = composers.filter(composer => {
+                    return (
+                      (composer.firstName.toLowerCase().includes(search.toLowerCase())) ||
+                      ((composer.lastName !== null) && composer.lastName.toLowerCase().includes(search.toLowerCase()))
+                      )
+                    })
+                  const filteredSongs = album.Songs.filter(song => {
+                    return filteredComposers.includes(song.Composer) ||
+                    song.title.toLowerCase().includes(search.toLowerCase())
+                    })
+
+                  return ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
+                  (album.title.toLowerCase().includes(search.toLowerCase())) ||
+                  (album.Songs.some(song => filteredSongs.includes(song)))
+                  )
+                }
                 )
-              })
+                .map(album => {
+                  return (
+                    <AlbumContainer key={album.id} album={album} artist={album.User} />
+                  )
+                })
             }
           </div>
     </div>
