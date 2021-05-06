@@ -39,7 +39,7 @@ export default function Explore({ sessionUser }) {
                   const filteredComposers = composers.filter(composer => {
                     return (
                       (composer.firstName.toLowerCase().includes(search.toLowerCase())) ||
-                      ((composer.lastName !== null) && composer.lastName.toLowerCase().includes(search.toLowerCase()))
+                      ((composer.lastName !== null) && (composer.firstName.toLowerCase() + " " + composer.lastName.toLowerCase()).includes(search.toLowerCase()))
                       )
                     })
                   const filteredSongs = album.Songs.filter(song => {
