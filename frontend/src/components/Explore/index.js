@@ -34,15 +34,26 @@ export default function Explore({ sessionUser }) {
           <div className="albums__layout">
             {
               albumsArray
-              .filter(album =>
-                ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
-                (album.title.toLowerCase().includes(search.toLowerCase())) //||
-                // (album.Songs.forEach(song => song.Composer.firstName.toLowerCase().includes(search.toLowerCase())))
+              .filter(album => {
+                const composers = album.Songs.map(song => song.Composer)
+                // console.log(composers)
+                const filteredComposers = composers.filter(composer => {
+                  return (
+                    (composer.firstName.toLowerCase().includes(search.toLowerCase())) ||
+                    ((composer.lastName !== null) && composer.lastName.toLowerCase().includes(search.toLowerCase()))
+                    )
+                })
+                console.log(filteredComposers)
+
+                return ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
+                (album.title.toLowerCase().includes(search.toLowerCase())) ||
+                (album.Songs.filter(song => filteredComposers.includes(song.Composer)))
                 )
+              }
               )
+
               .map(album => {
 
-            // {console.log(album.Songs.forEach(song => {console.log(song.Composer.firstName.toLowerCase().includes(search.toLowerCase()))}))}
                 return (
                   <AlbumContainer key={album.id} album={album} artist={album.User} />
                 )
