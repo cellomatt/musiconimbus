@@ -6,8 +6,16 @@ export default function SearchBar({search, setSearch}) {
     <>
     <input
       type="text"
-      className="search-input"
-      placeholder="&#xF002;  Search albums, composers, songs, or artist names..."
+      className="search-input one"
+      placeholder=" &#xF002;  Search albums, composers, songs, or artist names..."
+      value={search}
+      onChange={(e) => setSearch(e.target.value)}
+      >
+    </input>
+    <input
+      type="text"
+      className="search-input two"
+      placeholder=" &#xF002;  Search..."
       value={search}
       onChange={(e) => setSearch(e.target.value)}
       >

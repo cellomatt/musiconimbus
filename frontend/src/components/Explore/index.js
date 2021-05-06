@@ -34,31 +34,30 @@ export default function Explore({ sessionUser }) {
           <div className="albums__layout">
             {
               albumsArray
-              .filter(album => {
-                const composers = album.Songs.map(song => song.Composer)
-                const filteredComposers = composers.filter(composer => {
+                .filter(album => {
+                  const composers = album.Songs.map(song => song.Composer)
+                  const filteredComposers = composers.filter(composer => {
+                    return (
+                      (composer.firstName.toLowerCase().includes(search.toLowerCase())) ||
+                      ((composer.lastName !== null) && composer.lastName.toLowerCase().includes(search.toLowerCase()))
+                      )
+                    })
+                  const filteredSongs = album.Songs.filter(song => {
+                    return filteredComposers.includes(song.Composer) ||
+                    song.title.toLowerCase().includes(search.toLowerCase())
+                    })
+
+                  return ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
+                  (album.title.toLowerCase().includes(search.toLowerCase())) ||
+                  (album.Songs.some(song => filteredSongs.includes(song)))
+                  )
+                }
+                )
+                .map(album => {
                   return (
-                    (composer.firstName.toLowerCase().includes(search.toLowerCase())) ||
-                    ((composer.lastName !== null) && composer.lastName.toLowerCase().includes(search.toLowerCase()))
-                    )
-                  })
-                const filteredSongs = album.Songs.filter(song => {
-                  return filteredComposers.includes(song.Composer) ||
-                  song.title.toLowerCase().includes(search.toLowerCase())
-                  })
-
-                return ((album.User.artistName.toLowerCase().includes(search.toLowerCase())) ||
-                (album.title.toLowerCase().includes(search.toLowerCase())) ||
-                (album.Songs.some(song => filteredSongs.includes(song)))
-                )
-              }
-              )
-              .map(album => {
-
-                return (
-                  <AlbumContainer key={album.id} album={album} artist={album.User} />
-                )
-              })
+                    <AlbumContainer key={album.id} album={album} artist={album.User} />
+                  )
+                })
             }
           </div>
     </div>
