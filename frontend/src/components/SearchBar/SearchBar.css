@@ -1,4 +1,7 @@
 .search-input {
-  max-width: 500px;
+  max-width: 475px;
   font-size: 1.2em;
+  font-family: "Roboto", "FontAwesome";
+  padding: 0.5em;
+  margin: 1em 1em 2.5em;
 }
