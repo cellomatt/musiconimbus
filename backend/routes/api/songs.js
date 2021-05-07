@@ -53,7 +53,7 @@ router.get('/:id(\\d+)', asyncHandler(async function(req, res) {
   const song = await Song.findByPk(req.params.id, {
     include: [{
       model: Album,
-      include: User
+      include: [User, Song]
     }, Composer]
   });
   return res.json({song});

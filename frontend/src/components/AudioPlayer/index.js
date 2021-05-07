@@ -1,13 +1,34 @@
 import AudioPlayer, { RHAP_UI }  from 'react-h5-audio-player';
+import { useDispatch } from "react-redux";
+import { play } from "../../store/nowPlaying"
 import 'react-h5-audio-player/lib/styles.css';
 import "./AudioPlayer.css"
 
 export default function MyAudioPlayer({ nowPlaying }) {
+  const album = nowPlaying.Album
+  const dispatch = useDispatch();
 
-  // const playNext = (nowPlaying) => {
-    // FOR FUTURE AUTO-PLAY FEATURE
-  // }
+  const playNext = () => {
+    if (album) {
+      const song = album.Songs.filter(song => song.id === nowPlaying.id)
+      const index = album.Songs.indexOf(song[0])
 
+      if (album.Songs[index+1]){
+        dispatch(play(album.Songs[index + 1]))
+      }
+    }
+  }
+
+  const playPrevious = () => {
+    if (album) {
+      const song = album.Songs.filter(song => song.id === nowPlaying.id)
+      const index = album.Songs.indexOf(song[0])
+
+      if (album.Songs[index-1]){
+        dispatch(play(album.Songs[index-1]))
+      }
+    }
+  }
 
   return (
     <div className="player__container">
@@ -29,18 +50,18 @@ export default function MyAudioPlayer({ nowPlaying }) {
             <div>/</div>,
             RHAP_UI.DURATION,
             RHAP_UI.PROGRESS_BAR,
-            RHAP_UI.VOLUME,
+            // RHAP_UI.VOLUME,
           ]
         }
-        customVolumeControls={[]}
-        // showSkipControls={true}
+        // customVolumeControls={[]}
+        showSkipControls={true}
         showJumpControls={false}
         autoPlay
         controls
         controlsList="nodownload"
-        // onEnded={playNext}
-        // onClickNext={playNext}
-        // onClickPrevious={playPrevious}
+        onEnded={e => playNext()}
+        onClickNext={e => playNext()}
+        onClickPrevious={e => playPrevious()}
       />
     </div>
   )
