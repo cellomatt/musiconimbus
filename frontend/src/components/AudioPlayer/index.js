@@ -5,7 +5,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import "./AudioPlayer.css"
 
 export default function MyAudioPlayer({ nowPlaying }) {
-  const album = useSelector(state => state.albums.currentAlbum);
+  const album = nowPlaying.Album
   const dispatch = useDispatch();
 
   const playNext = () => {
