@@ -8,20 +8,27 @@ export default function MyAudioPlayer({ nowPlaying }) {
   const album = useSelector(state => state.albums.currentAlbum);
   const dispatch = useDispatch();
 
+  const playNext = () => {
+    if (album) {
+      const song = album.Songs.filter(song => song.id === nowPlaying.id)
+      const index = album.Songs.indexOf(song[0])
 
-  // const playNext = () => {
-  //   if (album) {
-  //     console.log("This was triggered even though I didn't actually end a song")
-  //     const song = album.Songs.filter(song => song.id === nowPlaying.id)
-  //     const index = album.Songs.indexOf(song[0])
+      if (album.Songs[index+1]){
+        dispatch(play(album.Songs[index + 1]))
+      }
+    }
+  }
 
-  //     if (album.Songs[index+1]){
-  //       dispatch(play(album.Songs[index + 1]))
-  //       console.log("HEY!", index+1)
-  //     }
-  //   }
-  // }
+  const playPrevious = () => {
+    if (album) {
+      const song = album.Songs.filter(song => song.id === nowPlaying.id)
+      const index = album.Songs.indexOf(song[0])
 
+      if (album.Songs[index-1]){
+        dispatch(play(album.Songs[index-1]))
+      }
+    }
+  }
 
   return (
     <div className="player__container">
@@ -47,14 +54,14 @@ export default function MyAudioPlayer({ nowPlaying }) {
           ]
         }
         customVolumeControls={[]}
-        // showSkipControls={true}
+        showSkipControls={true}
         showJumpControls={false}
         autoPlay
         controls
         controlsList="nodownload"
-        onEnded={playNext()}
-        // onClickNext={playNext}
-        // onClickPrevious={playPrevious}
+        onEnded={e => playNext()}
+        onClickNext={e => playNext()}
+        onClickPrevious={e => playPrevious()}
       />
     </div>
   )
